@@ -5,10 +5,14 @@
       </header>
 
       <nav>
+        Left nav component
       <div class="content">
       Navigation
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <div><router-link v-bind:to="{ name: 'home' }">Home </router-link>&nbsp;|&nbsp; </div> 
+      <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></div>
+     <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
+     <div> <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link></div>
+      
     </div>
 
         </nav>
@@ -18,6 +22,7 @@
                     <!-- different views/pages are displayed/injected here -->
 
               <router-view />
+              
 
             </div>
           </main>

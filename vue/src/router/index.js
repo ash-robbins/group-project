@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
+import Books from '../views/Books.vue'
+import NewBook from '../views/NewBook.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-
+import BookDetails from '../views/BookDetails.vue'
+import Prizes from '../views/Prizes.vue'
 Vue.use(Router)
 
 /**
@@ -28,6 +31,33 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/',
+      name: 'books',
+      component: Books,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/',
+      name: 'prizes',
+      component: Prizes,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/book/:isbn',
+      name: 'book-details',
+      component: BookDetails
+    },
+
+{
+      path: '/addBook',
+      name: 'add-book',
+      component: NewBook
     },
     {
       path: "/login",
