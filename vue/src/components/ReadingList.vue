@@ -1,6 +1,6 @@
 <template>
 <div class="book-container">
-Reading Lists: 
+
 <book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="book.isbn"/>
 </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 <style>
 .book-container {
     display:flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
