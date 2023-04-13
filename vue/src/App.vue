@@ -1,51 +1,44 @@
 <template>
   <div class="container">
     <header>
-      header content
-    
-      </header>
+        <div>
+        <img src="../images/Tech_Reader_Logo-removebg-preview.png" alt="" />
+        </div>
+        <div>TE Book Club </div>
+    </header>
 
-      <nav>
-        Left nav component
-      <div class="content">
-      Navigation
-      <div><router-link v-bind:to="{ name: 'home' }">Home </router-link>&nbsp;|&nbsp; </div> 
-      <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></div>
-     <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
-     <div> <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link></div>
-      <div> <router-link v-bind:to="{name: 'family-account'}">Create Family account</router-link></div>
-    </div>
+    <nav>
+        <div class="content">
+        <!-- Navigation  << remove word once navigation is finished -->
+            <div><router-link v-bind:to="{ name: 'home' }">Home </router-link></div> 
+            <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout </router-link></div>
+            <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
+            <div> <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link></div>
+            <div> <router-link v-bind:to="{name: 'family-account'}">Family</router-link></div>
+        </div>
+    </nav> 
 
-        </nav>
-
-        <main>
-          <div>
+    <main>
+        <div>
                     <!-- different views/pages are displayed/injected here -->
 
-              <router-view />
-              
-
-            </div>
-          </main>
+            <router-view />
+        </div>
+    </main>
 
 
 
-          <aside>
-              <div class="content">
+    <aside>
+        <div class="content">
                         SideBar /Info
-              </div>
-                Family name:
-              <div v-for="family in $store.state.family" v-bind:key="family.name"> 
-                   {{family.name}}
-                  </div>
-            
-                       
-            </aside>
-              <footer>
-                        <div class="content">
+        </div>
+    </aside>
+
+    <footer>
+        <div class="content">
                             Footer Content
-                        </div>
-                        </footer>
+        </div>
+    </footer>
     
   
   </div>
@@ -73,7 +66,7 @@
 
         grid-template-areas: 
             "header header header" 
-            "nav content side"
+            "nav content side"   /*main = content and side = aside*/ 
             "footer footer footer";
 
         grid-template-columns: 200px 1fr 200px;
@@ -96,62 +89,87 @@
             grid-template-columns: 1fr;
             grid-template-rows:
                 auto /*Header */
-                75px /*Nav*/
+                auto /*Nav*/   
                 1fr /* content */
-                75px /* Sidebar */
+                auto /* Sidebar */
                 auto; /* Footer */
             
         }
         header, footer, nav, main, aside {
-            padding: 5px 0;
+            padding: 5px;
         }
-        nav, aside {
-        margin: 0;
+        nav, aside, main {
+        margin: 10px;
+        
         }
+        /* Navigation bar becomes side by side*/
+        nav div.content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
 
     }
 
+    /* Logo */
+    header div img {
+        height: 100px;
+        margin: 10px;
+    } 
+
     header {
     grid-area: header;
-    background-color: #f69a00;
+    background-color: #f8f7ff; /*Great White*/
+
+    display: flex;
+    align-items: center;    
+    }
+
+    footer {
+        grid-area: footer;
+        background-color: #f8f7ff;
+    }
+
+    /* Header & Footer font color */
+    header, footer {
+        color: #505050;
+    }
+
+    main {
+        grid-area: content;
+        background-color: #f8f7ff; 
+
+        color: #505050;
+
+        border-radius: 10px;
+
     }
 
     nav {
         grid-area: nav;
         margin-left: 0.5rem;
-        background-color: #f2ead2;
-    }
+        background-color: #f8f7ff;
 
-    nav div{
-        padding: 10px;
-
-    }
-
-    main {
-        grid-area: content;
-        background-color: #f9f5f0;
+        border-radius: 10px;
     }
 
     aside {
         grid-area: side;
         margin-right: 0.5rem;
-        background-color: #f2ead2;
+        background-color: #424B54;
+
+        border-radius: 10px;
     }
 
-    footer {
-        grid-area: footer;
-        background-color: #331312;
-    }
-
-    header, footer {
+    nav, aside {
         color: #ffffff;
     }
-    nav, main, aside {
-        color: #74889a;
-    }
+
     header, footer, nav, main, aside {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 20px;
+        font-size: 24px;
         text-transform: uppercase;
     }
 

@@ -10,6 +10,8 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import BookDetails from '../views/BookDetails.vue'
 import Prizes from '../views/Prizes.vue'
+
+
 Vue.use(Router)
 
 /**
@@ -38,7 +40,7 @@ const router = new Router({
       name: 'books',
       component: Books,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -46,7 +48,7 @@ const router = new Router({
       name: 'prizes',
       component: Prizes,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -88,7 +90,9 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+
+   
   ]
 })
 
