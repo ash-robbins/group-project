@@ -22,6 +22,7 @@ export default {
     },
         methods: {
         saveBook() {
+            if (this.book.title && this.book.author && this.book.isbn){
             this.$store.commit('SAVE_BOOK', this.book);
             this.book = {
                 title: '',
@@ -29,9 +30,11 @@ export default {
                 read: false,
                 isbn: ''
             };
-            this.$router.push({name: 'books'})
+            this.$router.push({name: 'books'});
+        } else {
+            alert('Please fill in all fields');
         }
-    }
+    }}
 
 }
 </script>
