@@ -15,7 +15,7 @@ public interface ReadingActivityDao {
 
     /* Trello "Check Reading Activity" Tab
      Returns List of All Reading Activities By User
-     SQL statement Aggregate Functions for Summery
+     SQL statement Aggregate Functions for Summary
      isCompleted is boolean, need a count for if true */
     List<ReadingActivity> getReadingSummaryByUserId(int userId);
 }

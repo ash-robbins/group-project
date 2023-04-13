@@ -22,6 +22,10 @@ public class Prize {
         this.endDate = endDate;
     }
 
+    public Prize() {
+
+    }
+
     public int getPrizeId() {
         return prizeId;
     }

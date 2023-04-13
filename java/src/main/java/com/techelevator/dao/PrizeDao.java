@@ -17,4 +17,6 @@ public interface PrizeDao {
 
     // Trello "Trello "See Prizes" Tab
     List<Prize> listAvailablePrizes();
+
+    Prize getPrize(int prizeId);
 }
