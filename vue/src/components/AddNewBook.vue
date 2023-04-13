@@ -1,8 +1,9 @@
 <template>
   <form class="new-book-form" v-on:submit.prevent="saveBook">
-    <input class="new-book-input" id="title-input" type="text" placeholder="Title" v-model="book.title" />
-    <input class="new-book-input" id="author-input" type="text" placeholder="Author" v-model="book.author" />
-    <input class="new-book-input" id="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
+    <input class="new-book-input" type="text" placeholder="Title" v-model="book.title" />
+    <input class="new-book-input" type="text" placeholder="Author" v-model="book.author" />
+    <textarea placeholder="Description of Book" v-model="book.description" />
+    <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <button>Save</button>
   </form>
 </template>
@@ -16,6 +17,7 @@ export default {
                 title: '',
                 author: '',
                 read: false,
+                description: '',
                 isbn: ''
             }
         }
@@ -28,6 +30,7 @@ export default {
                 title: '',
                 author: '',
                 read: false,
+                description: '',
                 isbn: ''
             };
             this.$router.push({name: 'books'});
@@ -54,6 +57,7 @@ export default {
     transition: all 0.5s ease;
     margin-top: 5px;
 }
+
 button {
     width: 220px;
     background: #00AFEF;
@@ -64,8 +68,7 @@ button {
     padding: 23px 0;
     margin-top: 10px;
     cursor: pointer;
-    
-    
+
 }
 
 
