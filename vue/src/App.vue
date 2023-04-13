@@ -2,6 +2,7 @@
   <div class="container">
     <header>
       header content
+    
       </header>
 
       <nav>
@@ -12,7 +13,7 @@
       <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></div>
      <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
      <div> <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link></div>
-      
+      <div> <router-link v-bind:to="{name: 'family-account'}">Create Family account</router-link></div>
     </div>
 
         </nav>
@@ -32,7 +33,13 @@
           <aside>
               <div class="content">
                         SideBar /Info
-                        </div>
+              </div>
+                Family name:
+              <div v-for="family in $store.state.family" v-bind:key="family.name"> 
+                   {{family.name}}
+                  </div>
+            
+                       
             </aside>
               <footer>
                         <div class="content">
@@ -115,6 +122,11 @@
         background-color: #f2ead2;
     }
 
+    nav div{
+        padding: 10px;
+
+    }
+
     main {
         grid-area: content;
         background-color: #f9f5f0;
@@ -139,7 +151,7 @@
     }
     header, footer, nav, main, aside {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 24px;
+        font-size: 20px;
         text-transform: uppercase;
     }
 
