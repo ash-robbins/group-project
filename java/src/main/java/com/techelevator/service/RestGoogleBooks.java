@@ -1,4 +1,2 @@
-package com.techelevator.service;
-
-public interface RestGoogleBooks {
+package com.techelevator.service;public interface RestGoogleBooks {
 }
