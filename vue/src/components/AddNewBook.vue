@@ -2,6 +2,7 @@
   <form class="new-book-form" v-on:submit.prevent="saveBook">
     <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
     <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
+    <textarea placeholder="Description of Book" v-model="book.description" />
     <input class="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <button>Save</button>
   </form>
@@ -16,6 +17,7 @@ export default {
                 title: '',
                 author: '',
                 read: false,
+                description: '',
                 isbn: ''
             }
         }
@@ -28,6 +30,7 @@ export default {
                 title: '',
                 author: '',
                 read: false,
+                description: '',
                 isbn: ''
             };
             this.$router.push({name: 'books'});

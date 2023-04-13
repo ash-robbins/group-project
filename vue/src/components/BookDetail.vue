@@ -4,6 +4,7 @@
         isbn: {{book.isbn}}
       <h1>title: {{book.title}}</h1>
       <h2>author: {{book.author}}</h2>
+      <h2>description: {{book.description}}</h2>
 
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
 
