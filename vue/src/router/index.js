@@ -40,7 +40,7 @@ const router = new Router({
       name: 'books',
       component: Books,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -48,24 +48,33 @@ const router = new Router({
       name: 'prizes',
       component: Prizes,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
       path: '/book/:isbn',
       name: 'book-details',
-      component: BookDetails
+      component: BookDetails,
+      meta: {
+        requiresAuth: false
+      }
     },
 
 {
       path: '/addBook',
       name: 'add-book',
-      component: NewBook
+      component: NewBook,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/familyAccount',
       name: 'family-account',
-      component: CreateFamilyAccount
+      component: CreateFamilyAccount,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: "/login",
