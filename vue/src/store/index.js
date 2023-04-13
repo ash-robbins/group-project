@@ -44,7 +44,13 @@ export default new Vuex.Store({
       read: false,
       isbn: "9783125971400"
     }
-  ]
+  ],
+  family: [{
+    family_name: 'adam',
+    family_description: 'adam family description',
+    family_code: '2234',
+    user_id: 'mnaser'
+  }]
       },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -65,6 +71,9 @@ export default new Vuex.Store({
     },
     SAVE_BOOK(state, book) {
       state.books.push(book);
+    },
+    CREATE_FAMILY(state, family){
+      state.family.push(family)
     }
   }
 })
