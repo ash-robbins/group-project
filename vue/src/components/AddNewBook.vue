@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import bookService from '../services/BookService.js'
 export default {
         name: "add-newbook-form",
     data() {
@@ -39,8 +40,21 @@ export default {
             this.$router.push({name: 'books'});
         } else {
             alert('Please fill in all fields');
-        }
-    }}
+        }},
+    postBook(){
+    bookService.postBook(this.book)
+    .then(response=>{
+        if(response.status === 201){
+          this.$router.push('/')
+        } 
+        })
+    .catch(error=>{
+        this.handleResponse(error, "adding")
+      })
+    }
+    
+    
+    }
 
 }
 </script>

@@ -12,11 +12,13 @@
         <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
         <form v-else v-on:submit.prevent="updateBookActivity">
           <label>Pages Read Today</label>
-          <input type="text" placeholder="Pages Read" key="pages-read" v-model="newactivity.bookmark_page_number"/>
+          <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmark_page_number"/>
           <label>Minutes Read</label>
           <!-- <label>{{$route.params.isbn}}</label> -->
         
-          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="newactivity.reading_time"/>
+          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.reading_time"/>
+          <label>Notes</label>
+          <input type="text" placeholder="notes" key="notes" v-model="reading_activity.notes"/>
           <input type="submit" value="Submit"/>
         </form>
         </div>
@@ -25,17 +27,17 @@
 </template>
 
 <script>
-//import bookService from '../services/BookService.js'
+import bookService from '../services/BookService.js'
 export default {
     name: 'book-reading-activity',
     data(){
         return {
             updateButton: true,
-            reading_activity: {},
-            newactivity: {
+            reading_activity: {
                 book_id: this.$route.params.book_id,
                 bookmark_page_number: '',
-                reading_time: ''
+                reading_time: '',
+                notes: ''
             }
 
         }
@@ -43,16 +45,28 @@ export default {
     methods: {
             updateBookActivity(){
 
-               this.$store.commit("UPDATE_ACTIVITY", this.newactivity)
-               this.newactivity = {
+               this.$store.commit("UPDATE_ACTIVITY", this.reading_activity)
+               this.reading_activity = {
                 book_id: this.$route.params.book_id,
                 bookmark_page_number: '',
-                reading_time: ''
+                reading_time: '',
+                notes: ''
             }
                this.updateButton = true;
                 //this.$router.push({name: 'books'});
                // console.log( this.newactivity.reading_time, this.newactivity.bookmark_page_number)
 
+            },
+            updatePutBookActivity(){
+                bookService.updateBookActivity(this.reading_activity)
+                .then(response=>{
+                if(response.status === 200){
+                    this.$router.push('/')
+                }
+                })
+                .catch(error=>{
+                 this.handleResponse(error, "updating")
+                })
             }
     },
     computed:{
