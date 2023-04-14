@@ -34,6 +34,10 @@ export default {
 
 <style>
 
+.card a {
+    text-decoration: none;
+}
+
 .card {
     background-color: #ffffff;
     border: 3px solid black;
@@ -44,6 +48,7 @@ export default {
     padding: 0px;
 
     text-align: center;
+
 
 }
 
