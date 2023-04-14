@@ -2,7 +2,7 @@
   <div>
     Adding a New Book to list: 
     <add-new-book/>
-      </div>
+  </div>
 </template>
 
 <script>

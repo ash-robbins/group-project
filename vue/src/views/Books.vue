@@ -2,7 +2,9 @@
     <div>
         you're in books views component
         <reading-list/>
-        <router-link v-bind:to="{ name: 'add-book' }">Add New Book</router-link>
+        <button>
+            <router-link v-bind:to="{ name: 'add-book' }">Add New Book</router-link>
+        </button>
     </div>
 </template>
 
@@ -19,5 +21,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

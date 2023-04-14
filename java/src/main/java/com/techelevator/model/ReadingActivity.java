@@ -27,6 +27,10 @@ public class ReadingActivity {
         this.bookmarkPage = bookmarkPage;
     }
 
+    public ReadingActivity() {
+
+    }
+
     public int getReadingActivityId() {
         return readingActivityId;
     }

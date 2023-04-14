@@ -4,7 +4,7 @@
     <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
     <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
     <textarea placeholder="Description of Book" v-model="book.description" />
-    <input class="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
+    <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <button>Save</button>
   </form>
 </template>
@@ -46,5 +46,33 @@ export default {
 </script>
 
 <style>
+
+.new-book-input {
+    width: 50%;
+    height: 65px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
+}
+
+button {
+    width: 220px;
+    background: #00AFEF;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 23px 0;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+
 
 </style>

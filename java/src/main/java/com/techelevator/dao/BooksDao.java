@@ -11,6 +11,9 @@ public interface BooksDao {
     //Return Books by Author
     List<Books> findBooksByAuthor (String author);
 
-    //Trello Add Book to current reading/userID?
+    //Trello Add Book to current reading/userID/?
     boolean addBook (int bookId);
+
+    //Trello isFavorite
+    boolean isFavorite (int bookId);
 }
