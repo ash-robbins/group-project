@@ -11,6 +11,10 @@ public class PrizeWinner {
         this.prizeId = prizeId;
     }
 
+    public PrizeWinner() {
+
+    }
+
     public int getPrizeWinnerId() {
         return prizeWinnerId;
     }
