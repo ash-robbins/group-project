@@ -41,7 +41,7 @@ const router = new Router({
       name: 'books',
       component: Books,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -49,7 +49,7 @@ const router = new Router({
       name: 'bookReadingActivity',
       component: BookReadingActivity,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
 
     },
@@ -58,7 +58,7 @@ const router = new Router({
       name: 'prizes',
       component: Prizes,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -66,7 +66,7 @@ const router = new Router({
       name: 'book-details',
       component: BookDetails,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -75,7 +75,7 @@ const router = new Router({
       name: 'add-book',
       component: NewBook,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -83,7 +83,7 @@ const router = new Router({
       name: 'family-account',
       component: CreateFamilyAccount,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
