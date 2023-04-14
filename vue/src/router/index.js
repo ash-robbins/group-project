@@ -10,6 +10,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import BookDetails from '../views/BookDetails.vue'
 import Prizes from '../views/Prizes.vue'
+import BookReadingActivity from '../views/BookReadingActivity.vue'
 
 
 Vue.use(Router)
@@ -44,6 +45,15 @@ const router = new Router({
       }
     },
     {
+      path: '/book/:book_id/book-reading-activity',
+      name: 'bookReadingActivity',
+      component: BookReadingActivity,
+      meta: {
+        requiresAuth: false
+      }
+
+    },
+    {
       path: '/',
       name: 'prizes',
       component: Prizes,
@@ -52,7 +62,7 @@ const router = new Router({
       }
     },
     {
-      path: '/book/:isbn',
+      path: '/book/:book_id',
       name: 'book-details',
       component: BookDetails,
       meta: {

@@ -1,7 +1,8 @@
 <template>
   <form class="new-book-form" v-on:submit.prevent="saveBook">
-    <input class="new-book-input" type="text" placeholder="Title" v-model="book.title" />
-    <input class="new-book-input" type="text" placeholder="Author" v-model="book.author" />
+      <input class="book-id" type="text" placeholder="book-id" v-model="book.book_id" />
+    <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
+    <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
     <textarea placeholder="Description of Book" v-model="book.description" />
     <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <button>Save</button>
@@ -14,6 +15,7 @@ export default {
     data() {
         return {
             book: {
+                book_id: '',
                 title: '',
                 author: '',
                 read: false,
@@ -27,6 +29,7 @@ export default {
             if (this.book.title && this.book.author && this.book.isbn){
             this.$store.commit('SAVE_BOOK', this.book);
             this.book = {
+                book_id: '',
                 title: '',
                 author: '',
                 read: false,

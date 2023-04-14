@@ -21,29 +21,70 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     books: [{
+      book_id:'1',
       title: "Kafka by the Shore",
       author: "Haruki Murakami",
       read: false,
       isbn: "9781784877989"
     },
     {
+      book_id:'2',
       title: "The Girl With All the Gifts",
       author: "M.R. Carey",
       read: true,
       isbn: "9780356500157"
     },
     {
+      book_id:'3',
       title: "The Old Man and the Sea",
       author: "Ernest Hemingway",
       read: true,
       isbn: "9780684830490"
     },
     {
+      book_id:'4',
       title: "Le Petit Prince",
       author: "Antoine de Saint-Exupéry",
       read: false,
-      isbn: "9783125971400"
+      isbn: "9783125971400",
     }
+  ],
+  readingactivity: [
+     {
+      book_id:"4",
+      isbn: "9783125971400",
+      is_completed: true,
+      reading_time: '45',
+      bookmark_page_number: '3'
+  },
+  {
+    book_id: '1',
+    isbn: "9781784877989",
+    is_completed: false,
+    reading_time: '54',
+    bookmark_page_number: '77'
+},
+{
+  book_id:"3",
+  isbn: "9783125971400",
+  is_completed: true,
+  reading_time: '45',
+  bookmark_page_number: '3'
+},
+{
+  book_id:"5",
+  isbn: "9783125971400",
+  is_completed: true,
+  reading_time: '45',
+  bookmark_page_number: '3'
+},
+{
+  book_id:"2",
+  isbn: "9783125971400",
+  is_completed: true,
+  reading_time: '45',
+  bookmark_page_number: '3'
+},
   ],
   family: [{
     family_name: 'adam',
@@ -72,6 +113,20 @@ export default new Vuex.Store({
     SAVE_BOOK(state, book) {
       state.books.push(book);
     },
+    UPDATE_ACTIVITY(state, act){
+      const newProduct = state.readingactivity.map(b=>{
+        if(b.book_id== act.book_id){
+          let pageNum = parseInt(b.bookmark_page_number) + parseInt(act.bookmark_page_number)
+          let readingTime = parseInt(b.reading_time) + parseInt(act.reading_time)
+          b.bookmark_page_number = `${pageNum}`
+          b.reading_time = `${readingTime}`
+        }
+        return b
+      })
+  
+     state.readingactivity = newProduct;
+
+    },  
     CREATE_FAMILY(state, family){
       state.family.push(family)
     }
