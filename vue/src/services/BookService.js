@@ -2,13 +2,6 @@ import axios from 'axios';
 
 export default {
 
-//   login(user) {
-//     return axios.post('/login', user)
-//   },
-
-//   register(user) {
-//     return axios.post('/register', user)
-//   }
 list(){
     return axios.get('/books')
 },
@@ -19,7 +12,19 @@ getBook(id) {
 
   getReadingActivity(book_id) {
       return axios.get(`/reading_activity/${book_id}`)
-  }
+  },
+
+  postBook(book) {
+    return axios.post('/books', book)
+  },
+
+  updateReadingActivity(reading_activity){
+    return axios.put(`/topics/${reading_activity.book_id}`, reading_activity)
+    }
+
+
+
+
 
 
 

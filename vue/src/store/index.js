@@ -55,35 +55,40 @@ export default new Vuex.Store({
       isbn: "9783125971400",
       is_completed: true,
       reading_time: '45',
-      bookmark_page_number: '3'
+      bookmark_page_number: '3',
+      notes: ''
   },
   {
     book_id: '1',
     isbn: "9781784877989",
     is_completed: false,
     reading_time: '54',
-    bookmark_page_number: '77'
+    bookmark_page_number: '77',
+    notes: ''
 },
 {
   book_id:"3",
   isbn: "9783125971400",
   is_completed: true,
   reading_time: '45',
-  bookmark_page_number: '3'
+  bookmark_page_number: '3',
+  notes: ''
 },
 {
   book_id:"5",
   isbn: "9783125971400",
   is_completed: true,
   reading_time: '45',
-  bookmark_page_number: '3'
+  bookmark_page_number: '3',
+  notes: ''
 },
 {
   book_id:"2",
   isbn: "9783125971400",
   is_completed: true,
   reading_time: '45',
-  bookmark_page_number: '3'
+  bookmark_page_number: '3',
+  notes: ''
 },
   ],
   family: [{
@@ -120,6 +125,7 @@ export default new Vuex.Store({
           let readingTime = parseInt(b.reading_time) + parseInt(act.reading_time)
           b.bookmark_page_number = `${pageNum}`
           b.reading_time = `${readingTime}`
+          b.notes = act.notes
         }
         return b
       })
