@@ -1,7 +1,7 @@
 <template>
 <div class="book-container">
-Reading Lists: 
-<book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="book.isbn"/>
+    
+<book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="book.book_id"/>
 </div>
 </template>
 

@@ -2,7 +2,7 @@
     <div class="card" v-bind:class="{ read: book.read }">
       
         <h2 class="book-title">
-            <router-link v-bind:to="{name: 'book-details', params: { isbn: book.isbn}}">
+            <router-link v-bind:to="{name: 'book-details', params: { book_id: book.book_id}}">
               {{ book.title }}
             </router-link>
         </h2>

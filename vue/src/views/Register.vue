@@ -17,6 +17,11 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
+      <div>
+        <label for="family-code">Family Code:</label>
+        <input type="text" id="family-code" v-model="user.familyCode"/>
+        </div>
+
       <button type="submit">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
@@ -34,6 +39,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
+        familyCode: '',
         role: 'user',
       },
       registrationErrors: false,
