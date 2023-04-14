@@ -2,9 +2,8 @@
   <div class="container">
     <header>
         <div>
-        <img src="../images/Tech_Reader_Logo-removebg-preview.png" alt="" />
+            <img src="../images/cropped logo words.png" alt="" />
         </div>
-        <div>TE Book Club </div>
     </header>
 
     <section id="left-panel">
