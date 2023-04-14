@@ -41,7 +41,15 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
 
     @Override
     public ReadingActivity getReadingSummaryByUserId(int userId) {
-        return null;
+        ReadingActivity readingSummary = null;
+        String sql = "SELECT SUM(reading_time) as total_reading_time, COUNT(is_completed = true) as completed_books, COUNT(is_completed = false) as readings_in_progress " +
+                "FROM reading_activity " +
+                "WHERE user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            readingSummary = mapRowToReadingActivity(results);
+        }
+        return readingSummary;
     }
 
     @Override
