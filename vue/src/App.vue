@@ -7,9 +7,18 @@
         <div>TE Book Club </div>
     </header>
 
+    <section id="left-panel">
+        <nav>
+            <menu>
+                <li>
+
+                </li>
+            </menu>
+        </nav>
+        
+    </section>
     <nav>
         <div class="content">
-        <!-- Navigation  << remove word once navigation is finished -->
             <div><router-link v-bind:to="{ name: 'home' }">Home </router-link></div> 
             <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout </router-link></div>
             <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
@@ -113,6 +122,14 @@
 
     }
 
+    /* Highlights tabs in nav*/
+    .content > div:hover {
+        display: block;
+        background-color: rgba(208, 235, 252, 0.5);
+        border-radius: 30px 30px 30px 30px;
+        
+    }
+
     /* Logo */
     header div img {
         height: 100px;
@@ -147,12 +164,15 @@
 
     }
 
+
     nav {
         grid-area: nav;
         margin-left: 0.5rem;
         background-color: #f8f7ff;
 
         border-radius: 10px;
+
+        
     }
 
     aside {
