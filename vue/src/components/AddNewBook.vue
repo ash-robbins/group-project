@@ -1,10 +1,10 @@
 <template>
   <form class="new-book-form" v-on:submit.prevent="saveBook">
-      <input class="book-id" type="text" placeholder="book-id" v-model="book.book_id" />
-    <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
-    <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
-    <textarea placeholder="Description of Book" v-model="book.description" />
+    <input class="new-book-input" type="text" placeholder="Book-ID" v-model="book.book_id" />
+    <input class="new-book-input" type="text" placeholder="Title" v-model="book.title" />
+    <input class="new-book-input" type="text" placeholder="Author" v-model="book.author" />
     <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
+    <textarea class="new-book-input" id="description" placeholder="Description of Book" v-model="book.description" />
     <button>Save</button>
   </form>
 </template>

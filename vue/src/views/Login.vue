@@ -64,6 +64,11 @@ export default {
 
 <style scoped>
 
+input {
+  border-radius: 30px;
+  border: none;
+}
+
 #login {
   display: flex;
   flex-direction: column;

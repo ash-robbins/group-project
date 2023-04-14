@@ -6,8 +6,8 @@
     <label for="family-description"> Family description</label>
     <input class="family-input" type="text" placeholder="Family description" id="family-description" v-model="family.description" /> <br><br>
 
-    <label for="family-code">Family Code</label>
-    <input class="family-input" type="text" placeholder="family code" v-model="family.code" /><br><br>
+    <label for="family-code">Family code</label>
+    <input class="family-input" type="text" placeholder="Family code" v-model="family.code" /><br><br>
     <button>Save</button>
   </form>
       </div>
