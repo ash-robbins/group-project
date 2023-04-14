@@ -18,11 +18,21 @@
     </section>
     <nav>
         <div class="content">
-            <div><router-link v-bind:to="{ name: 'home' }">Home </router-link></div> 
-            <div><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout </router-link></div>
-            <div> <router-link v-bind:to="{name: 'books'}">Books</router-link> </div>
-            <div> <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link></div>
-            <div> <router-link v-bind:to="{name: 'family-account'}">Family</router-link></div>
+            <div class="link-block" v-on:click="$router.push({ name: 'home' })">
+                <router-link v-bind:to="{ name: 'home' }" >Home </router-link>
+            </div> 
+            <div v-if="$store.state.token !== ''" class="link-block" v-on:click="$router.push({ name: 'logout' })">
+                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout </router-link>
+            </div>
+            <div class="link-block" v-on:click="$router.push({ name: 'books' })">
+                <router-link v-bind:to="{name: 'books'}">Books</router-link> 
+            </div>
+            <div class="link-block" v-on:click="$router.push({ name: 'prizes' })">
+                <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link>
+            </div>
+            <div class="link-block" v-on:click="$router.push({ name: 'family-account' })">
+                <router-link v-bind:to="{name: 'family-account'}">Family</router-link>
+            </div>
         </div>
     </nav> 
 
@@ -121,6 +131,19 @@
 
     }
 
+    /*Remove underline from nav links */
+    .link-block a {
+    text-decoration: none;
+    }
+
+    /* Nav link alignment and appears clickable*/
+    div.content {
+        text-align: center;
+        padding-top: 20px;
+        
+        cursor: pointer;
+    }
+
     /* Highlights tabs in nav*/
     .content > div:hover {
         display: block;
@@ -190,10 +213,8 @@
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 24px;
         text-transform: uppercase;
+        
     }
 
-    div.content {
-        text-align: center;
-        padding-top: 20px;
-    }
+    
 </style>
