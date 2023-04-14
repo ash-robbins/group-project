@@ -25,11 +25,13 @@
 </template>
 
 <script>
+//import bookService from '../services/BookService.js'
 export default {
     name: 'book-reading-activity',
     data(){
         return {
             updateButton: true,
+            reading_activity: {},
             newactivity: {
                 book_id: this.$route.params.book_id,
                 bookmark_page_number: '',
@@ -57,9 +59,16 @@ export default {
          book(){
         return this.$store.state.readingactivity.find(act=>act.book_id == this.$route.params.book_id)
       }
+    //   reading_activity(){
+    //       bookService.getReadingActivity(this.$route.params.book_id)
+    //       .then((response) => {
+    //         this.reading_activity = response.data;
+    //         });
+      }
+      
     }
 
-}
+
 </script>
 
 <style>

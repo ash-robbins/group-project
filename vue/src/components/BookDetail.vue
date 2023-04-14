@@ -7,7 +7,7 @@
       <h2>description: {{book.description}}</h2>
 
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
-      <router-link v-bind:to="{name:'bookReadingActivity', params: {isbn: book.book_id}}" >Click to see reading activity</router-link>
+      <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.book_id}}" >Click to see reading activity</router-link>
 
 
       <!-- <div>
@@ -42,12 +42,15 @@ export default {
     },
     data() {
     return {
-    // updateButton: true,
-    // new_activity: {
-    //   isbn: this.bookprop,
-    //   bookmark_page_number: '',
-    //   reading_time: ''
-    // }
+  
+  // updateButton: true,
+  // book: {
+  //   book_id:'',
+  //   isbn: '',
+  //   is_completed: true,
+  //   reading_time: '',
+  //   bookmark_page_number: ''
+  //   }
     }
   },
 
@@ -55,13 +58,13 @@ export default {
       book(){
           return this.$store.state.books.find(book=>book.book_id == this.bookprop)
       }
-  }
+    //   book(){
+    //     docsService.getBook(this.$route.params.id).then((response) => {
+    //   this.book = response.data;
+    // });
+      }
 }
 
-    //   created() {
-//     docsService.get(this.$route.params.id).then((response) => {
-//       this.document = response.data;
-//     });
 
 
 </script>

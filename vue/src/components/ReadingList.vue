@@ -7,11 +7,23 @@
 
 <script>
 import BookCard from '../components/BookCard.vue'
+import bookService from '../services/BookService.js'
 export default {
     name: 'reading-list',
     components: {
         BookCard
-    }
+    },
+    data() {
+    return {
+      books: []
+    };
+  },
+  created() {
+    bookService.list()
+    .then((response) => {
+      this.books = response.data;
+    });
+  }
 
 }
 </script>
