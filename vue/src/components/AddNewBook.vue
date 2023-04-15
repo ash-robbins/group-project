@@ -19,7 +19,7 @@ export default {
                 book_id: '',
                 title: '',
                 author: '',
-                read: false,
+                cover_image: '',
                 description: '',
                 isbn: ''
             }
@@ -33,7 +33,7 @@ export default {
                 book_id: '',
                 title: '',
                 author: '',
-                read: false,
+                cover_image: '',
                 description: '',
                 isbn: ''
             };

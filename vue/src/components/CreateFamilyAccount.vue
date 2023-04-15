@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="family">
      <form class="new-book-form" v-on:submit.prevent="saveFamily">
     <label for="family-name">Family Name: </label>
-    <input class="family-input" type="text" placeholder="Family Name" id="family-name" v-model="family.name" /><br><br>
+    <input class="family-input" type="text" placeholder="Family Name" id="family-name" v-model="family.family_name" /><br><br>
     <label for="family-description"> Family Description: </label>
     <input class="family-input" type="text" placeholder="Family Description" id="family-description" v-model="family.description" /> <br><br>
 
@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             family: {
-                name: '',
+                family_name: '',
                 description: '',
                 code: '',
                 username: ''
@@ -31,7 +31,7 @@ export default {
          saveFamily() {
             this.$store.commit('CREATE_FAMILY', this.family);
             this.family = {
-                name: '',
+                family_name: '',
                 description: '',
                 code: '',
                 username: ''
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style>
+.family{
+    /* background-color: black; */
+}
 
 .family-input {
     width: 50%;

@@ -1,9 +1,9 @@
 package com.techelevator.service;
 
 import com.google.gson.Gson;
+
 import com.techelevator.model.dto.BookGoogleDto;
 import com.techelevator.model.dto.BookSearchDto;
-import com.techelevator.model.googlebooksapi.VolumeInfo;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

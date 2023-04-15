@@ -4,7 +4,7 @@
      <p>Pages read: {{book.bookmark_page_number}} Pages read</p>
 
 
-     {{book.is_completed ? 'You completed this book!' : 'You have not completed this book yet. Keep reading!'}}
+     <!-- {{book.is_completed ? 'You completed this book!' : 'You have not completed this book yet. Keep reading!'}} -->
 
 
         <div>
@@ -19,6 +19,11 @@
           <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.reading_time"/>
           <label>Notes</label>
           <input type="text" placeholder="notes" key="notes" v-model="reading_activity.notes"/>
+          <label>Completed</label>
+          <input type="checkbox" placeholder="completed" v-model="reading_activity.is_completed"/>
+
+          <label>Is Favorited: </label>
+          <input type="checkbox" placeholder="is Favorited" v-model="reading_activity.is_favorite"/>
           <input type="submit" value="Submit"/>
         </form>
         </div>
@@ -35,6 +40,8 @@ export default {
             updateButton: true,
             reading_activity: {
                 book_id: this.$route.params.book_id,
+                is_completed: false,
+                is_favorite: false,
                 bookmark_page_number: '',
                 reading_time: '',
                 notes: ''
@@ -48,6 +55,8 @@ export default {
                this.$store.commit("UPDATE_ACTIVITY", this.reading_activity)
                this.reading_activity = {
                 book_id: this.$route.params.book_id,
+                is_completed: false,
+                is_favorite: false,
                 bookmark_page_number: '',
                 reading_time: '',
                 notes: ''
