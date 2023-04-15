@@ -53,6 +53,7 @@ const router = new Router({
       }
 
     },
+    
     {
       path: '/prizes',
       name: 'prizes',
