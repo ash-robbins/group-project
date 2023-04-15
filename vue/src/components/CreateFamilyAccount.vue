@@ -1,13 +1,13 @@
 <template>
   <div>
      <form class="new-book-form" v-on:submit.prevent="saveFamily">
-    <label for="family-name">Family name: </label>
+    <label for="family-name">Family Name: </label>
     <input class="family-input" type="text" placeholder="Family Name" id="family-name" v-model="family.name" /><br><br>
-    <label for="family-description"> Family description</label>
-    <input class="family-input" type="text" placeholder="Family description" id="family-description" v-model="family.description" /> <br><br>
+    <label for="family-description"> Family Description: </label>
+    <input class="family-input" type="text" placeholder="Family Description" id="family-description" v-model="family.description" /> <br><br>
 
-    <label for="family-code">Family code</label>
-    <input class="family-input" type="text" placeholder="Family code" v-model="family.code" /><br><br>
+    <label for="family-code">Family Code: </label>
+    <input class="family-input" type="text" placeholder="Family Code" v-model="family.code" /><br><br>
     <button>Save</button>
   </form>
       </div>

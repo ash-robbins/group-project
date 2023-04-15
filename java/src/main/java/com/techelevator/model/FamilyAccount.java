@@ -17,6 +17,10 @@ public class FamilyAccount {
         this.createdDate = createdDate;
     }
 
+    public FamilyAccount() {
+
+    }
+
     public int getFamilyId() {
         return familyId;
     }

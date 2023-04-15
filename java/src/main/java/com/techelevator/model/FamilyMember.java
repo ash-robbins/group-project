@@ -11,6 +11,10 @@ public class FamilyMember {
         this.memberType = memberType;
     }
 
+    public FamilyMember() {
+
+    }
+
     public int getFamilyId() {
         return familyId;
     }

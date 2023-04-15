@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface BooksDao {
 
+    Books createBook(Books book);
+
     //Trello Get Book info from API TODO:link with api
     Books getBookByIsbn(int isbn);
 
@@ -15,5 +17,5 @@ public interface BooksDao {
     boolean addBook (int bookId);
 
     //Trello isFavorite
-    boolean isFavorite (int bookId);
+    boolean isFavoriteOfUserId(int bookId, int userId);
 }
