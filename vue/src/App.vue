@@ -19,19 +19,24 @@
     <nav>
         <div class="content">
             <div class="link-block" v-on:click="$router.push({ name: 'home' })">
-                <router-link v-bind:to="{ name: 'home' }" >Home </router-link>
+                <img src="../images/IconHome.png" alt="Home Icon">
+                <router-link v-bind:to="{ name: 'home' }" >  Home </router-link>
             </div> 
             <div v-if="$store.state.token !== ''" class="link-block" v-on:click="$router.push({ name: 'logout' })">
-                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout </router-link>
+                
+                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">  Logout </router-link>
             </div>
             <div class="link-block" v-on:click="$router.push({ name: 'books' })">
-                <router-link v-bind:to="{name: 'books'}">Books</router-link> 
+                <img src="../images/IconBook.png" alt="Book Icon">
+                <router-link v-bind:to="{name: 'books'}">  Books</router-link> 
             </div>
             <div class="link-block" v-on:click="$router.push({ name: 'prizes' })">
-                <router-link v-bind:to="{name: 'prizes'}">Prizes</router-link>
+                <img src="../images/IconPrize.png" alt="Prize Icon">
+                <router-link v-bind:to="{name: 'prizes'}">  Prizes</router-link>
             </div>
             <div class="link-block" v-on:click="$router.push({ name: 'family-account' })">
-                <router-link v-bind:to="{name: 'family-account'}">Family</router-link>
+                <img src="../images/IconFamily.png" alt="Family Icon">
+                <router-link v-bind:to="{name: 'family-account'}">  Family</router-link>
             </div>
         </div>
     </nav> 
