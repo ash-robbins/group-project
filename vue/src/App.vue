@@ -17,10 +17,9 @@
         
     </section>
     <nav>
-        <div class="content">
+        <div class="content" v-if="$store.state.token != ''">
             <div class="link-block" v-on:click="$router.push({ name: 'home' })">
-                <img src="../images/IconHome.png" alt="Home Icon">
-                <router-link v-bind:to="{ name: 'home' }" >  Home </router-link>
+                <router-link v-bind:to="{ name: 'home' }"  >Home </router-link>
             </div> 
             <div v-if="$store.state.token !== ''" class="link-block" v-on:click="$router.push({ name: 'logout' })">
                 
@@ -53,13 +52,13 @@
 
     <aside>
         <div class="content">
-                        SideBar /Info
+                        <!-- SideBar /Info -->
         </div>
     </aside>
 
     <footer>
         <div class="content">
-                            Footer Content
+                            <!-- Footer Content -->
         </div>
     </footer>
     
