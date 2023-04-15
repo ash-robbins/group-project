@@ -8,7 +8,7 @@ public interface BooksDao {
     Books createBook(Books book);
 
     //Trello Get Book info from API TODO:link with api
-    Books getBookByIsbn(int isbn);
+    Books getBookById(int bookId);
 
     //Return Books by Author
     List<Books> findBooksByAuthor (String author);

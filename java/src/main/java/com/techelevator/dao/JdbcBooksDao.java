@@ -24,16 +24,16 @@ public class JdbcBooksDao implements BooksDao {
                 "VALUES (?, ?, ?, ?, ?) RETURNING book_id";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, book.getIsbn(), book.getTitle(),
                 book.getAuthor(), book.getCoverImage(), book.getDescription());
-        book.setBookId(newId);
-        return book;
+
+        return getBookById(newId);
     }
 
     @Override
-    public Books getBookByIsbn(int isbn) {
+    public Books getBookById(int bookId) {
         Books book = null;
         String sql = "SELECT book_id, title, author, cover_image, description " +
-                "FROM books " + "WHERE isbn = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, isbn);
+                "FROM books " + "WHERE book_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
         if (results.next()) {
             book = mapRowToBook(results);
         }
