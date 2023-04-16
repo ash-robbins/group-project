@@ -66,6 +66,23 @@ public class JdbcBooksDao implements BooksDao {
         int count = jdbcTemplate.queryForObject(sql, Integer.class, userId, bookId);
         return count > 0;
     }
+
+    // ADDED METHOD FROM BOOKS DAO -a
+    @Override
+    public List<Books> listBooksByUserId(int userId) {
+        List<Books> booksList = new ArrayList<>();
+        String sql = "SELECT reading_activity.user_id, books.book_id, books.title " +
+                "FROM reading_activity " +
+                "RIGHT JOIN books ON reading_activity.book_id = books.book_id " +
+                "WHERE reading_activity.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while (results.next()) {
+            booksList.add(mapRowToBook(results));
+        }
+        return booksList;
+    }
+
+
     private Books mapRowToBook(SqlRowSet row) {
         Books book = new Books();
         book.setBookId(row.getInt("book_id"));

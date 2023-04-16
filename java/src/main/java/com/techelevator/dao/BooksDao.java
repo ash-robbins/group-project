@@ -19,4 +19,8 @@ public interface BooksDao {
 
     //Trello isFavorite
     boolean isFavoriteOfUserId(int bookId, int userId);
+
+    // ADDING FUNCTION TO LIST BOOKS BY USER -AR
+    List<Books> listBooksByUserId(int userId);
+
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.model.Books;
 
+import java.util.List;
+
 @RestController
 @PreAuthorize("isAuthenticated()")
 @CrossOrigin
@@ -51,6 +53,20 @@ public class BookController {
         }
     }
 
-
+    /**
+     * List of books by user
+     *
+     * @param userId users id (may have to make it for THIS user? Principle?)
+     * @return list of users books
+     */
+    @RequestMapping(path = "books/users/{id}", method = RequestMethod.GET)
+   public List<Books> listBooksByUserId(@PathVariable("id") int userId) {
+        List<Books> booksList = booksDao.listBooksByUserId(userId);
+        if (booksList == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Books list not found.");
+        } else {
+            return booksList;
+        }
+   }
 
 }
