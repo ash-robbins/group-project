@@ -6,16 +6,17 @@ export default {
     return axios.get('/books')
   },
 
-  getBook(id) {
-    return axios.get(`/books/${id}`)
+  getBook(book_id) {
+    return axios.get(`/books/${book_id}`)
   },
 
+  // get reading activity by book_id
   getReadingActivity(book_id) {
       return axios.get(`/books/reading_activity/${book_id}`)
   },
 
   postBook(book) {
-    return axios.post('/books', book)
+    return axios.post('/postbooks', book)
   },
 
   updateReadingActivity(reading_activity){

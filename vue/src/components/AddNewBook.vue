@@ -1,11 +1,13 @@
 <template>
-  <form class="new-book-form" v-on:submit.prevent="saveBook">
-    <input class="new-book-input" type="text" placeholder="Book-ID" v-model="book.book_id" />
+  <form class="new-book-form" v-on:submit.prevent>
+    <!-- <input class="new-book-input" type="text" placeholder="Book-ID" v-model="book.book_id" /> -->
     <input class="new-book-input" type="text" placeholder="Title" v-model="book.title" />
     <input class="new-book-input" type="text" placeholder="Author" v-model="book.author" />
     <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <textarea class="new-book-input" id="description" placeholder="Description of Book" v-model="book.description" />
-    <button>Save</button>
+    <br>
+    <button v-on:click="postBook()" >Save</button>
+    <button v-on:click="cancel()">Cancel </button>
   </form>
 </template>
 
@@ -16,31 +18,30 @@ export default {
     data() {
         return {
             book: {
-                book_id: '',
+                isbn: '',
                 title: '',
                 author: '',
-                cover_image: '',
-                description: '',
-                isbn: ''
+                coverImage: '',
+                description: ''
             }
         }
     },
         methods: {
-        saveBook() {
-            if (this.book.title && this.book.author && this.book.isbn){
-            this.$store.commit('SAVE_BOOK', this.book);
-            this.book = {
-                book_id: '',
-                title: '',
-                author: '',
-                cover_image: '',
-                description: '',
-                isbn: ''
-            };
-            this.$router.push({name: 'books'});
-        } else {
-            alert('Please fill in all fields');
-        }},
+        // saveBook() {
+        //     if (this.book.title && this.book.author && this.book.isbn){
+        //     this.$store.commit('SAVE_BOOK', this.book);
+        //     this.book = {
+        //         book_id: '',
+        //         title: '',
+        //         author: '',
+        //         cover_image: '',
+        //         description: '',
+        //         isbn: ''
+        //     };
+        //     this.$router.push({name: 'books'});
+        // } else {
+        //     alert('Please fill in all fields');
+        // }},
     postBook(){
     bookService.postBook(this.book)
     .then(response=>{
@@ -48,9 +49,9 @@ export default {
           this.$router.push('/')
         } 
         })
-    .catch(error=>{
-        this.handleResponse(error, "adding")
-      })
+    },
+    cancel(){
+        this.$router.push('/')
     }
     
     

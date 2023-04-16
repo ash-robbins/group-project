@@ -21,15 +21,17 @@ CREATE TABLE family_account (
     family_id SERIAL,
     family_name varchar(30) NOT NULL,
     created_by int NOT NULL,
-    created_date date NOT NULL
---    ADD CONSTRAINTS
+    created_date date NOT NULL,
+    CONSTRAINT pk_family_account PRIMARY KEY (family_id)
     );
 
  CREATE TABLE family_member (
     family_id int NOT NULL,
     user_id int NOT NULL,
-    member_type varchar(10) NOT NULL
-    --    ADD CONSTRAINTS
+    member_type varchar(10) NOT NULL,
+    CONSTRAINT pk_family_member PRIMARY KEY (family_id, user_id),
+    CONSTRAINT fk_family_member_family FOREIGN KEY (family_id) REFERENCES family_account (family_id),
+    CONSTRAINT fk_family_member_user FOREIGN KEY (user_id) REFERENCES users (user_id)
     );
 
 CREATE TABLE books (
@@ -38,8 +40,10 @@ CREATE TABLE books (
     title varchar(40) NOT NULL,
     author varchar(40) NOT NULL,
     cover_image varchar(100) NOT NULL,
-    description varchar(200)
-    --    ADD CONSTRAINTS
+    description varchar(200),
+
+    CONSTRAINT pk_books PRIMARY KEY (book_id),
+    CONSTRAINT uq_books UNIQUE (isbn)
     );
 
 CREATE TABLE reading_activity (
@@ -52,8 +56,11 @@ CREATE TABLE reading_activity (
     reading_partner_id int,
     is_completed boolean NOT NULL,
     is_favorite boolean NOT NULL,
-    bookmark_page_number int
-    --    ADD CONSTRAINTS
+    bookmark_page_number int,
+    CONSTRAINT pk_reading_activity PRIMARY KEY (reading_activity_id),
+    CONSTRAINT fk_reading_activity_user FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT fk_reading_activity_book FOREIGN KEY (book_id) REFERENCES books (book_id),
+    CONSTRAINT fk_reading_activity_partner FOREIGN KEY (reading_partner_id) REFERENCES users (user_id)
     );
 
 CREATE TABLE prize (
@@ -64,14 +71,17 @@ CREATE TABLE prize (
     max_prizes int NOT NULL,
     start_date date NOT NULL,
     end_date date NOT NULL
-    --    ADD CONSTRAINTS
+    CONSTRAINT pk_prize PRIMARY KEY (prize_id),
+    CONSTRAINT fk_prize_family FOREIGN KEY (family_id) REFERENCES family_account (family_id)
     );
 
 CREATE TABLE prize_winner (
     prize_winner_id SERIAL,
     user_id int NOT NULL,
     prize_id int NOT NULL
-    --    ADD CONSTRAINTS
+    CONSTRAINT pk_prize_winner PRIMARY KEY (prize_winner_id),
+    CONSTRAINT fk_prize_winner_user FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT fk_prize_winner_prize FOREIGN KEY (prize_id) REFERENCES prize (prize_id)
     );
 
 COMMIT TRANSACTION;

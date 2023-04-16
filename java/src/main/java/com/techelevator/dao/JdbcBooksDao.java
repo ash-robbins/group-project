@@ -5,10 +5,10 @@ import com.techelevator.model.Books;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Component
 public class JdbcBooksDao implements BooksDao {
 
@@ -22,18 +22,17 @@ public class JdbcBooksDao implements BooksDao {
     public Books createBook(Books book) {
         String sql = "INSERT INTO books (isbn, title, author, cover_image, description) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING book_id";
-        int newId = jdbcTemplate.queryForObject(sql, Integer.class, book.getIsbn(), book.getTitle(),
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, book.getIsbn(), book.getTitle(),
                 book.getAuthor(), book.getCoverImage(), book.getDescription());
-        book.setBookId(newId);
-        return book;
-    }
 
+        return getBookById(newId);
+    }
     @Override
-    public Books getBookByIsbn(int isbn) {
+    public Books getBookById(int bookId) {
         Books book = null;
-        String sql = "SELECT book_id, title, author, cover_image, description " +
-                "FROM books " + "WHERE isbn = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, isbn);
+        String sql = "SELECT book_id, isbn, title, author, cover_image, description " +
+                "FROM books WHERE book_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
         if (results.next()) {
             book = mapRowToBook(results);
         }
@@ -67,6 +66,23 @@ public class JdbcBooksDao implements BooksDao {
         int count = jdbcTemplate.queryForObject(sql, Integer.class, userId, bookId);
         return count > 0;
     }
+
+    // ADDED METHOD FROM BOOKS DAO -a
+    @Override
+    public List<Books> listBooksByUserId(int userId) {
+        List<Books> booksList = new ArrayList<>();
+        String sql = "SELECT reading_activity.user_id, books.book_id, books.title " +
+                "FROM reading_activity " +
+                "RIGHT JOIN books ON reading_activity.book_id = books.book_id " +
+                "WHERE reading_activity.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while (results.next()) {
+            booksList.add(mapRowToBook(results));
+        }
+        return booksList;
+    }
+
+
     private Books mapRowToBook(SqlRowSet row) {
         Books book = new Books();
         book.setBookId(row.getInt("book_id"));
