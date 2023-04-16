@@ -52,15 +52,15 @@ public class ReadingActivityController {
       * @param bookId book id
      * @return reading information
      */
-//     @RequestMapping(path = "/book/reading_activity/{book_id}", method = RequestMethod.GET)
-//     public ReadingActivity getActivityByBook(@PathVariable int book_id) {
-//        ReadingActivity readingActivity = readingActivityDao.getReadingActivityByBookId(bookId);
-//        if (readingActivity == null) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity for this Book.");
-//        } else {
-//            return readingActivity;
-//        }
-//     }
+     @RequestMapping(path = "/book/reading_activity/{book_id}", method = RequestMethod.GET)
+     public ReadingActivity getActivityByBook(@PathVariable int bookId) {
+        ReadingActivity readingActivity = readingActivityDao.getReadingActivityByBookId(bookId);
+        if (readingActivity == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity for this Book.");
+        } else {
+            return readingActivity;
+        }
+     }
 
     /**
      *
