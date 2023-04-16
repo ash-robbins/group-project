@@ -8,12 +8,9 @@ import com.techelevator.model.PrizeWinner;
 import com.techelevator.model.ReadingActivity;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class ReadingActivityController {
@@ -35,7 +32,7 @@ public class ReadingActivityController {
      * @param id reading activity id
      * @return reading activity information
      */
-    @RequestMapping(path = "/reading_activity/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/books/reading_activity/{id}", method = RequestMethod.GET)
     public ReadingActivity getActivity(@PathVariable int id) {
         ReadingActivity readingActivity = readingActivityDao.getReadingActivity(id);
             if (readingActivity == null) {

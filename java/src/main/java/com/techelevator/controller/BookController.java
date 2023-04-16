@@ -29,7 +29,7 @@ public class BookController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/books", method = RequestMethod.POST)
+    @RequestMapping(path = "/postbooks", method = RequestMethod.POST)
     public Books book (@RequestBody Books newBook) {
         Books bookActivity = booksDao.createBook(newBook);
         if (bookActivity == null) {
