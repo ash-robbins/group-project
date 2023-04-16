@@ -7,7 +7,7 @@
       <h2>description: {{book.description}}</h2>
 
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
-      <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.book_id}}" >Click to see reading activity</router-link>
+      <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
 
 
       <!-- <div>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import bookService from '../services/BookService'
 export default {
     name: 'book-detail',
     props: {
@@ -44,27 +45,31 @@ export default {
     return {
   
   // updateButton: true,
-  // book: {
-  //   book_id:'',
-  //   isbn: '',
-  //   is_completed: true,
-  //   reading_time: '',
-  //   bookmark_page_number: ''
-  //   }
+  book: {
+    bookId: '',
+    isbn: '',
+    title: '',
+    author: '',
+    coverImage: '',
+    description: ''
+}
     }
   },
 
   computed: {
-      book(){
-          return this.$store.state.books.find(book=>book.book_id == this.bookprop)
-      }
-    //   book(){
-    //     docsService.getBook(this.$route.params.id).then((response) => {
-    //   this.book = response.data;
-    // });
-      }
+      // book(){
+      //     return this.$store.state.books.find(book=>book.book_id == this.bookprop)
+      // }
+},
+created(){
+  // this.$route.params.id
+         bookService.getBook(this.$route.params.book_id)
+         .then((response) => {
+         this.book = response.data;
+          });
+      
 }
-
+}
 
 
 </script>

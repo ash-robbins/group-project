@@ -21,34 +21,40 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     books: [{
-      book_id:'1',
-      title: "Kafka by the Shore",
-      author: "Haruki Murakami",
-      read: false,
+       bookId:'1',
+        title: "Kafka by the Shore",
+        author: "Haruki Murakami",
+        read: false,
       isbn: "9781784877989"
-    },
-    {
-      book_id:'2',
-      title: "The Girl With All the Gifts",
-      author: "M.R. Carey",
-      read: true,
-      isbn: "9780356500157"
-    },
-    {
-      book_id:'3',
-      title: "The Old Man and the Sea",
-      author: "Ernest Hemingway",
-      read: true,
-      isbn: "9780684830490"
-    },
-    {
-      book_id:'4',
-      title: "Le Petit Prince",
-      author: "Antoine de Saint-Exupéry",
-      read: false,
-      isbn: "9783125971400",
-    }
-  ],
+       }],
+      //{
+    //   book_id:'1',
+    //   title: "Kafka by the Shore",
+    //   author: "Haruki Murakami",
+    //   read: false,
+    //   isbn: "9781784877989"
+    // },
+    // {
+    //   book_id:'2',
+    //   title: "The Girl With All the Gifts",
+    //   author: "M.R. Carey",
+    //   read: true,
+    //   isbn: "9780356500157"
+    // },
+    // {
+    //   book_id:'3',
+    //   title: "The Old Man and the Sea",
+    //   author: "Ernest Hemingway",
+    //   read: true,
+    //   isbn: "9780684830490"
+    // },
+    // {
+    //   book_id:'4',
+    //   title: "Le Petit Prince",
+    //   author: "Antoine de Saint-Exupéry",
+    //   read: false,
+    //   isbn: "9783125971400",
+    // }
   readingactivity: [
      {
       book_id:"4",

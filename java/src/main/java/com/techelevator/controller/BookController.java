@@ -13,6 +13,8 @@ import com.techelevator.model.Books;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
+@CrossOrigin
+
 public class BookController {
     private ReadingActivityDao readingActivityDao;
     private PrizeDao prizeDao;
@@ -37,6 +39,7 @@ public class BookController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/books/{id}", method = RequestMethod.GET)
     public Books getBookById(@PathVariable int id) {
         Books book = new Books();

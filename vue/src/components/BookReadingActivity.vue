@@ -87,6 +87,9 @@ export default {
     //       .then((response) => {
     //         this.reading_activity = response.data;
     //         });
+      }, 
+      created(){
+        
       }
       
     }

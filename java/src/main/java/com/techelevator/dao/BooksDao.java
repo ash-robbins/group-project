@@ -1,8 +1,9 @@
 package com.techelevator.dao;
 import com.techelevator.model.Books;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
-
+@CrossOrigin
 public interface BooksDao {
 
     Books createBook(Books book);
