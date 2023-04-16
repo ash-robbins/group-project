@@ -52,7 +52,7 @@ public class ReadingActivityController {
       * @param bookId book id
      * @return reading information
      */
-     @RequestMapping(path = "/book/reading_activity/{book_id}", method = RequestMethod.GET)
+     @RequestMapping(path = "/reading_activity/books/{book_id}", method = RequestMethod.GET)
      public ReadingActivity getActivityByBook(@PathVariable int bookId) {
         ReadingActivity readingActivity = readingActivityDao.getReadingActivityByBookId(bookId);
         if (readingActivity == null) {
