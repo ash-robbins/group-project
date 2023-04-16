@@ -1,35 +1,45 @@
 <template>
   <div id="register" class="text-center">
     <form @submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1>Join Us</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
+        <i class="input-icon uil uil-user"></i>
         <label for="username">Username: </label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
+        <i class="input-icon uil uil-lock-alt"></i>
         <label for="password">Password: </label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
+        <i class="input-icon uil uil-lock-alt"></i>
         <label for="confirmPassword">Confirm Password: </label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <div>
+        <i class="input-icon uil uil-users-alt"></i>
         <label for="family-code">Family Code: </label>
         <input type="text" id="family-code" v-model="user.familyCode"/>
         </div>
 
-      <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <!-- !!! -->
+      <div class="button">
+        <button type="submit">Create Account</button>
+      </div>
+      
+      <p><router-link class="link" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+
+import '@iconscout/unicons/css/line.css';
 
 export default {
   name: 'register',
@@ -82,7 +92,7 @@ export default {
 <style scoped>
 
 #register{
-   display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -90,9 +100,12 @@ export default {
   background-image: url('/images/openbook.jpg');
   background-size: cover;
   background-position: center;
+
+  /* !!! */
+  border-radius: 15px;
 }
 input{
-  width: 90%;
+    width: 90%;
     height: 40px;
     border: 1px solid white;
     background: rgb(226, 226, 226);
@@ -103,13 +116,57 @@ input{
     font-size: 14px;
     transition: all 0.5s ease;
     margin-top: 5px;
-}
+
+    /* !!! */
+    margin-bottom: 5px;
+    
+    }
 form {
   margin-bottom: 1rem;
-   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
+  background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
   padding: 1rem; 
+
+  /*!!!*/
+  border-radius: 15px;
+
 }
 label {
   margin-right: 0.5rem;
+  
+}
+
+/* !!!! */ 
+
+.button {
+  display: grid;
+  justify-content: center;
+
+}
+
+button {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+.link {
+  text-align: center;
+  color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+p {
+  text-align: center;
 }
 </style>

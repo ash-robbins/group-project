@@ -218,7 +218,7 @@
     header, footer, nav, main, aside {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 24px;
-        text-transform: uppercase;
+        
         
     }
 

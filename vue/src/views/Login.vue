@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <form @submit.prevent="login">
-      <h1 >Sign In</h1>
+      <h1 >Welcome!</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -9,16 +9,27 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
+
+        <i class="input-icon uil uil-user"></i>
         <label for="username">Username: </label>
         <input type="text" id="username" v-model="user.username" required autofocus />
+       
       </div>
       <div class="form-input-group">
+
+        <i class="input-icon uil uil-lock-alt"></i>
+
         <label for="password">Password: </label>
         <input type="password" id="password" v-model="user.password" required />
+      
+        
+        
+
       </div>
       <button type="submit">Sign In</button>
-      <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <p> <!-- !!! -->
+        <router-link class="link" :to="{ name: 'register' }">Need an account? Sign up.</router-link>
+      </p>
     </form>
     
   </div>
@@ -26,6 +37,9 @@
 
 <script>
 import authService from "../services/AuthService";
+
+/* import icons > npm install @iconscout/unicons */ 
+import '@iconscout/unicons/css/line.css';
 
 export default {
   name: "login",
@@ -89,14 +103,67 @@ h1{
   background-image: url('/images/openbook.jpg');
   background-size: cover;
   background-position: center;
+
+  /* !!! */
+  border-radius: 15px;
+  /*!!!*/
 }
 
 form {
   margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
   padding: 1rem; 
+
+  /* !!! */
+  border-radius: 15px;
+  display: grid;
+  justify-items: center;
+  /*!!!*/
+  
 }
 label {
   margin-right: 0.5rem;
 }
+
+/* !!! */
+button {
+  font-size: 17px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+.link {
+  text-align: center;
+  color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+
+}
+
+body {
+  
+}
+
+
+/*
+.form-input-group {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+}
+*/
+
+/*!!!*/
+
 </style>
