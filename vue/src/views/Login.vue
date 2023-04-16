@@ -65,10 +65,17 @@ export default {
 <style scoped>
 
 input {
-  border-radius: 30px;
-  border: none;
-  height:30px;
-  width:100%;
+    width: 90%;
+    height: 40px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
 }
 h1{
    text-align: center;
