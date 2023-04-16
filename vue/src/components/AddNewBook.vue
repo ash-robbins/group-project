@@ -18,11 +18,11 @@ export default {
     data() {
         return {
             book: {
+                isbn: '',
                 title: '',
                 author: '',
-                cover_image: '',
-                description: '',
-                isbn: ''
+                coverImage: '',
+                description: ''
             }
         }
     },
