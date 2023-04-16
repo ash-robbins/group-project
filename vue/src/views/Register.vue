@@ -6,19 +6,19 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Username: </label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password: </label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password: </label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <div>
-        <label for="family-code">Family Code:</label>
+        <label for="family-code">Family Code: </label>
         <input type="text" id="family-code" v-model="user.familyCode"/>
         </div>
 
@@ -80,8 +80,21 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
+
+#register{
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/images/openbook.jpg');
+  background-size: cover;
+  background-position: center;
+}
+form {
   margin-bottom: 1rem;
+   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
+  padding: 1rem; 
 }
 label {
   margin-right: 0.5rem;

@@ -19,12 +19,10 @@
     <nav>
         <div class="content" v-if="$store.state.token != ''">
             <div class="link-block" v-on:click="$router.push({ name: 'home' })">
-                <router-link v-bind:to="{ name: 'home' }"  >Home </router-link>
+                <img src="../images/IconHome.png" alt="Home Icon">
+                <router-link v-bind:to="{ name: 'home' }"  >  Home </router-link>
             </div> 
-            <div v-if="$store.state.token !== ''" class="link-block" v-on:click="$router.push({ name: 'logout' })">
-                
-                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">  Logout </router-link>
-            </div>
+            
             <div class="link-block" v-on:click="$router.push({ name: 'books' })">
                 <img src="../images/IconBook.png" alt="Book Icon">
                 <router-link v-bind:to="{name: 'books'}">  Books</router-link> 
@@ -36,6 +34,10 @@
             <div class="link-block" v-on:click="$router.push({ name: 'family-account' })">
                 <img src="../images/IconFamily.png" alt="Family Icon">
                 <router-link v-bind:to="{name: 'family-account'}">  Family</router-link>
+            </div>
+            <div v-if="$store.state.token !== ''" class="link-block" v-on:click="$router.push({ name: 'logout' })">
+                <img src="../images/LogOutIcon.png" alt="LogOut Icon">
+                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">  Logout </router-link>
             </div>
         </div>
     </nav> 
@@ -143,7 +145,7 @@
     /* Nav link alignment and appears clickable*/
     div.content {
         text-align: center;
-        padding-top: 20px;
+        padding-top: 25px;
         
         cursor: pointer;
     }

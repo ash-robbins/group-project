@@ -10,3 +10,16 @@ export default {
   name: "home"
 };
 </script>
+
+<style scoped>
+.home{
+   display: flex;
+  flex-direction: column;
+  
+  height: 100vh;
+  background-image: url('/images/openbook.jpg');
+  background-size: cover;
+  background-position: center;
+}
+  
+</style>
