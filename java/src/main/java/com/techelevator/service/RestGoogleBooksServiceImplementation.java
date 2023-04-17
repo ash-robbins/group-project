@@ -6,11 +6,14 @@ import com.techelevator.model.dto.BookDto;
 import com.techelevator.model.dto.BookGoogleDto;
 import com.techelevator.model.dto.BookSearchDto;
 import com.techelevator.model.googlebooksapi.GoogleBooks;
+import com.techelevator.model.googlebooksapi.ImageLinks;
+import com.techelevator.model.googlebooksapi.IndustryIdentifier;
 import com.techelevator.model.googlebooksapi.Items;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.awt.*;
 import java.awt.print.Book;
 import java.util.List;
 import java.util.Map;
@@ -55,12 +58,49 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     GoogleBooks googleBooks;
     googleBooks = response.getBody();
     BookDto bookDto = new BookDto();
+
     Items[] items = googleBooks.getItems().toArray(new Items[0]);
     Items myItem = items[0];
+
+    List <IndustryIdentifier> industryIdentifier = myItem.getVolumeInfo().getIndustryIdentifiers();
+    Integer isbn = Integer.parseInt(industryIdentifier.get(0).getIdentifier());
+    bookDto.setIsbn(isbn);
+
+    ImageLinks imageLinks = myItem.getVolumeInfo().getImageLinks();
+    String imageLink = imageLinks.getThumbnail();
+    bookDto.setImageLink(imageLink);
+
     bookDto.setTitle(myItem.getVolumeInfo().getTitle());
     bookDto.setDescription(myItem.getVolumeInfo().getDescription());
-    bookDto.setAuthor(myItem.getVolumeInfo().getAuthors());
+
+    List<String> myAuthors = myItem.getVolumeInfo().getAuthors();
+    String formattedAuthors = authorFormatting(myAuthors);
+    bookDto.setAuthor(formattedAuthors);
 
         return bookDto;
     }
+
+
+
+
+
+
+
+
+    //Helper method
+    private String authorFormatting(List<String> listAuthors){
+        String combinedAuthors="";
+
+        for(int i =0; i< listAuthors.size(); i++){
+
+            if(i== listAuthors.size() - 1){
+                combinedAuthors = combinedAuthors + listAuthors.get(i);
+            }else{
+                combinedAuthors = combinedAuthors + listAuthors.get(i) + " & ";
+            }
+        }
+        return combinedAuthors;
+
+    }
+
 }
