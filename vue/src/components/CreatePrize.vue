@@ -1,30 +1,48 @@
 <template>
   <div>
     <button v-if="updateButton" v-on:click.prevent="updateButton = false">Set new Prize</button>
-      <form v-else v-on:submit.prevent="createNewPrize">
-        <label>Prize description</label>
-        <input class="prize-input" type="text" placeholder="Prize description" v-model="prize.description"/>
-        <label>Start Date</label>
-        <input class="prize-input" type="date" v-model="prize.start_date"/>
-        <label>End Date</label>
-        <input class="prize-input" type="date" v-model="prize.end_date"/>
+      <form v-else v-on:submit.prevent="postPrize">
+        <label for="prize-description">Prize description</label>
+        <input id="prize description" class="prize-input" type="text" placeholder="Prize description" v-model="prize.description"/><br>
+        <label for="prize-startdate">Start Date</label>
+        <input id="prize-startdate" class="prize-input" type="date" v-model="prize.startDate"/> <br>
+        <label for="prize-enddate">End Date</label>
+        <input id="prize-enddate" class="prize-input" type="date" v-model="prize.endDate"/><br>
         <input type="submit" value="Submit"/>
       </form>
     </div>
 </template>
 
 <script>
+import prizeService from '../services/PrizeService.js'
 export default {
     name: 'create-prize',
     data(){
         return{
             updateButton: true,
-            prize:{
-                description: '',
-                start_date: '',
-                end_date: ''
-            }
+            prize: {
+            description: '',
+            milestone: 0,
+            familyId: 0,
+            maxPrizes: 0,
+            startDate: '',
+            endDate: ''
+      }
         }
+    },
+    methods: {
+      postPrize(){
+    prizeService.postPrize(this.prize)
+    .then(response=>{
+        if(response.status === 201){
+          this.$router.push('/')
+        } 
+        })
+        
+    },
+    cancel(){
+        this.$router.push('/')
+    }
     }
 
 }
