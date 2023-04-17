@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/searchBy")
 public class RestGoogleController {
     private RestGoogleBooksService restGoogleBooksService;
-//injected restgooglebookservice interface
+//injected restgooglebookserviceinterface
     public RestGoogleController(RestGoogleBooksService restGoogleBooksService){
         this.restGoogleBooksService = restGoogleBooksService;
     }

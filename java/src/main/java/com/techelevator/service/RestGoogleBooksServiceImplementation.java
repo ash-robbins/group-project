@@ -8,6 +8,8 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class RestGoogleBooksServiceImplementation implements RestGoogleBooksService {
     private static final String API_KEY = "API_KEY";
@@ -32,7 +34,7 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
 
 @Override
     public BookSearchDto getBookSearchDto() {
-        String searchTerm = "empire&maxResults=1";
+        String searchTerm = "empire";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(API_KEY, API_VALUE);
@@ -46,7 +48,7 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
         HttpEntity request = new HttpEntity(headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-                API_URL + searchTerm,
+                API_URL + searchTerm +"&maxResults=1",
                 HttpMethod.GET,
                 request,
                 String.class
@@ -59,6 +61,8 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
         bookSearchDto.setBookSubtitle(subtitle);
         bookSearchDto.setAuthor(author);
         bookSearchDto.setDescription(description);
+
+        book.getItems();
 
         return bookSearchDto;
     }
