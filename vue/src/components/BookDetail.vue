@@ -75,5 +75,8 @@ created(){
 </script>
 
 <style>
+div {
+  text-align: center;
+}
 
 </style>
