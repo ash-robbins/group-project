@@ -9,7 +9,7 @@ public class BookDto {
     private String title;
     private String author;
     private String description;
-    private int isbn;
+    private Long isbn;
     private String imageLink;
 
 
@@ -37,11 +37,11 @@ public class BookDto {
         this.description = description;
     }
 
-    public int getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
