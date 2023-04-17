@@ -71,7 +71,7 @@ public class JdbcBooksDao implements BooksDao {
     @Override
     public List<Books> listBooksByUserId(int userId) {
         List<Books> booksList = new ArrayList<>();
-        String sql = "SELECT reading_activity.user_id, books.book_id, books.title " +
+        String sql = "SELECT books.book_id, books.isbn, books.title, books.author, books.cover_image, books.description " +
                 "FROM reading_activity " +
                 "RIGHT JOIN books ON reading_activity.book_id = books.book_id " +
                 "WHERE reading_activity.user_id = ?;";

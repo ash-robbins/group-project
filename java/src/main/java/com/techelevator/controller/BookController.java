@@ -1,9 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.BooksDao;
-import com.techelevator.dao.PrizeDao;
-import com.techelevator.dao.PrizeWinnerDao;
-import com.techelevator.dao.ReadingActivityDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.ReadingActivity;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.model.Books;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -22,12 +20,14 @@ public class BookController {
     private PrizeDao prizeDao;
     private PrizeWinnerDao prizeWinnerDao;
     private BooksDao booksDao;
+    private UserDao userDao;
 
-    public BookController(ReadingActivityDao readingActivityDao, PrizeDao prizeDao, PrizeWinnerDao prizeWinnerDao, BooksDao booksDao) {
+    public BookController(ReadingActivityDao readingActivityDao, PrizeDao prizeDao, PrizeWinnerDao prizeWinnerDao, BooksDao booksDao, UserDao userDao) {
         this.readingActivityDao = readingActivityDao;
         this.prizeDao = prizeDao;
         this.prizeWinnerDao = prizeWinnerDao;
         this.booksDao = booksDao;
+        this.userDao = userDao;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -56,12 +56,13 @@ public class BookController {
     /**
      * List of books by user
      *
-     * @param userId users id (may have to make it for THIS user? Principle?)
+     * @param principal
      * @return list of users books
      */
-    @RequestMapping(path = "books/users/{id}", method = RequestMethod.GET)
-   public List<Books> listBooksByUserId(@PathVariable("id") int userId) {
-        List<Books> booksList = booksDao.listBooksByUserId(userId);
+    @RequestMapping(path = "books/listbooks", method = RequestMethod.GET)
+   public List<Books> listBooksByLoggedInUser(Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        List<Books> booksList = booksDao.listBooksByUserId(loggedInUserId);
         if (booksList == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Books list not found.");
         } else {
