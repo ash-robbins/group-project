@@ -7,10 +7,10 @@ import java.util.List;
 
 public class BookDto {
     private String title;
-    private List<String> author;
+    private String author;
     private String description;
-    private List<IndustryIdentifier> industryIdentifier;
-    private ImageLinks imageLinks;
+    private int isbn;
+    private String imageLink;
 
 
     public String getTitle() {
@@ -21,11 +21,11 @@ public class BookDto {
         this.title = title;
     }
 
-    public List<String> getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(List<String> author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -37,20 +37,20 @@ public class BookDto {
         this.description = description;
     }
 
-    public List<IndustryIdentifier> getIndustryIdentifier() {
-        return industryIdentifier;
+    public int getIsbn() {
+        return isbn;
     }
 
-    public void setIndustryIdentifier(List<IndustryIdentifier> industryIdentifier) {
-        this.industryIdentifier = industryIdentifier;
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
     }
 
-    public ImageLinks getImageLinks() {
-        return imageLinks;
+    public String getImageLink() {
+        return imageLink;
     }
 
-    public void setImageLinks(ImageLinks imageLinks) {
-        this.imageLinks = imageLinks;
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 }
 
