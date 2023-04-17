@@ -6,6 +6,7 @@ import com.techelevator.model.dto.BookDto;
 import com.techelevator.model.dto.BookGoogleDto;
 import com.techelevator.model.dto.BookSearchDto;
 import com.techelevator.model.googlebooksapi.GoogleBooks;
+import com.techelevator.model.googlebooksapi.IndustryIdentifier;
 import com.techelevator.model.googlebooksapi.Items;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -54,9 +55,15 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     );
     GoogleBooks googleBooks;
     googleBooks = response.getBody();
+
     BookDto bookDto = new BookDto();
+
     Items[] items = googleBooks.getItems().toArray(new Items[0]);
+
     Items myItem = items[0];
+
+    bookDto.setIndustryIdentifier(myItem.getVolumeInfo().getIndustryIdentifiers());
+    bookDto.setImageLinks(myItem.getVolumeInfo().getImageLinks());
     bookDto.setTitle(myItem.getVolumeInfo().getTitle());
     bookDto.setDescription(myItem.getVolumeInfo().getDescription());
     bookDto.setAuthor(myItem.getVolumeInfo().getAuthors());
