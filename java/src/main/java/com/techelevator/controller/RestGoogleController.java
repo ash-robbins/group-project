@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 
+import com.techelevator.model.dto.BookDto;
 import com.techelevator.model.dto.BookSearchDto;
 import com.techelevator.service.RestGoogleBooksService;
 import com.techelevator.service.RestGoogleBooksServiceImplementation;
@@ -28,9 +29,10 @@ public class RestGoogleController {
  }
 
     @RequestMapping(path = "/title/{searchTerm}", method = RequestMethod.GET)
-    public BookSearchDto getBookSearchDto(@PathVariable String searchTerm){
-        BookSearchDto bookSearchDto = new BookSearchDto();
-        bookSearchDto = restGoogleBooksService.getBookSearchDto(searchTerm);
-        return bookSearchDto;
+    public BookDto getBookSearchDto(@PathVariable String searchTerm){
+        BookDto bookDto = new BookDto();
+        //BookSearchDto bookSearchDto = new BookSearchDto();
+        bookDto = restGoogleBooksService.getBookSearchDto(searchTerm);
+        return bookDto;
     }
 }
