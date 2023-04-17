@@ -2,7 +2,12 @@ package com.techelevator.model;
 
 public class Books {
     private int bookId;
+<<<<<<< HEAD
     private long isbn;
+=======
+    //TODO isbn needs to be changed from int to long
+    private int isbn;
+>>>>>>> 6984e50c3c0310366539ef5bfa23b9c7d40c9db4
     private String title;
     private String author;
     private String coverImage;

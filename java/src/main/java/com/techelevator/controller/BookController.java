@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.model.Books;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -35,12 +36,19 @@ public class BookController {
     public Books book (@RequestBody Books newBook) {
         Books bookActivity = booksDao.createBook(newBook);
         if (bookActivity == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Book.");
         } else {
             return bookActivity;
         }
     }
 
+    /**
+     *
+     *Get book by book id
+     * @param id book id
+     * @return book
+     *
+     */
     @CrossOrigin
     @RequestMapping(path = "/books/{id}", method = RequestMethod.GET)
     public Books getBookById(@PathVariable int id) {
@@ -69,5 +77,41 @@ public class BookController {
             return booksList;
         }
    }
+
+    /**
+     *
+     * add book
+     * @param books
+     * @return new book
+     */
+   @ResponseStatus(HttpStatus.CREATED)
+   @RequestMapping(path = "/addBook", method = RequestMethod.POST)
+   public Books addBook(@Valid @RequestBody Books books ){
+        return booksDao.createBook(books);
+   }
+
+
+    /**
+     *
+     * update book
+     * @param books
+     * @param id book id
+     * @return updated book
+     */
+    @RequestMapping(path = "update/book/{id}", method = RequestMethod.PUT)
+    public Books update(@Valid @RequestBody Books books, @PathVariable int id){
+        Books updatedBook = booksDao.updateBook(books, id);
+        if (updatedBook == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found.");
+        } else {
+            return updatedBook;
+        }
+   }
+
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+   @RequestMapping(path = "delete/book/{id}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable int id){
+        booksDao.removeBook(id);
+    }
 
 }

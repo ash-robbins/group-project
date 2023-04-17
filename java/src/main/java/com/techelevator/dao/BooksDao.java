@@ -2,6 +2,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Books;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.awt.print.Book;
 import java.util.List;
 @CrossOrigin
 public interface BooksDao {
@@ -22,6 +23,17 @@ public interface BooksDao {
 
     // ADDING FUNCTION TO LIST BOOKS BY USER -AR
     List<Books> listBooksByUserId(int userId);
+
+    //ADD BOOK
+    void addNewBook(Books books);
+
+    //UPDATE BOOK
+    Books updateBook(Books books, int bookId);
+
+    //DELETE BOOK
+    void removeBook(int bookId);
+
+
 
 
 
