@@ -50,21 +50,21 @@ export default {
 
 <style scoped>
 
- 
-
-.prize-input {
-  width: 50%;
-    height: 65px;
-    border: 1px solid white;
-    background: rgb(226, 226, 226);
-    padding: 0 20px;
-    border-radius: 15px;
-    outline: none;
-    font-weight: 400;
-    font-size: 14px;
-    transition: all 0.5s ease;
-    margin-top: 5px;
+ .prize-input {
+  width: 40%;
+  height: 40px;
+  border: 1px solid black;
+  padding: 0 20px;
+  border-radius: 15px;
+  outline: none;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.5s ease;
+  margin-top: 5px;
+  color: black;
     
 }
+
+
 
 </style>
