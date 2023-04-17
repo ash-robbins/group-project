@@ -4,5 +4,5 @@ import com.techelevator.model.dto.BookSearchDto;
 
 public interface RestGoogleBooksService {
 
-    BookSearchDto getBookSearchDto();
+    BookSearchDto getBookSearchDto(String searchTerm);
 }

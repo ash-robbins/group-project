@@ -1,6 +1,6 @@
 package com.techelevator.model.googlebooksapi;
 
-public class Item {
+public class Items {
     private String kind;
     private String id;
     private String etag;

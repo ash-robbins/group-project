@@ -5,7 +5,7 @@ import java.util.List;
 public class GoogleBooks {
     private String kind;
     private Integer totalItems;
-    private List<Item> items;
+    private List<Items> items;
 
     public String getKind() {
         return kind;
@@ -23,11 +23,11 @@ public class GoogleBooks {
         this.totalItems = totalItems;
     }
 
-    public List<Item> getItems() {
+    public List<Items> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<Items> items) {
         this.items = items;
     }
 

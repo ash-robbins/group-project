@@ -2,11 +2,17 @@ package com.techelevator.service;
 
 import com.google.gson.Gson;
 
+import com.techelevator.model.dto.BookDto;
 import com.techelevator.model.dto.BookGoogleDto;
 import com.techelevator.model.dto.BookSearchDto;
+import com.techelevator.model.googlebooksapi.GoogleBooks;
+import com.techelevator.model.googlebooksapi.Items;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.awt.print.Book;
+import java.util.Map;
 
 @Service
 public class RestGoogleBooksServiceImplementation implements RestGoogleBooksService {
@@ -31,8 +37,8 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     //create parameter that receives search term in method
 
 @Override
-    public BookSearchDto getBookSearchDto() {
-        String searchTerm = "empire&maxResults=1";
+    public BookSearchDto getBookSearchDto(String searchTerm) {
+//        String searchTerm = "empire";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(API_KEY, API_VALUE);
@@ -45,20 +51,35 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
 
         HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(
-                API_URL + searchTerm,
-                HttpMethod.GET,
-                request,
-                String.class
-            );
-        String jsonString = response.getBody();
-        Gson gson = new Gson();
-        BookGoogleDto book = gson.fromJson(jsonString, BookGoogleDto.class);
+//        ResponseEntity<String> response = restTemplate.exchange(
+//                API_URL + searchTerm +"&maxResults=1",
+//                HttpMethod.GET,
+//                request,
+//                String.class
+//            );
+//        String jsonString = response.getBody();
+//        Gson gson = new Gson();
+//        BookGoogleDto book = gson.fromJson(jsonString, BookGoogleDto.class);
 
         bookSearchDto.setBookTitle(title);
         bookSearchDto.setBookSubtitle(subtitle);
         bookSearchDto.setAuthor(author);
         bookSearchDto.setDescription(description);
+
+    ResponseEntity<GoogleBooks> response = restTemplate.exchange(
+            API_URL + searchTerm +"&maxResults=1",
+            HttpMethod.GET,
+            request,
+            GoogleBooks.class
+    );
+    GoogleBooks googleBooks = new GoogleBooks();
+    googleBooks = response.getBody();
+    System.out.println("did this work?");
+
+    BookDto bookDto = new BookDto();
+    Items[] items = googleBooks.getItems().toArray(new Items[0]);
+    Items myItem = items[0];
+    String myTitle = myItem.getVolumeInfo().getTitle();
 
         return bookSearchDto;
     }
