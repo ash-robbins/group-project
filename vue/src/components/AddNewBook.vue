@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .new-book-input {
     width: 50%;
@@ -88,16 +88,12 @@ button {
     cursor: pointer;
     margin-left: 10px;
 }
-
-.new-book-form{
-display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('/images/openbook.jpg');
-  background-size: cover;
-  background-position: center;
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
+
+
 
 </style>

@@ -72,7 +72,7 @@
   };
 </script>
 
-<style>
+<style scoped>
     body {
         margin: 0;
     }
@@ -99,6 +99,17 @@
     }
     /*handle responsive behavior */
     @media (max-width: 768px) {
+
+        /* Block text so only icons show */
+        .link-block a {
+        display: none;
+        }
+        .link-block img {
+        display: block;
+        height: 30px; /* Adjust the height of the icons as needed */
+        margin: auto; /* Center the icons horizontally */
+        }
+
         .container{
             grid-template-areas: 
                 "header"
@@ -130,7 +141,6 @@
         align-items: center;
         padding: 0 10px;
     }
-
     }
 
 
@@ -167,17 +177,10 @@
         margin: 10px;
     } 
 
-    header {
-    grid-area: header;
-    background-color: #f8f7ff; /*Great White*/
-
-    display: flex;
-    align-items: center;    
-    }
-
     footer {
         grid-area: footer;
-        background-color: #f8f7ff;
+        background-color: #f8fcfe;
+
     }
 
     /* Header & Footer font color */
@@ -187,7 +190,8 @@
 
     main {
         grid-area: content;
-        background-color: #f8f7ff; 
+        background-color: #f8fcfe;
+ 
 
         color: #505050;
 
@@ -199,8 +203,7 @@
     nav {
         grid-area: nav;
         margin-left: 0.5rem;
-        background-color: #f8f7ff;
-
+        background-color: #f8fcfe;
         border-radius: 10px;
 
         
