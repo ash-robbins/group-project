@@ -86,7 +86,7 @@ public class JdbcBooksDao implements BooksDao {
     private Books mapRowToBook(SqlRowSet row) {
         Books book = new Books();
         book.setBookId(row.getInt("book_id"));
-        book.setIsbn(row.getInt("isbn"));
+        book.setIsbn(row.getLong("isbn"));
         book.setTitle(row.getString("title"));
         book.setAuthor(row.getString("author"));
         book.setCoverImage(row.getString("cover_image"));
