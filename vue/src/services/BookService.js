@@ -16,7 +16,7 @@ export default {
   },
 
   postBook(book) {
-    return axios.post('/postbooks', book)
+    return axios.post('/postbook', book)
   },
 
   updateReadingActivity(reading_activity){

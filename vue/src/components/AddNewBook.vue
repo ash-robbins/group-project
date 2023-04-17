@@ -6,7 +6,7 @@
     <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
     <textarea class="new-book-input" id="description" placeholder="Description of Book" v-model="book.description" />
     <br>
-    <button v-on:click="postBook()" >Save</button>
+    <button v-on:click="postBook()" >Add Book to List</button>
     <button v-on:click="cancel()">Cancel </button>
   </form>
 </template>
