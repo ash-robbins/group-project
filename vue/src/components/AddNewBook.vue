@@ -86,8 +86,18 @@ button {
     padding: 23px 0;
     margin-top: 10px;
     cursor: pointer;
-
+    margin-left: 10px;
 }
 
+.new-book-form{
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/images/openbook.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
 </style>

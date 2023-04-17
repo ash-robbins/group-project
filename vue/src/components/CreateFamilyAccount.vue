@@ -44,24 +44,21 @@ export default {
 </script>
 
 <style>
-.family{
-  margin-bottom: 1rem;
+
+
+.family-input  {
+  width: 40%;
+  height: 40px;
+  border: 1px solid white;
   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
-  padding: 1rem; 
+  padding: 0 20px;
+  border-radius: 15px;
+  outline: none;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.5s ease;
+  margin-top: 5px;
 }
 
-.family-input {
-    width: 90%;
-    height: 40px;
-    border: 1px solid white;
-    background: rgb(226, 226, 226);
-    padding: 0 20px;
-    border-radius: 15px;
-    outline: none;
-    font-weight: 400;
-    font-size: 14px;
-    transition: all 0.5s ease;
-    margin-top: 5px;
-}
 
 </style>
