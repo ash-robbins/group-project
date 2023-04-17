@@ -52,11 +52,7 @@
 
 
 
-    <aside>
-        <div class="content">
-                        <!-- SideBar /Info -->
-        </div>
-    </aside>
+    
 
     <footer>
         <div class="content">
@@ -89,13 +85,13 @@
         display: grid;
 
         grid-template-areas: 
-            "header header header" 
-            "nav content side"   /*main = content and side = aside*/ 
+            "header nav nav" 
+            "content content content"   /*main = content and side = aside*/ 
             "footer footer footer";
 
-        grid-template-columns: 200px 1fr 200px;
-        grid-template-rows: 125px 1fr 85px;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        
 
         height: 100vh;
 
@@ -123,7 +119,7 @@
             padding: 5px;
         }
         nav, aside, main {
-        margin: 10px;
+            margin: 10px;
         
         }
         /* Navigation bar becomes side by side*/
@@ -137,6 +133,7 @@
 
     }
 
+
     /*Remove underline from nav links */
     .link-block a {
     text-decoration: none;
@@ -148,6 +145,12 @@
         padding-top: 25px;
         
         cursor: pointer;
+
+        display: flex;
+        justify-content: flex-end;
+        justify-content: space-around;
+        
+        
     }
 
     /* Highlights tabs in nav*/
