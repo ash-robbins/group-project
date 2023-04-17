@@ -1,6 +1,6 @@
 <template>
   <div class = "familyaccount">
-      family account
+      Family Account
 
       <create-family-account/>
 </div>
@@ -38,5 +38,8 @@ form{
   margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
   padding: 1rem; 
+}
+body {
+  margin: 0;
 }
 </style>
