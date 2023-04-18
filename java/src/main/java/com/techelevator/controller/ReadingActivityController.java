@@ -117,23 +117,5 @@ public class ReadingActivityController {
      }
 
 
-    /**
-     *
-     *
-     * Return Prize
-      * @param id prize id
-     * @return prize information
-     */
-    @RequestMapping(path = "/prize/{id}", method = RequestMethod.GET)
-    public Prize getPrize(@PathVariable int id) {
-        Prize prize = prizeDao.getPrize(id);
-        if (prize == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prize not found.");
-        } else {
-            return prize;
-        }
-    }
-
-
 }
 
