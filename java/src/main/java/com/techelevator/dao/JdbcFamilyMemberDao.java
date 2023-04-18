@@ -53,6 +53,19 @@ public class JdbcFamilyMemberDao implements FamilyMemberDao{
         jdbcTemplate.update(sql, familyId, userId);
     }
 
+    @Override
+    public FamilyMember getFamilyMemberByUserId(int userId) {
+        FamilyMember familyMember = null;
+        String sql = "SELECT family_id, user_id, member_type FROM family_members WHERE user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            familyMember = mapRowToFamilyMember(results);
+        }
+        return familyMember;
+    }
+
+
+
 
 
     private FamilyMember mapRowToFamilyMember(SqlRowSet rowSet) {

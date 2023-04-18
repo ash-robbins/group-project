@@ -16,4 +16,7 @@ public interface FamilyMemberDao {
     public void deleteFamilyMember(int familyId, int userId);
 
 
+    FamilyMember getFamilyMemberByUserId(int userId);
+
+
 }

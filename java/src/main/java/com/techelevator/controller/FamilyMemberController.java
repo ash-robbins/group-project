@@ -39,7 +39,15 @@ public class FamilyMemberController {
         return familyMemberDao.addFamilyMember(familyMember);
     }
 
-
+    @RequestMapping(path = "/familyMembers/{userId}", method = RequestMethod.GET)
+    public FamilyMember getFamilyMemberByUserId(@PathVariable int userId) {
+        FamilyMember familyMember = familyMemberDao.getFamilyMemberByUserId(userId);
+        if (familyMember == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Family Member Not Found.");
+        } else {
+            return familyMember;
+        }
+    }
 
 
     /**
