@@ -78,10 +78,6 @@ public class BookController {
         }
    }
 
-<<<<<<< HEAD
-
-
-=======
     /**
      *
      * add book
@@ -112,11 +108,17 @@ public class BookController {
         }
    }
 
+    /**
+     *
+     * delete book
+     * @param id book id
+     */
+
    @ResponseStatus(HttpStatus.NO_CONTENT)
    @RequestMapping(path = "delete/book/{id}", method = RequestMethod.DELETE)
     public void deleteBook(@PathVariable int id){
         booksDao.removeBook(id);
     }
 
->>>>>>> 010f8f658a8697bb9574cd5c181b5e126ef822f3
+
 }

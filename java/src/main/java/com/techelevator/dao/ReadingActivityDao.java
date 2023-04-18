@@ -23,6 +23,8 @@ public interface ReadingActivityDao {
 
     ReadingActivity getReadingActivityByBookId(int bookId);
 
+    ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int bookId);
+
 
 
 }

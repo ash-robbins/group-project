@@ -78,6 +78,16 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
         return readingActivity;
     }
 
+    @Override
+    public ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int bookId) {
+        String sql = "UPDATE reading_activity " +
+                "SET user_id = ?, book_id = ?, format = ?, reading_time = ?, notes = ?, " +
+                "reading_partner_id = ?, is_completed = ?, is_favorite = ?, bookmark_page_number " +
+                "WHERE book_id = ?;";
+        jdbcTemplate.update(sql, readingActivity.getUserId(), readingActivity.getBookId(), readingActivity.getFormat(), readingActivity.getReadingTime(), readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), readingActivity.getBookmarkPage(), bookId);
+        return readingActivity;
+    }
+
 
     private ReadingActivity mapRowToReadingActivity(SqlRowSet rowSet) {
         ReadingActivity readingActivity = new ReadingActivity();

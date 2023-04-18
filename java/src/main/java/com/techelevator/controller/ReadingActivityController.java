@@ -81,6 +81,23 @@ public class ReadingActivityController {
      }
 
     /**
+     * Updates reading activity by book id
+     *
+     * @param readingActivity
+     * @param id book id
+     * @return updated reading activity for book
+     */
+     @RequestMapping(path = "update/reading_activity/book/{id}", method = RequestMethod.PUT)
+     public ReadingActivity updateReadingActivityByBookId(@Valid @RequestBody ReadingActivity readingActivity, @PathVariable int id) {
+         ReadingActivity updateBookActivity = readingActivityDao.updateReadingActivity(readingActivity, id);
+         if (updateBookActivity == null) {
+             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to update Reading Activity.");
+         } else {
+             return updateBookActivity;
+         }
+     }
+
+    /**
      *
      * return list of logged users reading activity
      *
@@ -133,10 +150,9 @@ public class ReadingActivityController {
         }
     }
 
-<<<<<<< HEAD
-    // add put method to update reading activity ...
-}
-=======
+
+
+
 
     /**
 
@@ -167,4 +183,4 @@ public class ReadingActivityController {
 
     }
 }
->>>>>>> 010f8f658a8697bb9574cd5c181b5e126ef822f3
+
