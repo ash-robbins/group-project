@@ -26,8 +26,6 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public RestGoogleBooksServiceImplementation(){
-    }
     //call out to endpoint using rest template
 
     // https://www.googleapis.com/books/v1/volumes?q=intitle:{searchtermvariable}&maxResults=1
@@ -63,7 +61,7 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     Items myItem = items[0];
 
     List <IndustryIdentifier> industryIdentifier = myItem.getVolumeInfo().getIndustryIdentifiers();
-    Integer isbn = Integer.parseInt(industryIdentifier.get(0).getIdentifier());
+    Long isbn = Long.parseLong (industryIdentifier.get(0).getIdentifier());
     bookDto.setIsbn(isbn);
 
     ImageLinks imageLinks = myItem.getVolumeInfo().getImageLinks();
