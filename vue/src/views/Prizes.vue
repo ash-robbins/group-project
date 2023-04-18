@@ -1,6 +1,6 @@
 <template>
   <div>
-      You're in the Prizes Component
+      Prizes View
       <create-prize/>
   </div>
 </template>
@@ -15,6 +15,10 @@ components: {
 }
 </script>
 
-<style>
+<style scoped>
 
+
+div {
+  text-align: center;
+}
 </style>

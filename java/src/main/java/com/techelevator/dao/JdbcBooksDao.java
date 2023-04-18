@@ -7,8 +7,10 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class JdbcBooksDao implements BooksDao {
 
@@ -71,7 +73,7 @@ public class JdbcBooksDao implements BooksDao {
     @Override
     public List<Books> listBooksByUserId(int userId) {
         List<Books> booksList = new ArrayList<>();
-        String sql = "SELECT reading_activity.user_id, books.book_id, books.title " +
+        String sql = "SELECT books.book_id, books.isbn, books.title, books.author, books.cover_image, books.description " +
                 "FROM reading_activity " +
                 "RIGHT JOIN books ON reading_activity.book_id = books.book_id " +
                 "WHERE reading_activity.user_id = ?;";
@@ -82,11 +84,33 @@ public class JdbcBooksDao implements BooksDao {
         return booksList;
     }
 
+    @Override
+    public void addNewBook(Books books) {
+        String sql = "INSERT INTO books (isbn, title, author, cover_image, description " +
+                "VALUES (?, ?, ?, ?, ?) RETURNING book_id;";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, books.getIsbn(), books.getAuthor(), books.getCoverImage(), books.getDescription());
+    }
+
+    @Override
+    public Books updateBook(Books books, int bookId) {
+        String sql = "UPDATE books " +
+                "SET isbn = ?, title = ?, author = ?, cover_image = ?, description = ? " +
+                "WHERE book_id = ?;";
+        jdbcTemplate.update(sql, books.getIsbn(), books.getTitle(), books.getAuthor(), books.getCoverImage(), books.getDescription(), bookId);
+        return getBookById(bookId);
+    }
+
+    @Override
+    public void removeBook(int bookId) {
+        String sql = "DELETE FROM books WHERE book_id = ?;";
+        jdbcTemplate.update(sql, bookId);
+    }
+
 
     private Books mapRowToBook(SqlRowSet row) {
         Books book = new Books();
         book.setBookId(row.getInt("book_id"));
-        book.setIsbn(row.getInt("isbn"));
+        book.setIsbn(row.getLong("isbn"));
         book.setTitle(row.getString("title"));
         book.setAuthor(row.getString("author"));
         book.setCoverImage(row.getString("cover_image"));

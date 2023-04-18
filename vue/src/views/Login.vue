@@ -12,7 +12,7 @@
 
         <i class="input-icon uil uil-user"></i>
         <label for="username">Username: </label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input type="text" placeholder="Username" id="username" v-model="user.username" required autofocus />
        
       </div>
       <div class="form-input-group">
@@ -20,7 +20,7 @@
         <i class="input-icon uil uil-lock-alt"></i>
 
         <label for="password">Password: </label>
-        <input type="password" id="password" v-model="user.password" required />
+        <input type="password" placeholder="Password" id="password" v-model="user.password" required />
       
         
         

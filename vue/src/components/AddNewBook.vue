@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .new-book-input {
     width: 50%;
@@ -86,8 +86,14 @@ button {
     padding: 23px 0;
     margin-top: 10px;
     cursor: pointer;
-
+    margin-left: 10px;
 }
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
 
 
 </style>

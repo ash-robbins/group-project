@@ -1,7 +1,6 @@
 <template>
   <div class = "familyaccount">
-      family account
-
+      Family Account
       <create-family-account/>
 </div>
 </template>
@@ -16,15 +15,10 @@ components: {
 }
 </script>
 
-<style>
-.familyaccount{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('/images/openbook.jpg');
-  background-size: cover;
-  background-position: center;
+<style scoped>
+
+div {
+  text-align: center;
 }
+
 </style>

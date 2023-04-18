@@ -1,9 +1,9 @@
 <template>
-  <div>
-      <p>Time spent reading: {{reading_activity.readingTime}} Minutes</p>
-     <p>Pages read: {{reading_activity.bookmarkPage}} Pages read</p>
-     <p>completed: {{reading_activity.completed}} </p>
-      <p>Favorte: {{reading_activity.favorite}}</p>
+  <div class ="readingactivity">
+      <p>Time Spent Reading: {{reading_activity.readingTime}} Minutes</p>
+     <p>Pages Read: {{reading_activity.bookmarkPage}} Pages Read</p>
+     <p>Completed: {{reading_activity.completed}} </p>
+      <p>Favorite: {{reading_activity.favorite}}</p>
 
      <!-- {{book.is_completed ? 'You completed this book!' : 'You have not completed this book yet. Keep reading!'}} -->
 
@@ -103,6 +103,32 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+.readingactivity{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  
+
+}
+
+button {
+    width: 220px;
+    background: #00AFEF;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 23px 0;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
 </style>

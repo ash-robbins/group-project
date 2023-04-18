@@ -17,9 +17,8 @@ export default {
   flex-direction: column;
   
   height: 100vh;
-  background-image: url('/images/openbook.jpg');
-  background-size: cover;
-  background-position: center;
+  background-color: #f8fcfe;
+
 }
   
 </style>

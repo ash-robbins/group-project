@@ -1,9 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.BooksDao;
-import com.techelevator.dao.PrizeDao;
-import com.techelevator.dao.PrizeWinnerDao;
-import com.techelevator.dao.ReadingActivityDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.ReadingActivity;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.model.Books;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -22,12 +21,14 @@ public class BookController {
     private PrizeDao prizeDao;
     private PrizeWinnerDao prizeWinnerDao;
     private BooksDao booksDao;
+    private UserDao userDao;
 
-    public BookController(ReadingActivityDao readingActivityDao, PrizeDao prizeDao, PrizeWinnerDao prizeWinnerDao, BooksDao booksDao) {
+    public BookController(ReadingActivityDao readingActivityDao, PrizeDao prizeDao, PrizeWinnerDao prizeWinnerDao, BooksDao booksDao, UserDao userDao) {
         this.readingActivityDao = readingActivityDao;
         this.prizeDao = prizeDao;
         this.prizeWinnerDao = prizeWinnerDao;
         this.booksDao = booksDao;
+        this.userDao = userDao;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,12 +36,19 @@ public class BookController {
     public Books book (@RequestBody Books newBook) {
         Books bookActivity = booksDao.createBook(newBook);
         if (bookActivity == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Book.");
         } else {
             return bookActivity;
         }
     }
 
+    /**
+     *
+     *Get book by book id
+     * @param id book id
+     * @return book
+     *
+     */
     @CrossOrigin
     @RequestMapping(path = "/books/{id}", method = RequestMethod.GET)
     public Books getBookById(@PathVariable int id) {
@@ -56,12 +64,13 @@ public class BookController {
     /**
      * List of books by user
      *
-     * @param userId users id (may have to make it for THIS user? Principle?)
+     * @param principal
      * @return list of users books
      */
-    @RequestMapping(path = "books/users/{id}", method = RequestMethod.GET)
-   public List<Books> listBooksByUserId(@PathVariable("id") int userId) {
-        List<Books> booksList = booksDao.listBooksByUserId(userId);
+    @RequestMapping(path = "books/listbooks", method = RequestMethod.GET)
+   public List<Books> listBooksByLoggedInUser(Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        List<Books> booksList = booksDao.listBooksByUserId(loggedInUserId);
         if (booksList == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Books list not found.");
         } else {
@@ -69,6 +78,45 @@ public class BookController {
         }
    }
 
+<<<<<<< HEAD
 
 
+=======
+    /**
+     *
+     * add book
+     * @param books
+     * @return new book
+     */
+   @ResponseStatus(HttpStatus.CREATED)
+   @RequestMapping(path = "/addBook", method = RequestMethod.POST)
+   public Books addBook(@Valid @RequestBody Books books ){
+        return booksDao.createBook(books);
+   }
+
+
+    /**
+     *
+     * update book
+     * @param books
+     * @param id book id
+     * @return updated book
+     */
+    @RequestMapping(path = "update/book/{id}", method = RequestMethod.PUT)
+    public Books update(@Valid @RequestBody Books books, @PathVariable int id){
+        Books updatedBook = booksDao.updateBook(books, id);
+        if (updatedBook == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found.");
+        } else {
+            return updatedBook;
+        }
+   }
+
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+   @RequestMapping(path = "delete/book/{id}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable int id){
+        booksDao.removeBook(id);
+    }
+
+>>>>>>> 010f8f658a8697bb9574cd5c181b5e126ef822f3
 }
