@@ -54,15 +54,40 @@ public class JdbcFamilyAccountDao implements FamilyAccountDao {
 
     @Override
     public FamilyAccount getFamilyAccountById(int familyId) {
+        FamilyAccount familyAccount = null;
         String sql = "SELECT family_id, family_name, created_by, created_date FROM family_account WHERE family_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         if (results.next()) {
-            return mapRowToFamilyAccount(results);
-        } else {
-            return null;
-
+            familyAccount = mapRowToFamilyAccount(results);
         }
+            return familyAccount;
+
     }
+
+    @Override
+    public FamilyAccount setUpFamilyAccount(FamilyAccount familyAccount) {
+        String sql = "INSERT INTO family_account (family_name, created_by, created_date) " +
+                "VALUES (?, ?, ?) RETURNING family_id;";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, familyAccount.getFamilyName(), familyAccount.getCreatedBy(), familyAccount.getCreatedDate());
+        return getFamilyAccountById(newId);
+    }
+
+    @Override
+    public FamilyAccount updateFamilyAccount(FamilyAccount familyAccount, int userId) {
+        String sql = "UPDATE family_account " +
+                "SET family_name = ?, created_by = ?, created_date = ? " +
+                "WHERE created_by = ?;";
+        jdbcTemplate.update(sql, familyAccount.getFamilyName(), familyAccount.getCreatedBy(), familyAccount.getCreatedDate(), userId);
+        return familyAccount;
+    }
+
+    @Override
+    public void removeFamilyAccount(int familyId) {
+    String sql = "DELETE FROM family_account WHERE family_id = ?;";
+    jdbcTemplate.update(sql, familyId);
+    }
+
+
     private FamilyAccount mapRowToFamilyAccount(SqlRowSet rowSet) {
         FamilyAccount account = new FamilyAccount();
         account.setFamilyId(rowSet.getInt("family_id"));

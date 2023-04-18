@@ -16,5 +16,14 @@ public interface FamilyAccountDao{
       public List<FamilyAccount> getAllFamilyAccounts();
 
       public FamilyAccount getFamilyAccountById(int familyId);
+
+      //ADD FAMILY ACCOUNT
+      FamilyAccount setUpFamilyAccount(FamilyAccount familyAccount);
+
+      //UPDATE FAMILY ACCOUNT
+      FamilyAccount updateFamilyAccount(FamilyAccount familyAccount, int userId);
+
+      //REMOVE FAMILY ACCOUNT
+      void removeFamilyAccount(int familyId);
     }
 
