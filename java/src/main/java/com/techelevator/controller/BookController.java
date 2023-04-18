@@ -78,6 +78,10 @@ public class BookController {
         }
    }
 
+<<<<<<< HEAD
+
+
+=======
     /**
      *
      * add book
@@ -114,4 +118,5 @@ public class BookController {
         booksDao.removeBook(id);
     }
 
+>>>>>>> 010f8f658a8697bb9574cd5c181b5e126ef822f3
 }
