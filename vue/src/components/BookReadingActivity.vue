@@ -8,26 +8,26 @@
      <!-- {{book.is_completed ? 'You completed this book!' : 'You have not completed this book yet. Keep reading!'}} -->
 
 
-        <!-- <div>
+        <div>
             <br>
         <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
         <form v-else v-on:submit.prevent="updateBookActivity">
           <label>Pages Read Today</label>
-          <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmark_page_number"/>
+          <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
           <label>Minutes Read</label>
           
         
-          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.reading_time"/>
+          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.readingTime"/>
           <label>Notes</label>
           <input type="text" placeholder="notes" key="notes" v-model="reading_activity.notes"/>
           <label>Completed</label>
-          <input type="checkbox" placeholder="completed" v-model="reading_activity.is_completed"/>
+          <input type="checkbox" placeholder="completed" v-model="reading_activity.completed"/>
 
           <label>Is Favorited: </label>
-          <input type="checkbox" placeholder="is Favorited" v-model="reading_activity.is_favorite"/>
+          <input type="checkbox" placeholder="is Favorited" v-model="reading_activity.favorite"/>
           <input type="submit" value="Submit"/>
         </form>
-        </div> -->
+        </div>
       
       </div>
 </template>
@@ -67,18 +67,19 @@ export default {
             //    // console.log( this.newactivity.reading_time, this.newactivity.bookmark_page_number)
 
             // },
+             updatePutBookActivity(){
+                bookService.updateBookActivity(this.reading_activity)
+                .then(response=>{
+                if(response.status === 200){
+                    this.$router.push('/')
+                }
+                })
+                .catch(error=>{
+                 this.handleResponse(error, "updating")
+                })
+            }
     },
-            // updatePutBookActivity(){
-            //     bookService.updateBookActivity(this.reading_activity)
-            //     .then(response=>{
-            //     if(response.status === 200){
-            //         this.$router.push('/')
-            //     }
-            //     })
-            //     .catch(error=>{
-            //      this.handleResponse(error, "updating")
-            //     })
-            // }
+           
     created(){
           bookService.getReadingActivity(this.$route.params.book_id)
           .then((response) => {
