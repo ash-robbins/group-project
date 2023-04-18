@@ -26,14 +26,14 @@ public class PrizeController {
         this.prizeWinnerDao = prizeWinnerDao;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/prize", method = RequestMethod.POST)
-    public Prize prize (@RequestBody Prize newPrize) {
-        Prize prizeActivity = prizeDao.createPrize(newPrize);
-        if (prizeActivity == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity.");
-        } else {
-            return prizeActivity;
-        }
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/prize", method = RequestMethod.POST)
+//    public Prize prize (@RequestBody Prize newPrize) {
+//        Prize prizeActivity = prizeDao.createPrize(newPrize);
+//        if (prizeActivity == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity.");
+//        } else {
+//            return prizeActivity;
+//        }
+//    }
 }

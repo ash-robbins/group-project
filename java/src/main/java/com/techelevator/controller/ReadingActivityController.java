@@ -133,10 +133,7 @@ public class ReadingActivityController {
         }
     }
 
-<<<<<<< HEAD
-    // add put method to update reading activity ...
-}
-=======
+
 
     /**
 
@@ -167,4 +164,4 @@ public class ReadingActivityController {
 
     }
 }
->>>>>>> 010f8f658a8697bb9574cd5c181b5e126ef822f3
+
