@@ -81,15 +81,16 @@ public class ReadingActivityController {
      }
 
     /**
-     * Updates reading activity by book id
+     * Updates logged in users reading activity by book id
      *
      * @param readingActivity
-     * @param id book id
-     * @return updated reading activity for book
+     * @param id book id user id
+     * @return updated reading activity for book by user
      */
      @RequestMapping(path = "update/reading_activity/book/{id}", method = RequestMethod.PUT)
-     public ReadingActivity updateReadingActivityByBookId(@Valid @RequestBody ReadingActivity readingActivity, @PathVariable int id) {
-         ReadingActivity updateBookActivity = readingActivityDao.updateReadingActivity(readingActivity, id);
+     public ReadingActivity updateLoggedInUserReadingActivityByBookId(@Valid @RequestBody ReadingActivity readingActivity, @PathVariable int id, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+         ReadingActivity updateBookActivity = readingActivityDao.updateReadingActivity(readingActivity, id, loggedInUserId);
          if (updateBookActivity == null) {
              throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to update Reading Activity.");
          } else {
@@ -133,54 +134,6 @@ public class ReadingActivityController {
         }
     }
 
-    /**
-     *
-     *
-     * @param id prize winner id
-     * @return prize winner information
-     */
 
-    @RequestMapping(path = "/prize_winner{id}", method = RequestMethod.GET)
-    public PrizeWinner getWinner(@PathVariable int id) {
-        PrizeWinner prizeWinner = prizeWinnerDao.getPrizeWinner(id);
-        if (prizeWinner == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prize Winner not found.");
-        } else {
-            return prizeWinner;
-        }
-    }
-
-
-
-
-
-    /**
-
-     Create Prize
-     @param prize the prize to create
-     @return the created prize
-     */
-    @RequestMapping(path = "/prize", method = RequestMethod.POST)
-    public Prize createPrize(@RequestBody Prize prize) {
-        Prize createdPrize = prizeDao.createPrize(prize);
-        if (createdPrize == null) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating prize.");
-        } else {
-            return createdPrize;
-        }
-    }
-    /**
-
-     Delete Prize
-     @param id the id of the prize to delete
-     */
-    @RequestMapping(path = "/prize/{id}", method = RequestMethod.DELETE)
-    public void removePrize(@PathVariable int id) {
-        boolean success = prizeDao.removePrize(id);
-        if (!success) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prize not found.");
-        }
-
-    }
 }
 

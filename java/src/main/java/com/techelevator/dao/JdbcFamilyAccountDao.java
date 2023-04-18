@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class JdbcFamilyAccountDao implements FamilyAccountDao {
     }
 
     @Override
-    public FamilyAccount createFamilyAccount(String familyName, int createdBy) {
-        String sql = "INSERT INTO family_account (family_name, created_by) " +
-                "VALUES (?, ?)" +
+    public FamilyAccount createFamilyAccount(String familyName, int createdBy, LocalDate createdDate) {
+        String sql = "INSERT INTO family_account (family_name, created_by,created_date) " +
+                "VALUES (?, ?, ?)" +
                 "RETURNING family_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, familyName, createdBy);
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, familyName, createdBy, createdDate);
         return getFamilyAccountById(newId);
     }
 
