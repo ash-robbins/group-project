@@ -1,7 +1,7 @@
 <template>
 <div class="book-container">
     
-<book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="book.book_id"/>
+<book-card v-bind:book="book" v-for="book in books" v-bind:key="book.book_id"/>
 </div>
 </template>
 
@@ -22,6 +22,8 @@ export default {
     bookService.list()
     .then((response) => {
       this.books = response.data;
+      
+
     });
   }
 

@@ -31,16 +31,16 @@ public class BookController {
         this.userDao = userDao;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/postbook", method = RequestMethod.POST)
-    public Books book (@RequestBody Books newBook) {
-        Books bookActivity = booksDao.createBook(newBook);
-        if (bookActivity == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Book.");
-        } else {
-            return bookActivity;
-        }
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/postbook", method = RequestMethod.POST)
+//    public Books book (@RequestBody Books newBook) {
+//        Books bookActivity = booksDao.createBook(newBook);
+//        if (bookActivity == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Book.");
+//        } else {
+//            return bookActivity;
+//        }
+//    }
 
     /**
      *
@@ -87,8 +87,10 @@ public class BookController {
      */
    @ResponseStatus(HttpStatus.CREATED)
    @RequestMapping(path = "/addBook", method = RequestMethod.POST)
-   public Books addBook(@Valid @RequestBody Books books ){
-        return booksDao.createBook(books);
+   public Books addBook(@Valid @RequestBody Books books, Principal principal){
+       int loggedInUserId = userDao.findIdByUsername(principal.getName());
+
+       return booksDao.createBook(books, loggedInUserId);
    }
 
 

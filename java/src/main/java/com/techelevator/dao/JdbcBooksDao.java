@@ -21,13 +21,34 @@ public class JdbcBooksDao implements BooksDao {
     }
 
     @Override
-    public Books createBook(Books book) {
+    public Books createBook(Books book, int userId) {
+        int bookId = 0;
         String sql = "INSERT INTO books (isbn, title, author, cover_image, description) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING book_id";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, book.getIsbn(), book.getTitle(),
-                book.getAuthor(), book.getCoverImage(), book.getDescription());
+        String sql1 = "SELECT * FROM books WHERE isbn = ?";
+        String sql3 = "SELECT COUNT(*) FROM books WHERE isbn = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql1, book.getIsbn());
+        int numRows = jdbcTemplate.queryForObject(sql3, Integer.class, book.getIsbn());
 
-        return getBookById(newId);
+        if(numRows != 0){
+
+            Books myBook = null;
+            if(result.next()){
+                myBook = mapRowToBook(result);
+            }
+            String sql2 = "INSERT INTO reading_activity (user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number)" +
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING reading_activity_id";
+            Integer readingActivityId = jdbcTemplate.queryForObject(sql2, Integer.class, userId, myBook.getBookId(),"paper", 0, "solo reading",null, false, true, 0);
+            bookId = myBook.getBookId();
+        } else {
+                    bookId = jdbcTemplate.queryForObject(sql, Integer.class, book.getIsbn(), book.getTitle(),
+                    book.getAuthor(), book.getCoverImage(), book.getDescription());
+            String sql2 = "INSERT INTO reading_activity (user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING reading_activity_id";
+            Integer readingActivityId = jdbcTemplate.queryForObject(sql2, Integer.class, userId, bookId,"paper", 0, "solo reading",null, false, true, 0);
+        }
+
+        return getBookById(bookId);
     }
     @Override
     public Books getBookById(int bookId) {

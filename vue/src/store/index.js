@@ -20,13 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    books: [{
-       bookId:'1',
-        title: "Kafka by the Shore",
-        author: "Haruki Murakami",
-        read: false,
-      isbn: "9781784877989"
-       }],
+    books: [],
       //{
     //   book_id:'1',
     //   title: "Kafka by the Shore",

@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
   list(){
-    return axios.get('/books')
+    return axios.get('/books/listbooks')
   },
 
   getBook(book_id) {

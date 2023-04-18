@@ -7,7 +7,7 @@ import java.util.List;
 @CrossOrigin
 public interface BooksDao {
 
-    Books createBook(Books book);
+    Books createBook(Books book, int userId);
 
     //Trello Get Book info from API TODO:link with api
     Books getBookById(int bookId);
