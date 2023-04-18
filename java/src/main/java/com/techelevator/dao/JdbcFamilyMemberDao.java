@@ -28,22 +28,32 @@ public class JdbcFamilyMemberDao implements FamilyMemberDao{
     }
 
     @Override
-    public void addFamilyMember(FamilyMember familyMember) {
+    public FamilyMember addFamilyMember(FamilyMember familyMember) {
         String sql = "INSERT INTO family_members (family_id, user_id, member_type) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, familyMember.getFamilyId(), familyMember.getUserId(), familyMember.getMemberType());
+        return familyMember;
     }
 
+
     @Override
-    public void updateFamilyMember(FamilyMember familyMember) {
-        String sql = "UPDATE family_members SET member_type = ? WHERE family_id = ? AND user_id = ?";
-        jdbcTemplate.update(sql, familyMember.getMemberType(), familyMember.getFamilyId(), familyMember.getUserId());
+    public FamilyMember updateFamilyMember(FamilyMember familyMember, int userId) {
+        String sql = "UPDATE family_members " +
+                "SET member_type = ? " +
+                "WHERE family_id = ? AND user_id = ?";
+        jdbcTemplate.update(sql, familyMember.getMemberType(), familyMember.getFamilyId(), userId);
+        return familyMember;
     }
+
+
+
 
     @Override
     public void deleteFamilyMember(int familyId, int userId) {
         String sql = "DELETE FROM family_members WHERE family_id = ? AND user_id = ?";
         jdbcTemplate.update(sql, familyId, userId);
     }
+
+
 
     private FamilyMember mapRowToFamilyMember(SqlRowSet rowSet) {
         FamilyMember familyMember = new FamilyMember();

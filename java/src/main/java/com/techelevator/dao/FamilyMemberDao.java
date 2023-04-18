@@ -7,10 +7,13 @@ import java.util.List;
 public interface FamilyMemberDao {
     public List<FamilyMember> getFamilyMembersByFamilyId(int familyId);
 
-    public void addFamilyMember(FamilyMember familyMember);
+    public FamilyMember addFamilyMember(FamilyMember familyMember);
 
-    public void updateFamilyMember(FamilyMember familyMember);
+    public FamilyMember updateFamilyMember(FamilyMember familyMember, int userId);
+
+
 
     public void deleteFamilyMember(int familyId, int userId);
+
 
 }

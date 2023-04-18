@@ -137,10 +137,12 @@
         nav div.content {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         padding: 0 10px;
+        
     }
+    
     }
 
 
@@ -166,8 +168,8 @@
     /* Highlights tabs in nav*/
     .content > div:hover {
         display: block;
-        background-color: rgba(208, 235, 252, 0.5);
-        border-radius: 30px 30px 30px 30px;
+        background-color: rgba(19, 160, 241, 0.849);
+        border-radius: 10px 10px 10px 10px;
         
     }
 
@@ -191,12 +193,9 @@
     main {
         grid-area: content;
         background-color: #f8fcfe;
- 
-
         color: #505050;
-
         border-radius: 10px;
-
+        
     }
 
 
