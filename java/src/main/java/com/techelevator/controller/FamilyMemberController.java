@@ -18,12 +18,12 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 
 public class FamilyMemberController {
-    private FamilyMember familyMember;
+
     private FamilyMemberDao familyMemberDao;
     private UserDao userDao;
 
-    public FamilyMemberController(FamilyMember familyMember, FamilyMemberDao familyMemberDao, UserDao userDao) {
-        this.familyMember = familyMember;
+    public FamilyMemberController( FamilyMemberDao familyMemberDao, UserDao userDao) {
+
         this.familyMemberDao = familyMemberDao;
         this.userDao = userDao;
     }
