@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +34,10 @@ public class JdbcPrizeDao implements PrizeDao {
     }
 
     @Override
-    public void removePrize(int prizeId) {
+    public boolean removePrize(int prizeId) {
         String sql = "DELETE FROM prize WHERE prize_id = ?;";
         jdbcTemplate.update(sql, prizeId);
+        return false;
     }
 
     @Override

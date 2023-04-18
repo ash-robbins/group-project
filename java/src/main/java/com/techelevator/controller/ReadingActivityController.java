@@ -132,4 +132,34 @@ public class ReadingActivityController {
             return prizeWinner;
         }
     }
+
+
+    /**
+
+     Create Prize
+     @param prize the prize to create
+     @return the created prize
+     */
+    @RequestMapping(path = "/prize", method = RequestMethod.POST)
+    public Prize createPrize(@RequestBody Prize prize) {
+        Prize createdPrize = prizeDao.createPrize(prize);
+        if (createdPrize == null) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating prize.");
+        } else {
+            return createdPrize;
+        }
+    }
+    /**
+
+     Delete Prize
+     @param id the id of the prize to delete
+     */
+    @RequestMapping(path = "/prize/{id}", method = RequestMethod.DELETE)
+    public void removePrize(@PathVariable int id) {
+        boolean success = prizeDao.removePrize(id);
+        if (!success) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prize not found.");
+        }
+
+    }
 }

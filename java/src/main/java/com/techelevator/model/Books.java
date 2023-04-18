@@ -2,14 +2,13 @@ package com.techelevator.model;
 
 public class Books {
     private int bookId;
-    //TODO isbn needs to be changed from int to long
-    private int isbn;
+    private long isbn;
     private String title;
     private String author;
     private String coverImage;
     private String description;
 
-    public Books(int bookId, int isbn, String title, String author, String coverImage, String description) {
+    public Books(int bookId, long isbn, String title, String author, String coverImage, String description) {
         this.bookId = bookId;
         this.isbn = isbn;
         this.title = title;
@@ -30,11 +29,11 @@ public class Books {
         this.bookId = bookId;
     }
 
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 

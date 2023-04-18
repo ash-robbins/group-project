@@ -13,7 +13,7 @@ public interface PrizeDao {
     void editPrize(Prize prize);
 
     // Trello "Remove a Prize" Tab
-    void removePrize(int prizeId);
+    boolean removePrize(int prizeId);
 
     // Trello "Trello "See Prizes" Tab
     List<Prize> listAvailablePrizes();

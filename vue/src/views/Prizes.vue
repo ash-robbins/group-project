@@ -1,6 +1,6 @@
 <template>
   <div>
-      You're in the Prizes Component
+      Prizes View
       <create-prize/>
   </div>
 </template>
@@ -15,21 +15,10 @@ components: {
 }
 </script>
 
-<style>
-.prizeform{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('/images/openbook.jpg');
-  background-size: cover;
-  background-position: center;
-  
-}
-form{
-  margin-bottom: 1rem;
-  background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
-  padding: 1rem; 
+<style scoped>
+
+
+div {
+  text-align: center;
 }
 </style>

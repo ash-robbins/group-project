@@ -52,11 +52,7 @@
 
 
 
-    <aside>
-        <div class="content">
-                        <!-- SideBar /Info -->
-        </div>
-    </aside>
+    
 
     <footer>
         <div class="content">
@@ -76,7 +72,7 @@
   };
 </script>
 
-<style>
+<style scoped>
     body {
         margin: 0;
     }
@@ -89,13 +85,13 @@
         display: grid;
 
         grid-template-areas: 
-            "header header header" 
-            "nav content side"   /*main = content and side = aside*/ 
+            "header nav nav" 
+            "content content content"   /*main = content and side = aside*/ 
             "footer footer footer";
 
-        grid-template-columns: 200px 1fr 200px;
-        grid-template-rows: 125px 1fr 85px;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        
 
         height: 100vh;
 
@@ -103,6 +99,17 @@
     }
     /*handle responsive behavior */
     @media (max-width: 768px) {
+
+        /* Block text so only icons show */
+        .link-block a {
+        display: none;
+        }
+        .link-block img {
+        display: block;
+        height: 30px; /* Adjust the height of the icons as needed */
+        margin: auto; /* Center the icons horizontally */
+        }
+
         .container{
             grid-template-areas: 
                 "header"
@@ -123,7 +130,7 @@
             padding: 5px;
         }
         nav, aside, main {
-        margin: 10px;
+            margin: 10px;
         
         }
         /* Navigation bar becomes side by side*/
@@ -134,8 +141,8 @@
         align-items: center;
         padding: 0 10px;
     }
-
     }
+
 
     /*Remove underline from nav links */
     .link-block a {
@@ -148,6 +155,12 @@
         padding-top: 25px;
         
         cursor: pointer;
+
+        display: flex;
+        justify-content: flex-end;
+        justify-content: space-around;
+        
+        
     }
 
     /* Highlights tabs in nav*/
@@ -164,17 +177,10 @@
         margin: 10px;
     } 
 
-    header {
-    grid-area: header;
-    background-color: #f8f7ff; /*Great White*/
-
-    display: flex;
-    align-items: center;    
-    }
-
     footer {
         grid-area: footer;
-        background-color: #f8f7ff;
+        background-color: #f8fcfe;
+
     }
 
     /* Header & Footer font color */
@@ -184,7 +190,8 @@
 
     main {
         grid-area: content;
-        background-color: #f8f7ff; 
+        background-color: #f8fcfe;
+ 
 
         color: #505050;
 
@@ -196,8 +203,7 @@
     nav {
         grid-area: nav;
         margin-left: 0.5rem;
-        background-color: #f8f7ff;
-
+        background-color: #f8fcfe;
         border-radius: 10px;
 
         

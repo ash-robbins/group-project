@@ -102,7 +102,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .readingactivity{
   display: flex;
   flex-direction: column;
@@ -111,5 +111,23 @@ export default {
 
   
 
+}
+
+button {
+    width: 220px;
+    background: #00AFEF;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 23px 0;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+button:hover {
+  background-color: #102770;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 </style>
