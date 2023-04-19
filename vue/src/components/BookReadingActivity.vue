@@ -11,7 +11,7 @@
         <div>
             <br>
         <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
-        <form v-else v-on:submit.prevent="updateBookActivity">
+        <form v-else v-on:submit.prevent="updatePutBookActivity">
           <label>Pages Read Today</label>
           <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
           <label>Minutes Read</label>
@@ -68,7 +68,7 @@ export default {
 
             // },
              updatePutBookActivity(){
-                bookService.updateBookActivity(this.reading_activity)
+                bookService.updateReadingActivity(this.reading_activity)
                 .then(response=>{
                 if(response.status === 200){
                     this.$router.push('/')

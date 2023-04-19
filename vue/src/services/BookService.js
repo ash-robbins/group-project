@@ -20,7 +20,7 @@ export default {
   },
 
   updateReadingActivity(reading_activity){
-    return axios.put(`/books/reading_activity/${reading_activity.book_id}`, reading_activity)
+    return axios.put(`/update/reading_activity/book/${reading_activity.bookId}`, reading_activity)
     }
 
 
