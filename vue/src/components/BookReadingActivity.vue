@@ -71,7 +71,7 @@ export default {
                 bookService.updateReadingActivity(this.reading_activity)
                 .then(response=>{
                 if(response.status === 200){
-                    this.$router.push('/')
+                    this.$router.push('/books')
                 }
                 })
                 .catch(error=>{

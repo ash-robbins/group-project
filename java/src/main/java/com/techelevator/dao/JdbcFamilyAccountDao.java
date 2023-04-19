@@ -63,7 +63,7 @@ public class JdbcFamilyAccountDao implements FamilyAccountDao {
             return familyAccount;
 
     }
-
+//******************************************** USING THIS METHOD TO CREATE A FAMILY ACCOUNT *******************************
     @Override
     public FamilyAccount setUpFamilyAccount(FamilyAccount familyAccount) {
         String sql = "INSERT INTO family_account (family_name, created_by, created_date) " +

@@ -4,6 +4,7 @@ import com.techelevator.dao.FamilyMemberDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.FamilyAccount;
 import com.techelevator.model.FamilyMember;
+import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -30,13 +31,14 @@ public class FamilyMemberController {
     /**
      * Add a new family member.
      *
-     * @param familyMember the family member to add
+     * @param user the family member to add
      * @return the added family member
      */
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/addFamilyMember", method = RequestMethod.POST)
-    public FamilyMember addFamilyMember(@Valid @RequestBody FamilyMember familyMember) {
-        return familyMemberDao.addFamilyMember(familyMember);
+    public boolean addFamilyMember(Principal principal, @RequestBody User user) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        return familyMemberDao.addFamilyMember(loggedInUserId, user.getUsername());
     }
 
     @RequestMapping(path = "/familyMembers/{userId}", method = RequestMethod.GET)
@@ -53,12 +55,14 @@ public class FamilyMemberController {
     /**
      * Get all family members by family ID.
      *
-     * @param familyId the ID of the family to retrieve family members from
      * @return a list of all family members for the specified family
      */
-    @RequestMapping(path = "/families/{familyId}/familyMembers", method = RequestMethod.GET)
-    public List<FamilyMember> getFamilyMembersByFamilyId(@PathVariable int familyId) {
-        return familyMemberDao.getFamilyMembersByFamilyId(familyId);
+
+    // ************************** FIND ALL FAMILY MEMBERS THAT BELONG TO A CREATOR OF FAMILY ACCOUNT ************************
+    @RequestMapping(path = "/families/familyMembers", method = RequestMethod.GET)
+    public List<FamilyMember> getFamilyMembersByCreator(Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        return familyMemberDao.getFamilyMembersByCreator(loggedInUserId);
     }
 
 

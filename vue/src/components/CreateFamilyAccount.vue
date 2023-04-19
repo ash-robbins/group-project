@@ -33,7 +33,8 @@ export default {
     data() {
         return {
             family: {
-                family_name: '',
+                createdBy: '',
+                familyName: '',
                 description: '',
                 code: '',
                 username: ''

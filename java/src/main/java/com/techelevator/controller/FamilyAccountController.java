@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
 
 @CrossOrigin
 @RestController
@@ -31,10 +32,14 @@ public class FamilyAccountController {
      * @param familyAccount
      * @return
      */
-
+//************************************ THIS METHOD IS TO CREATE FAMILY ACCOUNT *******************************************
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/addFamilyAccount", method = RequestMethod.POST)
-    public FamilyAccount setUpFamilyAccount(@Valid @RequestBody FamilyAccount familyAccount) {
+    public FamilyAccount setUpFamilyAccount(@Valid @RequestBody FamilyAccount familyAccount, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        familyAccount.setCreatedBy(loggedInUserId);
+        LocalDate today = LocalDate.now();
+        familyAccount.setCreatedDate(today);
         return familyAccountDao.setUpFamilyAccount(familyAccount);
     }
 
