@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Books from '../views/Books.vue'
 import NewBook from '../views/NewBook.vue'
-import CreateFamilyAccount from '../views/CreateFamilyAccount.vue'
+import FamilyAccount from '../views/FamilyAccount.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -82,7 +82,7 @@ const router = new Router({
     {
       path: '/familyAccount',
       name: 'family-account',
-      component: CreateFamilyAccount,
+      component: FamilyAccount,
       meta: {
         requiresAuth: true
       }

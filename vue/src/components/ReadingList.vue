@@ -22,8 +22,6 @@ export default {
     bookService.list()
     .then((response) => {
       this.books = response.data;
-      
-
     });
   }
 

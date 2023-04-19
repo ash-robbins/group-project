@@ -34,6 +34,7 @@ public class FamilyMemberController {
      * @param user the family member to add
      * @return the added family member
      */
+    //***************************** THIS METHOD IS TO ADD FAMILY MEMBER TO FAMILY ACCOUNT THROUGH USERNAME ******************
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/addFamilyMember", method = RequestMethod.POST)
     public boolean addFamilyMember(Principal principal, @RequestBody User user) {
