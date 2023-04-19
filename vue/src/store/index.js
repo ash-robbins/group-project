@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     books: [],
+    count: 7,
       //{
     //   book_id:'1',
     //   title: "Kafka by the Shore",

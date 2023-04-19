@@ -16,6 +16,8 @@ public class JdbcFamilyMemberDao implements FamilyMemberDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // ************************** FIND ALL FAMILY MEMBERS THAT BELONG TO A CREATOR OF FAMILY ACCOUNT ************************
+
     @Override
     public List<FamilyMember> getFamilyMembersByCreator(int createdBy) {
         List<FamilyMember> familyMembers = new ArrayList<>();

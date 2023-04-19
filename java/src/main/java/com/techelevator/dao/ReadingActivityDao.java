@@ -19,11 +19,11 @@ public interface ReadingActivityDao {
      isCompleted is boolean, need a count for if true */
     ReadingActivity getReadingSummaryByUserId(int userId);
 
-    ReadingActivity getReadingActivity(int readingActivityId);
+    ReadingActivity getReadingActivity(int readingActivityId, int userId);
 
     ReadingActivity getReadingActivityByBookId(int bookId);
 
-    ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int bookId, int userId);
+    ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int userId);
 
 
 

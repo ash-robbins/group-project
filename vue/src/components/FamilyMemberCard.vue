@@ -1,5 +1,10 @@
 <template>
-  <div>youre in the family member card compoennt family member is: {{familymember.userId}}</div>
+  <div>
+      <p>family member is: {{familymember.userId}}</p>
+      <!-- <p>family member username: {{}}</p> -->
+      
+      </div>
+  
   
 </template>
 

@@ -25,7 +25,7 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
                 readingActivity.getUserId(), readingActivity.getBookId(), readingActivity.getFormat(), readingActivity.getReadingTime(),readingActivity.getNotes(), readingActivity.getReadingPartnerId(),
                 readingActivity.isCompleted(), readingActivity.isFavorite(), readingActivity.getBookmarkPage());
-        return getReadingActivity(newId);
+        return getReadingActivity(newId, readingActivity.getUserId());
     }
 
     @Override
@@ -53,13 +53,15 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
         }
         return readingSummary;
     }
-
+// TODO GET READING ACTIVITY METHOD
     @Override
-    public ReadingActivity getReadingActivity(int readingActivityId) {
+    public ReadingActivity getReadingActivity(int readingActivityId, int userId) {
         ReadingActivity readingActivity = null;
+//        String sql = "SELECT reading_activity_id, user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number " +
+//                "FROM reading_activity " + "WHERE reading_activity_id = ?;";
         String sql = "SELECT reading_activity_id, user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number " +
-                "FROM reading_activity " + "WHERE reading_activity_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readingActivityId);
+                "FROM reading_activity " + "WHERE reading_activity_id = ? AND user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readingActivityId, userId);
         if (results.next()) {
             readingActivity = mapRowToReadingActivity(results);
         }
@@ -79,11 +81,11 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
     }
 
     @Override
-    public ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int bookId, int userId) {
+    public ReadingActivity updateReadingActivity(ReadingActivity readingActivity, int userId) {
         String sql = "UPDATE reading_activity " +
         "SET user_id = ?, book_id = ?, format = ?, reading_time = ?, notes = ?, reading_partner_id = ?, is_completed = ?, is_favorite = ?, bookmark_page_number = ? " +
                 "WHERE book_id = ? AND user_id = ?;";
-        jdbcTemplate.update(sql, readingActivity.getUserId(), readingActivity.getBookId(), readingActivity.getFormat(), readingActivity.getReadingTime(), readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), readingActivity.getBookmarkPage(), bookId, userId);
+        int checkSuccess = jdbcTemplate.update(sql, userId, readingActivity.getBookId(), readingActivity.getFormat(), readingActivity.getReadingTime(), readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), readingActivity.getBookmarkPage(), readingActivity.getBookId(), userId);
         return readingActivity;
     }
 

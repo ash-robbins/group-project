@@ -9,7 +9,8 @@
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
       <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
 
-
+     <p> userid: {{myUser}}</p>
+      <p> userid: {{$store.state.user.id}}</p>
       <!-- <div>
         Book Activity: 
         <p>{{ book.reading_activity.is_completed ? 'You Have Completed reading this Book !' : 'Book Not Yet Completed'}}</p>
@@ -43,7 +44,7 @@ export default {
     },
     data() {
     return {
-  
+  myUser: this.$store.state.user.id,
   // updateButton: true,
   book: {
     bookId: '',

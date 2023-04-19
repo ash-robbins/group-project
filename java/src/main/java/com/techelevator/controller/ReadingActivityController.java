@@ -54,8 +54,9 @@ public class ReadingActivityController {
      * @return reading activity information
      */
     @RequestMapping(path = "/books/reading_activity/{id}", method = RequestMethod.GET)
-    public ReadingActivity getActivity(@PathVariable int id) {
-        ReadingActivity readingActivity = readingActivityDao.getReadingActivity(id);
+    public ReadingActivity getActivity(@PathVariable int id, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        ReadingActivity readingActivity = readingActivityDao.getReadingActivity(id, loggedInUserId);
             if (readingActivity == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to locate Reading Activity.");
             } else {
@@ -84,13 +85,12 @@ public class ReadingActivityController {
      * Updates logged in users reading activity by book id
      *
      * @param readingActivity
-     * @param id book id user id
      * @return updated reading activity for book by user
      */
      @RequestMapping(path = "update/reading_activity/book/{id}", method = RequestMethod.PUT)
-     public ReadingActivity updateLoggedInUserReadingActivityByBookId(@Valid @RequestBody ReadingActivity readingActivity, @PathVariable int id, Principal principal) {
+     public ReadingActivity updateLoggedInUserReadingActivityByBookId(@Valid @RequestBody ReadingActivity readingActivity, Principal principal) {
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
-         ReadingActivity updateBookActivity = readingActivityDao.updateReadingActivity(readingActivity, id, loggedInUserId);
+         ReadingActivity updateBookActivity = readingActivityDao.updateReadingActivity(readingActivity, loggedInUserId);
          if (updateBookActivity == null) {
              throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to update Reading Activity.");
          } else {
