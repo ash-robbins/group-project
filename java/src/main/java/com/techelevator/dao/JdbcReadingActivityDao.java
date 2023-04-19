@@ -55,13 +55,13 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
     }
 // TODO GET READING ACTIVITY METHOD
     @Override
-    public ReadingActivity getReadingActivity(int readingActivityId, int userId) {
+    public ReadingActivity getReadingActivity(int bookId, int userId) {
         ReadingActivity readingActivity = null;
-//        String sql = "SELECT reading_activity_id, user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number " +
-//                "FROM reading_activity " + "WHERE reading_activity_id = ?;";
         String sql = "SELECT reading_activity_id, user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number " +
-                "FROM reading_activity " + "WHERE reading_activity_id = ? AND user_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readingActivityId, userId);
+                "FROM reading_activity " + "WHERE book_id = ?;";
+//        String sql = "SELECT reading_activity_id, user_id, book_id, format, reading_time, notes, reading_partner_id, is_completed, is_favorite, bookmark_page_number " +
+//                "FROM reading_activity " + "WHERE reading_activity_id = ? AND user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
         if (results.next()) {
             readingActivity = mapRowToReadingActivity(results);
         }

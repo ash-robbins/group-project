@@ -53,6 +53,7 @@ public class ReadingActivityController {
      * @param id reading activity id
      * @return reading activity information
      */
+//    `/books/reading_activity/${book_id}
     @RequestMapping(path = "/books/reading_activity/{id}", method = RequestMethod.GET)
     public ReadingActivity getActivity(@PathVariable int id, Principal principal) {
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
@@ -71,6 +72,7 @@ public class ReadingActivityController {
       * @param bookId book id
      * @return reading information
      */
+//    `/books/reading_activity/${book_id}
      @RequestMapping(path = "/reading_activity/books/{book_id}", method = RequestMethod.GET)
      public ReadingActivity getActivityByBook(@PathVariable int bookId) {
         ReadingActivity readingActivity = readingActivityDao.getReadingActivityByBookId(bookId);
