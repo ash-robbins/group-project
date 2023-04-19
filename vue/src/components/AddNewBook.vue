@@ -46,8 +46,8 @@ export default {
     bookService.postBook(this.book)
     .then(response=>{
         if(response.status === 201){
-          this.$router.push('/')
-          
+          this.$router.push('/books')
+
         } 
         })
     },
