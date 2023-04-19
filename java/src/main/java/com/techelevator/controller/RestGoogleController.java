@@ -20,17 +20,17 @@ public class RestGoogleController {
 
 
 
- @RequestMapping(path = "/Isbn", method = RequestMethod.GET)
- public BookSearchDto getBooksByIsbn(){
-        BookSearchDto bookSearchDto = new BookSearchDto();
-        return bookSearchDto;
- }
+// @RequestMapping(path = "/Isbn", method = RequestMethod.GET)
+// public BookSearchDto getBooksByIsbn(){
+//        BookSearchDto bookSearchDto = new BookSearchDto();
+//        return bookSearchDto;
+// }
 
     @RequestMapping(path = "/title/{searchTerm}", method = RequestMethod.GET)
-    public BookDto getBookSearchDto(@PathVariable String searchTerm){
+    public BookDto getBookSearchDto(@PathVariable BookSearchDto bookSearchDto){
         BookDto bookDto = new BookDto();
         //BookSearchDto bookSearchDto = new BookSearchDto();
-        bookDto = restGoogleBooksService.getBookSearchDto(searchTerm);
+        bookDto = restGoogleBooksService.getBookSearchDto(bookSearchDto);
         return bookDto;
     }
 }

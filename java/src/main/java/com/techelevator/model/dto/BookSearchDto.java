@@ -12,9 +12,8 @@ import java.math.BigDecimal;
 public class BookSearchDto {
 
     private String bookTitle;
-    private String bookSubtitle;
-    private String author;
-    private String description;
+    private Long bookisbn;
+
 
     public String getBookTitle() {
         return bookTitle;
@@ -24,27 +23,11 @@ public class BookSearchDto {
         this.bookTitle = bookTitle;
     }
 
-    public String getBookSubtitle() {
-        return bookSubtitle;
+    public Long getBookisbn() {
+        return bookisbn;
     }
 
-    public void setBookSubtitle(String bookSubtitle) {
-        this.bookSubtitle = bookSubtitle;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBookisbn(Long bookisbn) {
+        this.bookisbn = bookisbn;
     }
 }

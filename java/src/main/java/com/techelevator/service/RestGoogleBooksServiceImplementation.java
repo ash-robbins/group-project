@@ -23,6 +23,7 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     private static final String API_KEY = "API_KEY";
     private static final String API_VALUE="AIzaSyCP7XUcC-GUKqAhetF1-kZrtzoh5HEO3QU";
     private static final String API_URL= "https://www.googleapis.com/books/v1/volumes?q=intitle:";
+    private static final String API_URL_ISBN = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -39,20 +40,34 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     //create parameter that receives search term in method
 
 @Override
-    public BookDto getBookSearchDto(String searchTerm) {
+    public BookDto getBookSearchDto(BookSearchDto bookSearchDto) {
 //        String searchTerm = "empire";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(API_KEY, API_VALUE);
 
         HttpEntity request = new HttpEntity(headers);
+    ResponseEntity<GoogleBooks> response;
 
-    ResponseEntity<GoogleBooks> response = restTemplate.exchange(
-            API_URL + searchTerm +"&maxResults=1",
-            HttpMethod.GET,
-            request,
-            GoogleBooks.class
-    );
+        if(bookSearchDto.getBookisbn() == null){
+
+//            ResponseEntity<GoogleBooks>
+                    response = restTemplate.exchange(
+                    API_URL + bookSearchDto.getBookTitle() +"&maxResults=1",
+                    HttpMethod.GET,
+                    request,
+                    GoogleBooks.class
+            );
+        } else {
+//            ResponseEntity<GoogleBooks>
+                    response = restTemplate.exchange(
+                    API_URL_ISBN + bookSearchDto.getBookisbn() +"&maxResults=1",
+                    HttpMethod.GET,
+                    request,
+                    GoogleBooks.class
+            );
+        }
+
     GoogleBooks googleBooks;
     googleBooks = response.getBody();
     BookDto bookDto = new BookDto();
