@@ -7,6 +7,7 @@
       <h2>description: {{book.description}}</h2>
 
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+      <!-- <img v-bind:src="book.imageLink"/> -->
       <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
 
      <p> userid: {{myUser}}</p>

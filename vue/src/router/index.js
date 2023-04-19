@@ -11,6 +11,7 @@ import store from '../store/index'
 import BookDetails from '../views/BookDetails.vue'
 import Prizes from '../views/Prizes.vue'
 import BookReadingActivity from '../views/BookReadingActivity.vue'
+import SearchBook from '../views/SearchBook.vue'
 
 
 Vue.use(Router)
@@ -40,6 +41,14 @@ const router = new Router({
       path: '/books',
       name: 'books',
       component: Books,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/searchBook',
+      name: 'searchbook',
+      component: SearchBook,
       meta: {
         requiresAuth: true
       }

@@ -6,8 +6,14 @@
             <div class="save-button">
                 <router-link v-bind:to="{ name: 'add-book' }">Add New Book</router-link>
             </div>
-            
         </button>
+
+        <button >
+            <div class="save-button" v-on:click="$router.push({ name: 'searchbook' })">
+                <router-link v-bind:to="{ name: 'searchbook' }">Search Book</router-link>
+            </div>
+            </button>
+
     </div>
 </template>
 

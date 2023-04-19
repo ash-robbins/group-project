@@ -5,11 +5,9 @@ import com.techelevator.model.dto.BookDto;
 import com.techelevator.model.dto.BookSearchDto;
 import com.techelevator.service.RestGoogleBooksService;
 import com.techelevator.service.RestGoogleBooksServiceImplementation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/searchBy")
 public class RestGoogleController {
