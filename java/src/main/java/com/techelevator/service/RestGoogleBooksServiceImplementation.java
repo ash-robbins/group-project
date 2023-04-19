@@ -25,23 +25,11 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
     private static final String API_URL= "https://www.googleapis.com/books/v1/volumes?q=intitle:";
     private static final String API_URL_ISBN = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
 
+
     private final RestTemplate restTemplate = new RestTemplate();
-
-    //call out to endpoint using rest template
-
-    // https://www.googleapis.com/books/v1/volumes?q=intitle:{searchtermvariable}&maxResults=1
-    //method return searchDTO
-    //create a new booksearch dto
-    //populate with test values
-    //call this method from controller
-    //call controller from post man
-    //modify, instead of hardcoded values, we'll tie it to google api
-
-    //create parameter that receives search term in method
 
 @Override
     public BookDto getBookSearchDto(BookSearchDto bookSearchDto) {
-//        String searchTerm = "empire";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(API_KEY, API_VALUE);
@@ -49,9 +37,8 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
         HttpEntity request = new HttpEntity(headers);
     ResponseEntity<GoogleBooks> response;
 
-        if(bookSearchDto.getBookisbn() == null){
+        if(bookSearchDto.getBookisbn() == 0){
 
-//            ResponseEntity<GoogleBooks>
                     response = restTemplate.exchange(
                     API_URL + bookSearchDto.getBookTitle() +"&maxResults=1",
                     HttpMethod.GET,
@@ -59,7 +46,6 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
                     GoogleBooks.class
             );
         } else {
-//            ResponseEntity<GoogleBooks>
                     response = restTemplate.exchange(
                     API_URL_ISBN + bookSearchDto.getBookisbn() +"&maxResults=1",
                     HttpMethod.GET,
