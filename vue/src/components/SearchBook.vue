@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = "booksearch">
      
         <form v-on:submit.prevent="search" >
           <label for="search-title">Enter title</label>
@@ -84,6 +84,15 @@ export default {
 </script>
 
 <style scoped>
+    .booksearch{
+         margin-bottom: 1rem;
+         background-color: rgba(141, 141, 141, 0.5);
+         padding: 1rem; 
+         border-radius: 15px;
+         display: grid;
+         justify-items: center;
+         width: 50vw;
+    }
 
     button {
     width: 220px;

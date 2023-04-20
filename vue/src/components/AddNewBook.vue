@@ -79,7 +79,7 @@ export default {
 
 form {
   margin-bottom: 1rem;
-  background-color: #D3D3D3;
+  background-color: rgba(141, 141, 141, 0.5);
   padding: 1rem; 
   border-radius: 15px;
   display: grid;

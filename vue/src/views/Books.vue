@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class = "booksLibrary">
         Library of Books
         <reading-list/>
         <button v-on:click="$router.push({ name: 'add-book' })">
@@ -36,8 +36,14 @@ export default {
     color: #ffffff;
 }
 
-div {
+.booksLibrary {
   text-align: center;
+  margin-bottom: 1rem;
+  background-color: rgba(141, 141, 141, 0.5);
+  padding: 1rem; 
+  border-radius: 15px;
+  display: grid;
+  justify-items: center;
 }
 
 button {
