@@ -2,7 +2,7 @@
   <div class="container">
     <header>
         <div>
-            <img src="../images/cropped logo words.png" alt="" />
+            <img src="../images/Logo_Words.png" alt="" />
         </div>
     </header>
 
@@ -17,7 +17,7 @@
         
     </section>
     <nav>
-        <div class="content" v-if="$store.state.token != ''">
+        <div class="content">
             <div class="link-block" v-on:click="$router.push({ name: 'home' })">
                 <img src="../images/IconHome.png" alt="Home Icon">
                 <router-link v-bind:to="{ name: 'home' }"  >  Home </router-link>
@@ -105,8 +105,8 @@
         display: none;
         }
         .link-block img {
-        display: block;
-        height: 30px; /* Adjust the height of the icons as needed */
+        display: flex;
+        height: 25px; /* Adjust the height of the icons as needed */
         margin: auto; /* Center the icons horizontally */
         }
 
@@ -137,7 +137,6 @@
         nav div.content {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
         align-items: center;
         padding: 0 10px;
         
