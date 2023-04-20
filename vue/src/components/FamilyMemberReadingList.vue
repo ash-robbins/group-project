@@ -1,6 +1,6 @@
 <template>
 <div class="book-container">
-    we're in family member component
+   
 <book-card v-bind:book="book" v-for="book in books" v-bind:key="book.book_id"/>
 </div>
 </template>

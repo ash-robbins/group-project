@@ -11,7 +11,7 @@
           <input type="submit" id ="submitSearchBtn" value="Submit"/>
           </form>
 
-          <p>New Book Title: {{newbook.title}}</p>
+          <p>{{newbook.title}}</p>
           <p>{{newbook.author}}</p>
           <p>{{newbook.description}}</p>
          
