@@ -1,13 +1,15 @@
 <template>
   
      <div class = "book_details">
+       <img v-bind:src="book.coverImage"/>
         
       <h1>Title: {{book.title}}</h1>
       <h2>Author: {{book.author}}</h2>
       <h2>Description: {{book.description}}</h2>
 
-      <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+      <!-- <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" /> -->
       <!-- <img v-bind:src="book.imageLink"/> -->
+      
       <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
 
   
