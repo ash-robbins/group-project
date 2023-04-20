@@ -11,8 +11,11 @@ import java.util.List;
 
 @Component
 public class JdbcFamilyMemberDao implements FamilyMemberDao{
+    private UserDao userDao;
     private final JdbcTemplate jdbcTemplate;
-    public JdbcFamilyMemberDao (JdbcTemplate jdbcTemplate) {
+
+    public JdbcFamilyMemberDao(UserDao userDao, JdbcTemplate jdbcTemplate) {
+        this.userDao = userDao;
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -27,8 +30,11 @@ public class JdbcFamilyMemberDao implements FamilyMemberDao{
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         while (results.next()) {
             FamilyMember familyMember = mapRowToFamilyMember(results);
+            String username = userDao.getUserById(familyMember.getUserId()).getUsername();
+            familyMember.setUsername(username);
             familyMembers.add(familyMember);
         }
+
         return familyMembers;
     }
 
