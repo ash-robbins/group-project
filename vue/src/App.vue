@@ -6,16 +6,6 @@
         </div>
     </header>
 
-    <section id="left-panel">
-        <nav>
-            <menu>
-                <li>
-
-                </li>
-            </menu>
-        </nav>
-        
-    </section>
     <nav>
         <div class="content">
             <div class="link-block" v-on:click="$router.push({ name: 'home' })">
@@ -24,7 +14,7 @@
             </div> 
             
             <div class="link-block" v-on:click="$router.push({ name: 'books' })">
-                <img src="../images/IconBook.png" alt="Book Icon">
+                <img class ="icon" src="../images/IconBook.png" alt="Book Icon">
                 <router-link v-bind:to="{name: 'books'}">  Books</router-link> 
             </div>
             <div class="link-block" v-on:click="$router.push({ name: 'prizes' })">
@@ -128,11 +118,9 @@
         }
         header, footer, nav, main, aside {
             padding: 5px;
+            
         }
-        nav, aside, main {
-            margin: 10px;
         
-        }
         /* Navigation bar becomes side by side*/
         nav div.content {
         display: flex;
@@ -144,10 +132,17 @@
     
     }
 
+    
 
     /*Remove underline from nav links */
     .link-block a {
     text-decoration: none;
+    color: #505050;
+    
+    }
+
+    .icon {
+        color: yellow
     }
 
     /* Nav link alignment and appears clickable*/
@@ -185,7 +180,7 @@
     }
 
     /* Header & Footer font color */
-    header, footer {
+    header, footer, nav {
         color: #505050;
     }
 
@@ -200,20 +195,12 @@
 
     nav {
         grid-area: nav;
-        margin-left: 0.5rem;
         background-color: #f8fcfe;
         border-radius: 10px;
 
         
     }
 
-    aside {
-        grid-area: side;
-        margin-right: 0.5rem;
-        background-color: #424B54;
-
-        border-radius: 10px;
-    }
 
     nav, aside {
         color: #ffffff;
@@ -223,6 +210,8 @@
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 24px;
         
+        background-color: #f8fcfe;
+        color: #838383
         
     }
 

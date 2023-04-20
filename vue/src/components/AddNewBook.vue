@@ -67,7 +67,7 @@ export default {
     width: 50%;
     height: 65px;
     border: 1px solid white;
-    background: rgb(226, 226, 226);
+    background: yellow;
     padding: 0 20px;
     border-radius: 15px;
     outline: none;
@@ -77,9 +77,20 @@ export default {
     margin-top: 5px;
 }
 
+form {
+  margin-bottom: 1rem;
+  background-color: blue;
+  padding: 1rem; 
+  border-radius: 15px;
+  display: grid;
+  justify-items: center;
+  width: 50vw;
+  
+}
+
 button {
     width: 220px;
-    background: #00AFEF;
+    background: linear-gradient(to right,#00afef,#ad63f1 );
     color: white;
     border-radius: 15px;
     border: none;
@@ -89,12 +100,12 @@ button {
     cursor: pointer;
     margin-left: 10px;
 }
+
 button:hover {
-  background-color: #102770;
+  background: linear-gradient(to right,#102770,#ad63f1 );
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
-
 
 
 </style>

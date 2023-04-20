@@ -103,29 +103,24 @@ h1{
   background-image: url('/images/openbook.jpg');
   background-size: cover;
   background-position: center;
-
-  /* !!! */
   border-radius: 15px;
-  /*!!!*/
+  
 }
 
 form {
   margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
   padding: 1rem; 
-
-  /* !!! */
   border-radius: 15px;
   display: grid;
   justify-items: center;
-  /*!!!*/
   
 }
+
 label {
   margin-right: 0.5rem;
 }
 
-/* !!! */
 button {
     width: 220px;
     background: linear-gradient(to right,#00afef,#ad63f1 );
@@ -145,7 +140,6 @@ button:hover {
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
-
 .link {
   text-align: center;
   color: black;
@@ -156,23 +150,18 @@ button:hover {
 
 }
 
-body {
-  
-}
+    @media (max-width: 768px) {
 
+        form {
+          height: 50vh;
+        }
 
-/*
-.form-input-group {
-  position: relative;
-}
+        #login {
+          height: 60vh;
+          margin-bottom: 0px;
 
-.input-icon {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-}
-*/
-
-/*!!!*/
+          
+    }
+    }
 
 </style>

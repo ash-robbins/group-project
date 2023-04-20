@@ -2,7 +2,8 @@
     <div class="card" v-bind:class="{ read: book.read }">
       
         <!-- <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" /> -->
-        <img v-bind:src="book.coverImage"/>
+        <img v-bind:src="book.coverImage" />
+
        
         <div class="title-author">
         <h2 class="book-title">
@@ -38,11 +39,18 @@ export default {
 
 <style scoped>
 
-
+.title-author a {
+    text-decoration: none;
+    color: #00AFEF;
+    
+    
+}
 
 img {
     border-radius: 15px;
     margin-top: 20px;
+    width: 70%;
+    height: 60%;
 }
 
 .card a {
@@ -53,7 +61,7 @@ img {
     background-color: #ffffff;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    width: 250px;
+    width: 200px;
     height: auto;
     margin: 10px;
     padding: 0px;
@@ -94,13 +102,11 @@ button:hover {
 
 
 @media (max-width: 768px) {
-    .card {
-        width: 45%;
-    }
 
     img {
         height: 60%;
         margin-top: 20px;
+        
     }
 
     .card .book-title {
@@ -108,8 +114,19 @@ button:hover {
     text-align: center;
     }
 
-   
 
+}
+
+
+
+
+
+.book-author {
+  position: relative;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  
 }
 
 </style>
