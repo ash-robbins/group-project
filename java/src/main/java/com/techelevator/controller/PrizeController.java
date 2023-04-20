@@ -5,6 +5,7 @@ import com.techelevator.dao.PrizeWinnerDao;
 import com.techelevator.dao.ReadingActivityDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Books;
+import com.techelevator.model.WinningUserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.model.Prize;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 
 @CrossOrigin
@@ -30,6 +32,22 @@ public class PrizeController {
         this.prizeWinnerDao = prizeWinnerDao;
         this.userDao = userDao;
     }
+
+    //************************ THIS METHOD DECLARES THE WINNER IN PAGES OF FAMILY MEMBERS OF A USER *****************************
+
+    @RequestMapping(path="/prizewinner", method=RequestMethod.GET)
+    public WinningUserDto getWinnerFamilyMember(Principal principal){
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        return prizeWinnerDao.selectWinningFamilyMember(loggedInUserId);
+    }
+
+
+
+
+
+
+
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/prize", method = RequestMethod.POST)
