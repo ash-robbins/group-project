@@ -33,8 +33,10 @@
 
     <button v-if="newMemberForm == true" v-on:click.prevent="newMemberForm = false" >Add New Family Member</button>
     <form v-else v-on:submit.prevent="addFamilyMember">
-        <label>Please enter user name</label>
-        <input type="text" v-model="newFamilyMember.username" />
+        <br><br>
+        <label for="username">Enter members username     </label>
+        <input type="text" id="username" v-model="newFamilyMember.username" placeholder="family member's username" />
+       
         <input type="submit" value="Submit"/>
     </form>
   </div>

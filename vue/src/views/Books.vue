@@ -1,6 +1,6 @@
 <template>
     <div class = "booksLibrary">
-        Library of Books
+        Your Library of Books
         <reading-list/>
         <!-- <button v-on:click="$router.push({ name: 'add-book' })">
             <div class="save-button">
