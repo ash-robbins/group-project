@@ -15,15 +15,16 @@
         <!-- <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button> -->
         <button id="update-book-activity-btn" v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
         <form v-else v-on:submit.prevent="updatePutBookActivity">
-          <label>Pages Read Today</label>
-          <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
-          <label>Minutes Read</label>
-          
-        
-          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.readingTime"/>
-          <label>Notes</label>
-          <input type="text" placeholder="notes" key="notes" v-model="reading_activity.notes"/>
-          <label>Completed</label>
+             <label for="pagesRead"> Pages Read Today: </label>
+          <input class ="new-book-input" type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
+
+          <label for="minutesRead"> Pages Read Today: </label>
+          <input class ="new-book-input" type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.readingTime"/>
+
+          <label for="bookNotes"> Notes: </label>
+          <input class ="new-book-input" type="text" placeholder="Notes" key="notes" v-model="reading_activity.notes"/>
+
+          <label>Completed: </label>
           <input type="checkbox" placeholder="completed" v-model="reading_activity.completed"/>
 
           <label>Is Favorited: </label>
@@ -140,5 +141,27 @@ button:hover,#update-book-activity-btn:hover,#submit_reading_activity_btn:hover 
   background: linear-gradient(to right,#102770,#ad63f1 );
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+}
+.new-book-input{
+   width: 90%;
+    height: 40px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
 }
 </style>

@@ -1,15 +1,17 @@
 <template>
   <div class = "booksearch">
      
-        <form v-on:submit.prevent="search" >
-          <label for="search-title">Enter title</label>
-          <input id="search-title" type="text" v-model="searchBook.title" />
-           <label for="search-isbn">Enter Isbn</label>
-          <input id="search-isbn" type="text" v-model="searchBook.isbn" />
-         <input type="submit" value="Submit"/>
+          <form v-on:submit.prevent="search" >
+          <label for="search-title">Enter Title:  </label>
+          <input class = "search-book-input" type="text" placeholder="Enter Title" id="searchTitle" v-model="searchBook.title" />
+          <label for="search-isbn">Enter ISBN:  </label>
+          <input class = "search-book-input" type="text" placeholder="Enter ISBN" id="searchIsbn" v-model="searchBook.isbn" />
+          
+          
+          <input type="submit" id ="submitSearchBtn" value="Submit"/>
           </form>
 
-          <p>new book title: {{newbook.title}}</p>
+          <p>New Book Title: {{newbook.title}}</p>
           <p>{{newbook.author}}</p>
           <p>{{newbook.description}}</p>
          
@@ -93,9 +95,25 @@ export default {
          justify-items: center;
          width: 50vw;
     }
-
+    #submitSearchBtn{
+    width: 200px;
+    height: 50px; /* set the desired height */
+    background: linear-gradient(to right,#00afef,#ad63f1);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 0 20px; /* reduce the vertical padding */
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  
+    justify-content: center; /* center the text horizontally */
+    align-items: center; /* center the text vertically */
+}
+    
     button {
-    width: 220px;
+    width: 200px;
     background: linear-gradient(to right,#00afef,#ad63f1 );
     color: white;
     border-radius: 15px;
@@ -111,5 +129,27 @@ export default {
     background: linear-gradient(to right,#102770,#ad63f1 );
     color: #ffffff;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+}
+.search-book-input{
+     width: 90%;
+    height: 40px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
 }
 </style>

@@ -1,10 +1,17 @@
 <template>
   <form class="new-book-form" v-on:submit.prevent>
     <!-- <input class="new-book-input" type="text" placeholder="Book-ID" v-model="book.book_id" /> -->
-    <input class="new-book-input" type="text" placeholder="Title" v-model="book.title" />
-    <input class="new-book-input" type="text" placeholder="Author" v-model="book.author" />
-    <input class="new-book-input" type="text" placeholder="ISBN" v-model="book.isbn" />
-    <textarea class="new-book-input" id="description" placeholder="Description of Book" v-model="book.description" />
+
+
+    <label for="booktitle">Title: </label>
+    
+    <input class="new-book-input" type="text" placeholder="Title" id ="bookTitle" v-model="book.title" />
+    <label for="bookAuthor">Author: </label>
+    <input class="new-book-input" type="text" placeholder="Author" id ="bookAuthor" v-model="book.author" />
+    <label for="bookIsbn">ISBN: </label>
+    <input class="new-book-input" type="text" placeholder="ISBN" id ="bookIsbn" v-model="book.isbn" />
+     <label for="description">Description: </label>
+    <textarea class="new-book-input" id="description" placeholder="Description of Book"  v-model="book.description" />
     <br>
     <button v-on:click="postBook()" >Add Book to List</button>
     <button v-on:click="cancel()">Cancel </button>
@@ -64,17 +71,17 @@ export default {
 <style scoped>
 
 .new-book-input {
-    width: 50%;
-    height: 65px;
+ width: 50%;
+    height: 40px;
     border: 1px solid white;
-    background: white;
+    background: rgb(226, 226, 226);
     padding: 0 20px;
     border-radius: 15px;
     outline: none;
     font-weight: 400;
     font-size: 14px;
     transition: all 0.5s ease;
-    margin-top: 5px;
+    margin-top: 5px; 
 }
 
 form {
@@ -85,6 +92,7 @@ form {
   display: grid;
   justify-items: center;
   width: 50vw;
+  
   
 }
 
