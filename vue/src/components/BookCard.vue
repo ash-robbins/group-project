@@ -61,7 +61,7 @@ img {
     background-color: #ffffff;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    width: 200px;
+    width: 180px;
     height: auto;
     margin: 10px;
     padding: 0px;
@@ -76,6 +76,8 @@ img {
 .card .book-title {
     font-size: 1rem;
     text-align: center;
+    margin: 10px;
+    margin-bottom: 0;
 }
 
 .card .book-author {
@@ -116,9 +118,6 @@ button:hover {
 
 
 }
-
-
-
 
 
 .book-author {

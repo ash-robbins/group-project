@@ -33,7 +33,7 @@ export default {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-
+    background-color: #f8fcfe;
   
 
     
@@ -56,6 +56,14 @@ button:hover {
   background: linear-gradient(to right,#102770,#ad63f1 );
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+@media (max-width: 768px) {
+
+  .book-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 </style>

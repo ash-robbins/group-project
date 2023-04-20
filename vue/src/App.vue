@@ -141,9 +141,7 @@
     
     }
 
-    .icon {
-        color: yellow
-    }
+   
 
     /* Nav link alignment and appears clickable*/
     div.content {
