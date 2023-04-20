@@ -39,8 +39,7 @@ export default {
 .booksLibrary {
   text-align: center;
   margin-bottom: 1rem;
-  background-color: rgba(141, 141, 141, 0.5);
-  padding: 1rem; 
+  background-color: #f8fcfe; 
   border-radius: 15px;
   display: grid;
   justify-items: center;
