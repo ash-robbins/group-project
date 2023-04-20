@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class JdbcReadingActivityDao implements ReadingActivityDao {
 
-    private final JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     public JdbcReadingActivityDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -87,8 +87,13 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
                 "WHERE book_id = ? AND user_id = ?;";
         String sql1 = "SELECT reading_time, bookmark_page_number FROM reading_activity WHERE book_id = ? AND user_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql1, readingActivity.getBookId(), userId);
-        int initialReadingTime = result.getInt("reading_time");
-        int originalPage = result.getInt("bookmark_page_number");
+        Integer initialReadingTime=0;
+        Integer originalPage =0;
+        if(result.next()){
+             initialReadingTime =result.getInt("reading_time");
+             originalPage= result.getInt("bookmark_page_number");
+        }
+
         int finalReadingTime = initialReadingTime + readingActivity.getReadingTime();
         int finalPageNum = originalPage + readingActivity.getBookmarkPage();
         int checkSuccess = jdbcTemplate.update(sql, userId, readingActivity.getBookId(), readingActivity.getFormat(), finalReadingTime, readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), finalPageNum, readingActivity.getBookId(), userId);
