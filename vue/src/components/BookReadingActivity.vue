@@ -12,7 +12,8 @@
 
         <div>
             <br>
-        <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
+        <!-- <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button> -->
+        <button id="update-book-activity-btn" v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
         <form v-else v-on:submit.prevent="updatePutBookActivity">
           <label>Pages Read Today</label>
           <input type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
@@ -27,7 +28,7 @@
 
           <label>Is Favorited: </label>
           <input type="checkbox" placeholder="is Favorited" v-model="reading_activity.favorite"/>
-          <input type="submit" value="Submit"/>
+          <input id = "submit_reading_activity_btn" type="submit" value="Submit"/>
         </form>
         </div>
       
@@ -118,9 +119,11 @@ export default {
 
 }
 
-button {
+  
+
+button,#update-book-activity-btn, #submit_reading_activity_btn {
     width: 220px;
-    background: #00AFEF;
+    background: linear-gradient(to right,#00afef,#ad63f1 );
     color: white;
     border-radius: 15px;
     border: none;
@@ -130,8 +133,8 @@ button {
     cursor: pointer;
     margin-left: 10px;
 }
-button:hover {
-  background-color: #102770;
+button:hover,#update-book-activity-btn:hover,#submit_reading_activity_btn:hover {
+  background: linear-gradient(to right,#102770,#ad63f1 );
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
