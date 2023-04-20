@@ -4,7 +4,11 @@ export default {
 
   list(){
     return axios.get('/families/familyMembers')
+  },
+  addFamilyMember(newFamilyMember){
+      return axios.post(`/addFamilyMember`, newFamilyMember)
   }
+  
 
 //   getBook(book_id) {
 //     return axios.get(`/books/${book_id}`)

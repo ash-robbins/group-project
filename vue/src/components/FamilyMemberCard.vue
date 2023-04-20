@@ -1,7 +1,9 @@
 <template>
   <div>
-      <p>family member is: {{familymember.userId}}</p>
+      <!-- <p>family member is: {{familymember.userId}}</p> -->
       <!-- <p>family member username: {{}}</p> -->
+
+     
       
       </div>
   

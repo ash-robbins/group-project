@@ -2,11 +2,11 @@
     <div class = "booksLibrary">
         Library of Books
         <reading-list/>
-        <button v-on:click="$router.push({ name: 'add-book' })">
+        <!-- <button v-on:click="$router.push({ name: 'add-book' })">
             <div class="save-button">
                 <router-link v-bind:to="{ name: 'add-book' }">Add New Book</router-link>
             </div>
-        </button>
+        </button> -->
 
         <button >
             <div class="save-button" v-on:click="$router.push({ name: 'searchbook' })">
