@@ -19,7 +19,8 @@
             >{{ topic.title }}</router-link>
           </td> -->
           <td>
-              {{familymember.username[0].toUpperCase()}}{{familymember.username.slice(1)}}
+            <router-link v-bind:to="{name: 'familymember-books', params:{id: familymember.userId}}">  {{familymember.username[0].toUpperCase()}}{{familymember.username.slice(1)}} </router-link>
+            
               </td>
           <!-- <td>
             <router-link :to="{ name: 'EditTopic', params: {id: topic.id} }">Edit</router-link>
@@ -71,7 +72,7 @@ export default {
         familyMemberService.addFamilyMember(this.newFamilyMember)
         .then(response=>{
             if(response.status === 201 ){
-                 this.$router.push('/')
+                 this.$router.push('/books')
             }
         })
         this.newMemberForm = true;

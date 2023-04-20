@@ -7,6 +7,17 @@ export default {
   },
   addFamilyMember(newFamilyMember){
       return axios.post(`/addFamilyMember`, newFamilyMember)
+  },
+
+  verifyFamilyAccount(){
+      return axios.get(`/verifyfamilyaccount`)
+  },
+  addFamilyAccount(family){
+      return axios.post(`/addFamilyAccount`, family)
+  },
+
+  viewFamilyMemberBooks(id){
+    return axios.get(`/books/listbooks/${id}`)
   }
   
 

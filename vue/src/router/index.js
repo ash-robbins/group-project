@@ -12,6 +12,8 @@ import BookDetails from '../views/BookDetails.vue'
 import Prizes from '../views/Prizes.vue'
 import BookReadingActivity from '../views/BookReadingActivity.vue'
 import SearchBook from '../views/SearchBook.vue'
+import FamilyMemberReadingList from '../components/FamilyMemberReadingList.vue'
+//import ReadingList from '../components/ReadingList.vue'
 
 
 Vue.use(Router)
@@ -96,6 +98,16 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: `/books/listbooks/:id`,
+      name: 'familymember-books',
+      component: FamilyMemberReadingList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    
     {
       path: "/login",
       name: "login",

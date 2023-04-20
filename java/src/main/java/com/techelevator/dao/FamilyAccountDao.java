@@ -17,6 +17,8 @@ public interface FamilyAccountDao{
 
       public FamilyAccount getFamilyAccountById(int familyId);
 
+      public boolean hasFamilyAccount(int userId);
+
       //ADD FAMILY ACCOUNT
       FamilyAccount setUpFamilyAccount(FamilyAccount familyAccount);
 

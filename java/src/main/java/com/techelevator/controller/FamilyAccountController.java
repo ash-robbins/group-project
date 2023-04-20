@@ -43,6 +43,19 @@ public class FamilyAccountController {
         return familyAccountDao.setUpFamilyAccount(familyAccount);
     }
 
+    // ********************************* THIS METHOD IS TO CHECK IF USER HAS FAMILY ACCOUNT ************************************
+    @RequestMapping(path="/verifyfamilyaccount", method=RequestMethod.GET)
+    public boolean hasFamilyAccount(Principal principal){
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        return familyAccountDao.hasFamilyAccount(loggedInUserId);
+    }
+
+
+
+
+
+
+
     @RequestMapping(path = "family_account/{id}")
     public FamilyAccount getFamilyAccountByFamilyId(@PathVariable int id) {
         FamilyAccount familyAccount = new FamilyAccount();

@@ -67,6 +67,8 @@ public class BookController {
      * @param principal
      * @return list of users books
      */
+
+    //**************************THIS METHOD IS TO SEE LIST OF USERS BOOKS *********************************************
     @RequestMapping(path = "books/listbooks", method = RequestMethod.GET)
    public List<Books> listBooksByLoggedInUser(Principal principal) {
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
@@ -77,6 +79,18 @@ public class BookController {
             return booksList;
         }
    }
+
+   // ***************************** THIS METHOD IS TO LISTS BOOKS BY ANY USERID *********************************************
+    @RequestMapping(path = "books/listbooks/{id}", method = RequestMethod.GET)
+    public List<Books> listBooksByUserId(@PathVariable int id) {
+
+        List<Books> booksList = booksDao.listBooksByUserId(id);
+        if (booksList == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Books list not found.");
+        } else {
+            return booksList;
+        }
+    }
 
 
     /**

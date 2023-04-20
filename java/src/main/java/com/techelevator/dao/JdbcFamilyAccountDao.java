@@ -73,6 +73,14 @@ public class JdbcFamilyAccountDao implements FamilyAccountDao {
     }
 
     @Override
+    public boolean hasFamilyAccount(int userId) {
+
+        String sql = "SELECT COUNT(*) FROM family_account WHERE created_by = ?;";
+        int numRows = jdbcTemplate.queryForObject(sql, Integer.class, userId);
+       return numRows  == 0 ?  false : true;
+    }
+
+    @Override
     public FamilyAccount updateFamilyAccount(FamilyAccount familyAccount, int userId) {
         String sql = "UPDATE family_account " +
                 "SET family_name = ?, created_by = ?, created_date = ? " +

@@ -3,7 +3,7 @@
         <form class="family-form" v-on:submit.prevent="saveFamily">
             <div class="family-login-field">
                 <i class="input-icon uil uil-user"></i>
-                <input class="family-input" type="text" placeholder="Family Name" id="family-name" v-model="family.family_name" /><br><br>
+                <input class="family-input" type="text" placeholder="Family Name" id="family-name" v-model="family.familyName" /><br><br>
             </div>
             
             <div class="family-login-field">
@@ -11,10 +11,10 @@
                 <input class="family-input" type="text" placeholder="Family Description" id="family-description" v-model="family.description" /> <br><br>
             </div>
             
-            <div class="family-login-field">
+            <!-- <div class="family-login-field">
                 <i class="uil uil-users-alt"></i>
                 <input class="family-input" type="text" placeholder="Family Code" v-model="family.code" /><br><br>
-            </div>
+            </div> -->
             
             <button>Save</button>
 
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import familyMemberService from '../services/FamilyMemberService.js'
 
 import '@iconscout/unicons/css/line.css';
 
@@ -35,22 +36,28 @@ export default {
             family: {
                 createdBy: '',
                 familyName: '',
-                description: '',
-                code: '',
-                username: ''
+                description: ''
             }
         }
     },
     methods:{
-         saveFamily() {
-            this.$store.commit('CREATE_FAMILY', this.family);
-            this.family = {
-                family_name: '',
-                description: '',
-                code: '',
-                username: ''
-            }
-            this.$router.push({name: 'books'})
+        //  saveFamily() {
+        //     this.$store.commit('CREATE_FAMILY', this.family);
+        //     this.family = {
+        //         family_name: '',
+        //         description: '',
+        //         code: '',
+        //         username: ''
+        //     }
+        //     this.$router.push({name: 'books'})
+        // }
+        saveFamily(){
+            familyMemberService.addFamilyAccount(this.family)
+            .then(response=>{
+                if(response.status == 201){
+                    this.$router.push('/books')
+                }
+            })
         }
     }
 
