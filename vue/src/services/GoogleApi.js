@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-      getBook(title) {
-    return axios.get(`/searchBy/title/${title}`)
+      getBook(searchBook) {
+    return axios.get(`/searchBy/title/${searchBook.title}/isbn/${searchBook.isbn}`)
   },
 
 //   list(){

@@ -1,6 +1,6 @@
 <template>
   <div>
-      you're book id number is: {{$route.params.book_id}}
+    
       <book-detail v-bind:bookprop="parseInt($route.params.book_id)" />
       </div>
 </template>

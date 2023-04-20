@@ -1,9 +1,6 @@
 package com.techelevator.service;
 
-import com.google.gson.Gson;
-
 import com.techelevator.model.dto.BookDto;
-import com.techelevator.model.dto.BookGoogleDto;
 import com.techelevator.model.dto.BookSearchDto;
 import com.techelevator.model.googlebooksapi.GoogleBooks;
 import com.techelevator.model.googlebooksapi.ImageLinks;
@@ -13,10 +10,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.awt.*;
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class RestGoogleBooksServiceImplementation implements RestGoogleBooksService {
@@ -67,7 +61,7 @@ public class RestGoogleBooksServiceImplementation implements RestGoogleBooksServ
 
     ImageLinks imageLinks = myItem.getVolumeInfo().getImageLinks();
     String imageLink = imageLinks.getThumbnail();
-    bookDto.setImageLink(imageLink);
+    bookDto.setCoverImage(imageLink);
 
     bookDto.setTitle(myItem.getVolumeInfo().getTitle());
     bookDto.setDescription(myItem.getVolumeInfo().getDescription());

@@ -4,9 +4,9 @@
      <p>Pages Read: {{reading_activity.bookmarkPage}} Pages Read</p>
      <p>Completed: {{reading_activity.completed}} </p>
       <p>Favorite: {{reading_activity.favorite}}</p>
-     <p> userid: {{reading_activity.userId}}</p>
+     <!-- <p> userid: {{reading_activity.userId}}</p>
       <p> userid: {{$store.state.user.id}}</p>
-      <p>userid again {{userIdAgain}}</p>
+      <p>userid again {{userIdAgain}}</p> -->
      <!-- {{book.is_completed ? 'You completed this book!' : 'You have not completed this book yet. Keep reading!'}} -->
 
 

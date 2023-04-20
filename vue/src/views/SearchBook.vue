@@ -1,6 +1,6 @@
 <template>
   <div>
-      you're in search book component
+      
       <search-book/>
       </div>
 </template>

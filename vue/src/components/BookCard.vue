@@ -1,7 +1,8 @@
 <template>
     <div class="card" v-bind:class="{ read: book.read }">
       
-        <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+        <!-- <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" /> -->
+        <img v-bind:src="book.coverImage"/>
        
         <h2 class="book-title">
             <router-link v-bind:to="{name: 'book-details', params: { book_id: book.bookId}}">

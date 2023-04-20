@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div>you're in family members component 1</div>
+ 
 <family-members/>
   </div>
 </template>

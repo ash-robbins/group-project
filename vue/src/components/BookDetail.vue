@@ -1,7 +1,7 @@
 <template>
   
      <div>
-        isbn: {{book.isbn}}
+        
       <h1>title: {{book.title}}</h1>
       <h2>author: {{book.author}}</h2>
       <h2>description: {{book.description}}</h2>
@@ -10,8 +10,7 @@
       <!-- <img v-bind:src="book.imageLink"/> -->
       <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
 
-     <p> userid: {{myUser}}</p>
-      <p> userid: {{$store.state.user.id}}</p>
+  
       <!-- <div>
         Book Activity: 
         <p>{{ book.reading_activity.is_completed ? 'You Have Completed reading this Book !' : 'Book Not Yet Completed'}}</p>

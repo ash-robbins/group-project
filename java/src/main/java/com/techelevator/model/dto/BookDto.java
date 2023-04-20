@@ -1,16 +1,11 @@
 package com.techelevator.model.dto;
 
-import com.techelevator.model.googlebooksapi.ImageLinks;
-import com.techelevator.model.googlebooksapi.IndustryIdentifier;
-
-import java.util.List;
-
 public class BookDto {
     private String title;
     private String author;
     private String description;
     private Long isbn;
-    private String imageLink;
+    private String coverImage;
 
 
     public String getTitle() {
@@ -45,12 +40,12 @@ public class BookDto {
         this.isbn = isbn;
     }
 
-    public String getImageLink() {
-        return imageLink;
+    public String getCoverImage() {
+        return coverImage;
     }
 
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 }
 

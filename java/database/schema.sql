@@ -36,11 +36,11 @@ CREATE TABLE family_account (
 
 CREATE TABLE books (
     book_id SERIAL,
-    isbn int NOT NULL UNIQUE,
-    title varchar(40) NOT NULL,
-    author varchar(40) NOT NULL,
-    cover_image varchar(100) NOT NULL,
-    description varchar(200)
+    isbn bigint NOT NULL UNIQUE,
+    title varchar(250) NOT NULL,
+    author varchar(250) NOT NULL,
+    cover_image varchar(250) NOT NULL,
+    description varchar(2500)
 
 --    CONSTRAINT pk_books PRIMARY KEY (book_id),
 --    CONSTRAINT uq_books UNIQUE (isbn)
