@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>
-        <div>
+        <div class="link-block" v-on:click="$router.push({ name: 'home' })">
             <img src="../images/Logo_Words.png" alt="" />
         </div>
     </header>
@@ -128,20 +128,20 @@
         align-items: center;
         padding: 0 10px;
         
-    }
-    
-    }
+        }
+    } /* End of Small View */
 
     
-
     /*Remove underline from nav links */
     .link-block a {
     text-decoration: none;
     color: #505050;
-    
     }
 
-   
+    /* Logo clickable */
+   .link-block > img {
+       cursor: pointer;
+   }
 
     /* Nav link alignment and appears clickable*/
     div.content {
