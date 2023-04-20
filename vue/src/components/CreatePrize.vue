@@ -1,8 +1,15 @@
 <template>
   <div class = "prizeform">
     <!-- <button v-if="updateButton" v-on:click.prevent="updateButton = false">Set new Prize</button> -->
-    <button id="update-button" v-if="updateButton" v-on:click.prevent="updateButton = false">Set new Prize</button>
-      <form v-else v-on:submit.prevent="postPrize">
+    <button id="update-button" v-if="updateButton" v-on:click.prevent="getPrizeWinner">Family Member Prize Winner</button>
+
+    <div v-else>
+     <div>Winner is : {{this.prizeWinner.username}}</div>
+      <div>With total number of Pages read: {{this.prizeWinner.totalPages}} pages</div>
+      <img src="https://i.gifer.com/2cOJ.gif"/>
+
+    </div>
+      <!-- <form v-else v-on:submit.prevent="postPrize">
         <label for="prize-description">Prize Description:  </label>
         <input id="prize description" class="prize-input" type="text" placeholder="Prize Description" v-model="prize.description"/><br>
         
@@ -14,7 +21,7 @@
         
         <input id="submit_prize" type="submit" value="Submit"/>
 
-      </form>
+      </form> -->
     </div>
 </template>
 
@@ -32,6 +39,10 @@ export default {
             maxPrizes: 0,
             startDate: '',
             endDate: ''
+      }, 
+      prizeWinner:{
+        username: '',
+        totalPages: ''
       }
         }
     },
@@ -44,6 +55,15 @@ export default {
         } 
         })
         
+    },
+    getPrizeWinner(){
+    prizeService.getPrizeWinner()
+    .then(response=>{
+      this.prizeWinner = response.data
+      this.updateButton = false;
+    })
+
+   
     },
     cancel(){
         this.$router.push('/')

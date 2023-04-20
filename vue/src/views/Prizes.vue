@@ -1,6 +1,6 @@
 <template>
   <div>
-      Prizes View
+      BookWorm Winner
       <create-prize/>
   </div>
 </template>

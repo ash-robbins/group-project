@@ -27,6 +27,9 @@ export default {
     postPrize(prize) {
         return axios.post('/prize', prize)
     },
+    getPrizeWinner(){
+        return axios.get(`/prizewinner`)
+    }
   
   
   
