@@ -1,7 +1,8 @@
 <template>
   <div class ="readingactivity">
-      <p>Time Spent Reading: {{reading_activity.readingTime}} Minutes</p>
+      
      <p>Pages Read: {{reading_activity.bookmarkPage}} Pages Read</p>
+     <p>Time Spent Reading: {{reading_activity.readingTime}} Minutes</p>
      <p>Completed: {{reading_activity.completed}} </p>
       <p>Favorite: {{reading_activity.favorite}}</p>
      <!-- <p> userid: {{reading_activity.userId}}</p>
@@ -18,7 +19,7 @@
              <label for="pagesRead"> Pages Read Today: </label>
           <input class ="new-book-input" type="text" placeholder="Pages Read" key="pages-read" v-model="reading_activity.bookmarkPage"/>
 
-          <label for="minutesRead"> Pages Read Today: </label>
+          <label for="minutesRead"> Minutes Read Today: </label>
           <input class ="new-book-input" type="text" placeholder="Minutes Read" key="minutes-read" v-model="reading_activity.readingTime"/>
 
           <label for="bookNotes"> Notes: </label>
