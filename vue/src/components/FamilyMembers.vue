@@ -4,22 +4,22 @@
     <table>
       <thead>
         <tr>
-          <th>UserId</th>
-          <th>Username</th>
+          <!-- <th>UserId</th> -->
+          <th>Your Family Members</th>
           <!-- <th>Edit</th>
           <th>Delete</th> -->
         </tr>
       </thead>
       <tbody>
         <tr v-bind:familymember="familymember" v-for="familymember in familyMembers"  v-bind:key="familymember.userId">
-          <td width="80%">
+          <!-- <td width="80%">
             User Id Number: {{familymember.userId}} 
-            <!-- <router-link
+            <router-link
               v-bind:to="{ name: 'Messages', params: { id: topic.id } }"
-            >{{ topic.title }}</router-link> -->
-          </td>
+            >{{ topic.title }}</router-link>
+          </td> -->
           <td>
-              {{familymember.username}}
+              {{familymember.username[0].toUpperCase()}}{{familymember.username.slice(1)}}
               </td>
           <!-- <td>
             <router-link :to="{ name: 'EditTopic', params: {id: topic.id} }">Edit</router-link>

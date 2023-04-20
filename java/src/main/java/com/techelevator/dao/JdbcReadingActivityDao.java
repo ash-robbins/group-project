@@ -85,7 +85,13 @@ public class JdbcReadingActivityDao implements ReadingActivityDao {
         String sql = "UPDATE reading_activity " +
         "SET user_id = ?, book_id = ?, format = ?, reading_time = ?, notes = ?, reading_partner_id = ?, is_completed = ?, is_favorite = ?, bookmark_page_number = ? " +
                 "WHERE book_id = ? AND user_id = ?;";
-        int checkSuccess = jdbcTemplate.update(sql, userId, readingActivity.getBookId(), readingActivity.getFormat(), readingActivity.getReadingTime(), readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), readingActivity.getBookmarkPage(), readingActivity.getBookId(), userId);
+        String sql1 = "SELECT reading_time, bookmark_page_number FROM reading_activity WHERE book_id = ? AND user_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql1, readingActivity.getBookId(), userId);
+        int initialReadingTime = result.getInt("reading_time");
+        int originalPage = result.getInt("bookmark_page_number");
+        int finalReadingTime = initialReadingTime + readingActivity.getReadingTime();
+        int finalPageNum = originalPage + readingActivity.getBookmarkPage();
+        int checkSuccess = jdbcTemplate.update(sql, userId, readingActivity.getBookId(), readingActivity.getFormat(), finalReadingTime, readingActivity.getNotes(), readingActivity.getReadingPartnerId(), readingActivity.isCompleted(), readingActivity.isFavorite(), finalPageNum, readingActivity.getBookId(), userId);
         return readingActivity;
     }
 
