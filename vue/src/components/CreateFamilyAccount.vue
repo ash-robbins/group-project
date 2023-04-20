@@ -61,24 +61,28 @@ export default {
 
 
 .family-input  {
-  width: 40%;
-  height: 40px;
-  border: 1px solid black;
-  padding: 0 20px;
-  border-radius: 15px;
-  outline: none;
-  font-weight: 400;
-  font-size: 14px;
-  transition: all 0.5s ease;
-  margin-top: 5px;
-  color: black;
+  width: 50%;
+    height: 40px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px; 
 }
 
 
-form{
+.family{
+  text-align: center;
   margin-bottom: 1rem;
-  background-color: rgba(255, 255, 255, 0.5); /* white with 50% transparency */
+  background-color: rgba(141, 141, 141, 0.5);
   padding: 1rem; 
+  border-radius: 15px;
+ 
+  justify-items: center;
 }
 body {
   margin: 0;

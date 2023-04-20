@@ -110,12 +110,15 @@ export default {
 
 <style scoped>
 .readingactivity{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   
+
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: rgba(141, 141, 141, 0.5);
+  padding: 1rem; 
+  border-radius: 15px;
+  display: grid;
+  justify-items: center;
 
 }
 
