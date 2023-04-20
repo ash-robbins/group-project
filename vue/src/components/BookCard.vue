@@ -4,6 +4,7 @@
         <!-- <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" /> -->
         <img v-bind:src="book.coverImage"/>
        
+        <div class="title-author">
         <h2 class="book-title">
             <router-link v-bind:to="{name: 'book-details', params: { book_id: book.bookId}}">
               {{ book.title }}
@@ -11,6 +12,8 @@
         </h2>
         
         <h3 class="book-author">{{ book.author }}</h3>
+        </div>
+
         <div class="button-container" v-if="! enableAdd">
             <!-- <button class="mark-read" v-on:click.prevent="setRead(true)" v-if=" ! book.read">Mark Read</button>
             <button class="mark-unread" v-on:click.prevent="setRead(false)" v-if="book.read">Mark Unread</button> -->
@@ -35,9 +38,11 @@ export default {
 
 <style scoped>
 
+
+
 img {
     border-radius: 15px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .card a {
@@ -54,8 +59,6 @@ img {
     padding: 0px;
 
     text-align: center;
-
-
 }
 
 .card.read {
@@ -63,12 +66,12 @@ img {
 }
 
 .card .book-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
 }
 
 .card .book-author {
-    font-size: 1rem;
+    font-size: .8rem;
 }
 
 button {
@@ -89,5 +92,24 @@ button:hover {
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
+
+@media (max-width: 768px) {
+    .card {
+        width: 45%;
+    }
+
+    img {
+        height: 60%;
+        margin-top: 20px;
+    }
+
+    .card .book-title {
+    font-size: 70%;
+    text-align: center;
+    }
+
+   
+
+}
 
 </style>

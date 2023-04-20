@@ -30,8 +30,8 @@ export default {
 
 <style scoped>
 .book-container {
-    display:flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 

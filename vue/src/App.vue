@@ -174,7 +174,7 @@
 
     /* Logo */
     header div img {
-        height: 100px;
+        height: 10vh;
         margin: 10px;
     } 
 
