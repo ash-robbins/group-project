@@ -67,7 +67,7 @@ export default {
     width: 50%;
     height: 65px;
     border: 1px solid white;
-    background: yellow;
+    background: white;
     padding: 0 20px;
     border-radius: 15px;
     outline: none;
@@ -79,7 +79,7 @@ export default {
 
 form {
   margin-bottom: 1rem;
-  background-color: blue;
+  background-color: #D3D3D3;
   padding: 1rem; 
   border-radius: 15px;
   display: grid;

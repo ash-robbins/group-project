@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-#update-button {
+#update-button,#submit_prize  {
     width: 220px;
     background: linear-gradient(to right,#00afef,#ad63f1 );
     color: white;
@@ -67,7 +67,7 @@ export default {
     margin-left: 10px;
 }
 
-#update-button:hover {
+#update-button:hover,#submit_prize:hover {
   background: linear-gradient(to right,#102770,#ad63f1 );
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
@@ -89,24 +89,6 @@ export default {
     
 }
 
-#submit_prize {
-    width: 220px;
-    background: linear-gradient(to right,#00afef,#ad63f1 );
-    color: white;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    padding: 23px 0;
-    margin-top: 10px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-#submit_prize:hover {
-  background: linear-gradient(to right,#102770,#ad63f1 );
-  color: #ffffff;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
 
 
 </style>
