@@ -1,40 +1,20 @@
 <template>
-  
-     <div class = "book_details">
-       <img v-bind:src="book.coverImage"/>
-        
-      <h1>Title: {{book.title}}</h1>
-      <h2>Author: {{book.author}}</h2>
-      <h2>Description: {{book.description}}</h2>
-
-      <!-- <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" /> -->
-      <!-- <img v-bind:src="book.imageLink"/> -->
-      
-      <router-link v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
-
-  
-      <!-- <div>
-        Book Activity: 
-        <p>{{ book.reading_activity.is_completed ? 'You Have Completed reading this Book !' : 'Book Not Yet Completed'}}</p>
-        Page Number: 
-        <p>{{book.reading_activity.bookmark_page_number}}</p>
-        Minutes Read: 
-        <p>{{book.reading_activity.reading_time}}</p>
-
-        </div> -->
-      <!-- <div>
-        <button v-if="updateButton" v-on:click.prevent="updateButton = false">Update Book Activity</button>
-        <form v-else v-on:submit.prevent="updateBookActivity">
-          <label>Pages Read Today</label>
-          <input type="text" placeholder="Pages Read" key="pages-read" v-model="new_activity.bookmark_page_number"/>
-          <label>Minutes Read</label>
-          <input type="text" placeholder="Minutes Read" key="minutes-read" v-model="new_activity.reading_time"/>
-          <input type="submit" value="Submit"/>
-        </form>
-      </div> -->
-
-  </div>
+  <div class = "book_details">
     
+    <div class="book-info">
+      <img v-bind:src="book.coverImage"/>
+      <h2>{{book.title}}</h2>
+      <h3>By: {{book.author}}</h3>
+    </div>
+
+    <div class="book-description">
+      <p>{{book.description}}</p>
+      <router-link class="link" v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
+    </div>
+
+    
+
+  </div> 
 </template>
 
 <script>
@@ -45,48 +25,82 @@ export default {
           bookprop: Number
     },
     data() {
-    return {
-  myUser: this.$store.state.user.id,
-  // updateButton: true,
-  book: {
-    bookId: '',
-    isbn: '',
-    title: '',
-    author: '',
-    coverImage: '',
-    description: ''
-}
-    }
-  },
+      return {
+        myUser: this.$store.state.user.id,
+        // updateButton: true,
+        book: {
+          bookId: '',
+          isbn: '',
+          title: '',
+          author: '',
+          coverImage: '',
+          description: ''
+        }
+      }
+    },
 
-  computed: {
+    computed: {
       // book(){
       //     return this.$store.state.books.find(book=>book.book_id == this.bookprop)
       // }
-},
-created(){
-  // this.$route.params.id
+    },
+    created(){
          bookService.getBook(this.$route.params.book_id)
          .then((response) => {
          this.book = response.data;
           });
-      
-}
-}
+    },
+    // truncatedDescription() {
+    //   const maxLength = 50;
+    //   if (this.book.description && this.book.description.length > maxLength) {
+    //     return this.book.description.slice(0, maxLength) + '...';
+    //   } else {
+    //     return this.book.description;
+    //   }
+    // },
+
+};
 
 
 </script>
 
 <style scoped>
 .book_details {
-  
   text-align: center;
   margin-bottom: 1rem;
-  background-color: rgba(141, 141, 141, 0.5);
+  background-color: rgba(230, 230, 230, 0.5);
   padding: 1rem; 
   border-radius: 15px;
   display: grid;
-  justify-items: center;
+  grid-template-columns: 1fr 1fr;
 }
+
+img {
+  width: 250px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.link {
+  text-align: center;
+  color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+
+}
+
+@media (max-width: 768px) {
+  .book_details {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+
+
+}
+
+
 
 </style>
