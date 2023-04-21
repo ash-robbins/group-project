@@ -13,8 +13,9 @@
         </div>
 
         <div class ="column2">
-          <img src="assets\bookstairs.png" class="homepic1">
+          <!-- <img src="assets\bookstairs.png" class="homepic1"> -->
           <div class="color-box"></div>
+          
           
 <!-- <book-card v-bind:book="book" v-for="book in books" v-bind:key="book.book_id"/> -->
 </div>
@@ -113,7 +114,7 @@ export default {
 .column2 .homepic1 {
   width: 100%;
   
-  left: -250px;
+  
   position: relative;
   z-index: -1;
 }
