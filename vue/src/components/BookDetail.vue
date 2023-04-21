@@ -91,12 +91,19 @@ img {
 
 }
 
+.book-description {
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
   .book_details {
     display: grid;
     grid-template-columns: 1fr;
   }
-  
+  .book-description {
+    margin: 0px;
+  }
 
 
 }
