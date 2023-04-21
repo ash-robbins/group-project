@@ -1,5 +1,5 @@
 <template>
-    <div class = "booksearch">
+    <div class="booksearch">
 
         <form v-on:submit.prevent="search" >
             <div class="book-details">
@@ -16,7 +16,7 @@
         <div v-if="newbook.title" class="book-search-results">
             <p>{{newbook.title}}</p>
             <p>{{newbook.author}}</p>
-            <p>{{newbook.description}}</p>
+            <p>{{ newbook.description.length > 500 ? newbook.description.slice(0, 500) + '...' : newbook.description }}</p>
             <button v-on:click.prevent="addToList">Add Book to List</button>
         </div>
         
@@ -83,21 +83,31 @@ export default {
           this.$router.push('/books')
         } 
         })
-        }
+        },
+        // truncatedDescription() {
+        //     const maxLength = 100;
+        //     if (this.book.description.length > maxLength) {
+        //         return this.book.description.slice(0, maxLength) + '...';
+        //     } else {
+        //         return this.book.description;
+        //     }
+        // }
+    
     }
-
 }
 </script>
 
 <style scoped>
     .booksearch{
          margin-bottom: 1rem;
-         background-color: rgba(141, 141, 141, 0.5);
+         background-color: rgba(230, 230, 230, 0.5);
          padding: 1rem; 
          border-radius: 15px;
          display: grid;
          justify-items: center;
-         width: 50vw;
+         width: 50%;
+         margin: 0 auto;
+         
     }
     #submitSearchBtn{
         width: 200px;
@@ -146,8 +156,8 @@ export default {
     .search-book-input{
         width: 90%;
         height: 40px;
-        border: 1px solid white;
-        background: rgb(226, 226, 226);
+        border: 1px solid #ad63f1;
+        background: rgb(255, 255, 255);
         padding: 0 20px;
         border-radius: 15px;
         outline: none;
@@ -155,5 +165,11 @@ export default {
         font-size: 14px;
         transition: all 0.5s ease;
         margin-top: 5px;
+    }
+
+    .book-search-results {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
     }
 </style>
