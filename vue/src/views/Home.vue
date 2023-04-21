@@ -109,6 +109,9 @@ export default {
   min-height: 500px; /* set a minimum height */
   width:100%;
   transform:translateX(150px);
+  background-image: url('/images/boxboy.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .column2 .homepic1 {
