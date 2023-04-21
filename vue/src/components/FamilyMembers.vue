@@ -35,10 +35,10 @@
     <button v-if="newMemberForm == true" v-on:click.prevent="newMemberForm = false" >Add New Family Member</button>
     <form v-else v-on:submit.prevent="addFamilyMember">
         <br><br>
-        <label for="username">Enter members username     </label>
-        <input type="text" id="username" v-model="newFamilyMember.username" placeholder="family member's username" />
+        <label for="username">Enter Members Username to add to Family     </label>
+        <input class ="newfamilymember_input" type="text" id="username" v-model="newFamilyMember.username" placeholder="Family Member's Username" />
        
-        <input type="submit" value="Submit"/>
+        <input class = "submit_new_fam_mem" type="submit" value="Submit"/>
     </form>
   </div>
 
@@ -107,12 +107,17 @@ table {
   width: 800px;
   border-collapse: collapse;
 }
+tbody tr:nth-child(even) {
+  background-color:white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(121, 12, 194, 0.1);
+}
 td {
   padding: 4px;
 }
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+
 
 .topic-list a:link,
 .topic-list a:visited {
@@ -122,7 +127,7 @@ tbody tr:nth-child(even) {
 .topic-list a:hover {
   text-decoration: underline;
 }
-button {
+button ,.submit_new_fam_mem{
     width: 220px;
     background: linear-gradient(to right,#00afef,#ad63f1 );
     color: white;
@@ -133,6 +138,19 @@ button {
     margin-top: 10px;
     cursor: pointer;
     margin-left: 10px;
+}
+.newfamilymember_input{
+   width: 90%;
+    height: 40px;
+    border: 1px solid white;
+    background: rgb(226, 226, 226);
+    padding: 0 20px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
 }
 
 </style>

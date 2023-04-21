@@ -88,10 +88,14 @@ export default {
   flex-basis: 60%;
   display: flex;
   align-items:center;
+  margin-right: 100px; /* add margin-right */
+  z-index: 1; /* set the z-index to 1 */
 }
 .column2 .homepic1{
   width:50%;
   left:-50;
+  z-index: 2;
+  position:relative;
 }
 .color-box{
  
@@ -113,7 +117,7 @@ export default {
   position: relative;
   z-index: -1;
 }
-.home{
+.homepage{
   display: flex;
   flex-direction: column;
   height: 100vh;
