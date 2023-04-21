@@ -9,7 +9,9 @@
 
     <div class="book-description">
       <p>{{book.description}}</p>
-      <router-link class="link" v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click to see reading activity</router-link>
+      <br>
+     
+      <router-link class="link" v-bind:to="{name:'bookReadingActivity', params: {book_id: book.bookId}}" >Click For Reading Activity</router-link>
     </div>
 
     
@@ -83,7 +85,17 @@ img {
 
 .link {
   text-align: center;
-  color: black;
+  /* color: black; */
+   width: 120px;
+    background: linear-gradient(to right,#00afef,#ad63f1 );
+    color: white;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 .link:hover {
