@@ -104,7 +104,7 @@ export default {
   background-position: center;
   border-radius: 15px;
   margin-bottom: 1rem;
-  background-color: #D3D3D3;
+  background-color: rgba(230, 230, 230, 0.5);
   padding: 1rem; 
   border-radius: 15px;
   

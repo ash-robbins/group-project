@@ -116,12 +116,12 @@ export default {
 
   text-align: center;
   margin-bottom: 1rem;
-  background-color: rgba(141, 141, 141, 0.5);
+  background-color: rgba(230, 230, 230, 0.5);
   padding: 1rem; 
   border-radius: 15px;
   display: grid;
   justify-items: center;
-
+  
 }
 
   
